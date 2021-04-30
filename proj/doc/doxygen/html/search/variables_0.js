@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['back_5finfo_318',['back_info',['../game_8c.html#af8e0d5ead832d89941ef7b5b2f80f49b',1,'game.c']]],
+  ['background_319',['background',['../game_8c.html#aa279b6fdc9f003ba0dcf0862c8a4dfaa',1,'game.c']]],
+  ['background_5fxpm_320',['background_xpm',['../game__xpm_8h.html#a3a4b4c4cec9709ffdb4631d324a71aa8',1,'game_xpm.h']]],
+  ['board_321',['board',['../game_8c.html#a6bbff608be5849688a8cfae762f5fed2',1,'game.c']]],
+  ['board_5fcolumn_322',['board_column',['../game_8c.html#aaf359299ae56f65d66404bb3dfbbfaf5',1,'game.c']]],
+  ['board_5fcolumn_5finfo_323',['board_column_info',['../game_8c.html#ae6a6a3d5b089cbc663934f38a3ff7751',1,'game.c']]],
+  ['board_5fcolumn_5fxpm_324',['board_column_xpm',['../game__xpm_8h.html#aa7a332a8418b4f6fbbc5a66a314edb9c',1,'game_xpm.h']]],
+  ['board_5fimage_325',['board_image',['../game_8c.html#af6ad5236ad21cb4a48bcaefcc6317e46',1,'game.c']]],
+  ['board_5finfo_326',['board_info',['../game_8c.html#a76c10ea2cd74639a9825684fb5fdb88f',1,'game.c']]],
+  ['board_5fx_327',['board_x',['../game_8c.html#ab59395a203002430d95171964319d9b9',1,'game.c']]],
+  ['board_5fxpm_328',['board_xpm',['../game__xpm_8h.html#a7a8d370d74854024dd35fc7dcd7e3a23',1,'game_xpm.h']]],
+  ['board_5fy_329',['board_y',['../game_8c.html#a545a040387e02aef5e2e61c4ca105953',1,'game.c']]],
+  ['buffer_330',['buffer',['../graph_8c.html#aff2566f4c366b48d73479bef43ee4d2e',1,'graph.c']]],
+  ['button1_5fhighlight_331',['button1_highlight',['../menu_8c.html#a26ce34a238daeaa53ec2fe5fd06476db',1,'menu.c']]],
+  ['button1_5fhighlight_5fxpm_332',['button1_highlight_xpm',['../menu__xpm_8h.html#a847a085d730a06b5642727a7dbdabade',1,'menu_xpm.h']]],
+  ['button2_5fhighlight_333',['button2_highlight',['../menu_8c.html#ad0cf88428099e22351783a6676ada288',1,'menu.c']]],
+  ['button2_5fhighlight_5fxpm_334',['button2_highlight_xpm',['../menu__xpm_8h.html#a830fec5f11221077562631e0f639a79e',1,'menu_xpm.h']]],
+  ['button3_5fhighlight_335',['button3_highlight',['../menu_8c.html#a51966f1697164f653c975cda309f0730',1,'menu.c']]],
+  ['button3_5fhighlight_5fxpm_336',['button3_highlight_xpm',['../menu__xpm_8h.html#a688b5ad246e1540fbd5d12277d39b802',1,'menu_xpm.h']]],
+  ['button4_5fhighlight_337',['button4_highlight',['../menu_8c.html#a379d2ccb12d6e53e63338f0a454d21ad',1,'menu.c']]],
+  ['button4_5fhighlight_5fxpm_338',['button4_highlight_xpm',['../menu__xpm_8h.html#a7a149a045abd6c0cc5960ff16cd1d195',1,'menu_xpm.h']]],
+  ['button_5finfo_339',['button_info',['../menu_8c.html#aafa6837b803cd6a0fc7b6bc946e1d096',1,'menu.c']]]
+];

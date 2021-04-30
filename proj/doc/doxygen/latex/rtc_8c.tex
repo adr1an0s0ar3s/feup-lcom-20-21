@@ -1,0 +1,104 @@
+\hypertarget{rtc_8c}{}\doxysection{rtc.\+c File Reference}
+\label{rtc_8c}\index{rtc.c@{rtc.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/liblm.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/proj.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}rtc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\newline
+Include dependency graph for rtc.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{group__rtc_ga6bbe679f115cec90d36d50eb2aac1b89}{rtc\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t $\ast$bit\+\_\+no)
+\item 
+int() \mbox{\hyperlink{group__rtc_ga9d4850bb2a488644672d43287f160622}{rtc\+\_\+unsubscribe\+\_\+int}} ()
+\item 
+void() \mbox{\hyperlink{group__rtc_ga337eaa2104e733696940db41dde4263a}{activate\+\_\+alarm}} ()
+\item 
+void() \mbox{\hyperlink{group__rtc_gabb02b25ab9dbe9de9272beaf5ae75b03}{deactivate\+\_\+alarm}} ()
+\item 
+void() \mbox{\hyperlink{group__rtc_ga3cda919fc58bfbb8b4d08c54954d8fec}{handle\+\_\+alarm\+\_\+int}} ()
+\item 
+uint8\+\_\+t() \mbox{\hyperlink{group__rtc_ga2453c0f93199c79c8f79760266f8ddfa}{bcd\+\_\+to\+\_\+bin}} (uint8\+\_\+t n)
+\item 
+uint8\+\_\+t() \mbox{\hyperlink{group__rtc_gabab2c09f518c2cbc90775a239287c6a8}{bin\+\_\+to\+\_\+bcd}} (uint8\+\_\+t n)
+\item 
+void() \mbox{\hyperlink{rtc_8c_ae1e7cc89b139d45e37b9c50e2949f05c}{read\+Date}} (uint8\+\_\+t $\ast$dia, uint8\+\_\+t $\ast$mes, uint8\+\_\+t $\ast$ano, uint8\+\_\+t $\ast$horas, uint8\+\_\+t $\ast$minutos, uint8\+\_\+t $\ast$segundos)
+\item 
+void() \mbox{\hyperlink{group__rtc_ga0f881019601c1c941d997867d66e3a57}{set\+Alarm}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{rtc_8c_a9fc22e6d8203dddf397ca66d65055d1d}{hook\+\_\+id\+\_\+rtc}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{rtc_8c_ae1e7cc89b139d45e37b9c50e2949f05c}\label{rtc_8c_ae1e7cc89b139d45e37b9c50e2949f05c}} 
+\index{rtc.c@{rtc.c}!readDate@{readDate}}
+\index{readDate@{readDate}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{readDate()}{readDate()}}
+{\footnotesize\ttfamily void() read\+Date (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{dia,  }\item[{uint8\+\_\+t $\ast$}]{mes,  }\item[{uint8\+\_\+t $\ast$}]{ano,  }\item[{uint8\+\_\+t $\ast$}]{horas,  }\item[{uint8\+\_\+t $\ast$}]{minutos,  }\item[{uint8\+\_\+t $\ast$}]{segundos }\end{DoxyParamCaption})}
+
+
+
+Definition at line 80 of file rtc.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{81 \{}
+\DoxyCodeLine{82     uint8\_t res1; \textcolor{comment}{//= 0 ??}}
+\DoxyCodeLine{83     sys\_outb(\mbox{\hyperlink{group__rtc_ga710b98232df2c563009e6f8a6cd18220}{RTC\_ADDR\_REG}}, 7);}
+\DoxyCodeLine{84     \mbox{\hyperlink{group__util_ga79a031a8611f5b2d6afa4158e92b0fb4}{util\_sys\_inb}}(\mbox{\hyperlink{group__rtc_ga2f258a00c59c3f347c8d2d4a75471ce0}{RTC\_DATA\_REG}}, dia);}
+\DoxyCodeLine{85     sys\_outb(\mbox{\hyperlink{group__rtc_ga710b98232df2c563009e6f8a6cd18220}{RTC\_ADDR\_REG}}, 8);}
+\DoxyCodeLine{86     \mbox{\hyperlink{group__util_ga79a031a8611f5b2d6afa4158e92b0fb4}{util\_sys\_inb}}(\mbox{\hyperlink{group__rtc_ga2f258a00c59c3f347c8d2d4a75471ce0}{RTC\_DATA\_REG}}, mes);}
+\DoxyCodeLine{87     sys\_outb(\mbox{\hyperlink{group__rtc_ga710b98232df2c563009e6f8a6cd18220}{RTC\_ADDR\_REG}}, 9);}
+\DoxyCodeLine{88     \mbox{\hyperlink{group__util_ga79a031a8611f5b2d6afa4158e92b0fb4}{util\_sys\_inb}}(\mbox{\hyperlink{group__rtc_ga2f258a00c59c3f347c8d2d4a75471ce0}{RTC\_DATA\_REG}}, ano);}
+\DoxyCodeLine{89     sys\_outb(\mbox{\hyperlink{group__rtc_ga710b98232df2c563009e6f8a6cd18220}{RTC\_ADDR\_REG}}, 4);}
+\DoxyCodeLine{90     \mbox{\hyperlink{group__util_ga79a031a8611f5b2d6afa4158e92b0fb4}{util\_sys\_inb}}(\mbox{\hyperlink{group__rtc_ga2f258a00c59c3f347c8d2d4a75471ce0}{RTC\_DATA\_REG}}, horas);}
+\DoxyCodeLine{91     sys\_outb(\mbox{\hyperlink{group__rtc_ga710b98232df2c563009e6f8a6cd18220}{RTC\_ADDR\_REG}}, 2);}
+\DoxyCodeLine{92     \mbox{\hyperlink{group__util_ga79a031a8611f5b2d6afa4158e92b0fb4}{util\_sys\_inb}}(\mbox{\hyperlink{group__rtc_ga2f258a00c59c3f347c8d2d4a75471ce0}{RTC\_DATA\_REG}}, minutos);}
+\DoxyCodeLine{93     sys\_outb(\mbox{\hyperlink{group__rtc_ga710b98232df2c563009e6f8a6cd18220}{RTC\_ADDR\_REG}}, 0);}
+\DoxyCodeLine{94     \mbox{\hyperlink{group__util_ga79a031a8611f5b2d6afa4158e92b0fb4}{util\_sys\_inb}}(\mbox{\hyperlink{group__rtc_ga2f258a00c59c3f347c8d2d4a75471ce0}{RTC\_DATA\_REG}}, segundos);}
+\DoxyCodeLine{95     sys\_outb(\mbox{\hyperlink{group__rtc_ga710b98232df2c563009e6f8a6cd18220}{RTC\_ADDR\_REG}}, 11);}
+\DoxyCodeLine{96     \mbox{\hyperlink{group__util_ga79a031a8611f5b2d6afa4158e92b0fb4}{util\_sys\_inb}}(\mbox{\hyperlink{group__rtc_ga2f258a00c59c3f347c8d2d4a75471ce0}{RTC\_DATA\_REG}}, \&res1);}
+\DoxyCodeLine{97     \textcolor{keywordflow}{if} (!(res1 \& 0x04))\{}
+\DoxyCodeLine{98         *dia = \mbox{\hyperlink{group__rtc_ga2453c0f93199c79c8f79760266f8ddfa}{bcd\_to\_bin}}(*dia);}
+\DoxyCodeLine{99         *mes = \mbox{\hyperlink{group__rtc_ga2453c0f93199c79c8f79760266f8ddfa}{bcd\_to\_bin}}(*mes);}
+\DoxyCodeLine{100         *ano = \mbox{\hyperlink{group__rtc_ga2453c0f93199c79c8f79760266f8ddfa}{bcd\_to\_bin}}(*ano);}
+\DoxyCodeLine{101         *horas = \mbox{\hyperlink{group__rtc_ga2453c0f93199c79c8f79760266f8ddfa}{bcd\_to\_bin}}(*horas);}
+\DoxyCodeLine{102         *minutos = \mbox{\hyperlink{group__rtc_ga2453c0f93199c79c8f79760266f8ddfa}{bcd\_to\_bin}}(*minutos);}
+\DoxyCodeLine{103         *segundos = \mbox{\hyperlink{group__rtc_ga2453c0f93199c79c8f79760266f8ddfa}{bcd\_to\_bin}}(*segundos);}
+\DoxyCodeLine{104     \}}
+\DoxyCodeLine{105 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{rtc_8c_ae1e7cc89b139d45e37b9c50e2949f05c_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{rtc_8c_a9fc22e6d8203dddf397ca66d65055d1d}\label{rtc_8c_a9fc22e6d8203dddf397ca66d65055d1d}} 
+\index{rtc.c@{rtc.c}!hook\_id\_rtc@{hook\_id\_rtc}}
+\index{hook\_id\_rtc@{hook\_id\_rtc}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{hook\_id\_rtc}{hook\_id\_rtc}}
+{\footnotesize\ttfamily int hook\+\_\+id\+\_\+rtc\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 11 of file rtc.\+c.
+

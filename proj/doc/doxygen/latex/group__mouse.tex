@@ -1,0 +1,206 @@
+\hypertarget{group__mouse}{}\doxysection{mouse}
+\label{group__mouse}\index{mouse@{mouse}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{group__mouse_ga310254edf59d5de2a8df1b2888cc7431}{mouse\+\_\+interrupt\+\_\+handler}} ()
+\item 
+int() \mbox{\hyperlink{group__mouse_ga20285aed4b3ef45812cd967532dd09db}{mouse\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t $\ast$bit\+\_\+no)
+\item 
+int() \mbox{\hyperlink{group__mouse_ga3ecf823d80520009ae5e0d76ae40a3c3}{mouse\+\_\+unsubscribe\+\_\+int}} ()
+\item 
+int() \mbox{\hyperlink{group__mouse_gabe20128c397b0e728b58316a8e1a6e14}{enable\+\_\+data\+\_\+reporting}} ()
+\item 
+int() \mbox{\hyperlink{group__mouse_ga213d5f0c93d25fe21ae6ee3ba7b50a15}{disable\+\_\+data\+\_\+reporting}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles Mouse 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__mouse_ga213d5f0c93d25fe21ae6ee3ba7b50a15}\label{group__mouse_ga213d5f0c93d25fe21ae6ee3ba7b50a15}} 
+\index{mouse@{mouse}!disable\_data\_reporting@{disable\_data\_reporting}}
+\index{disable\_data\_reporting@{disable\_data\_reporting}!mouse@{mouse}}
+\doxysubsubsection{\texorpdfstring{disable\_data\_reporting()}{disable\_data\_reporting()}}
+{\footnotesize\ttfamily int() disable\+\_\+data\+\_\+reporting (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Disables data reporting \begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 88 of file mouse.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{89 \{}
+\DoxyCodeLine{90   \mbox{\hyperlink{group__keyboard_ga2349d0262afd985b46121007f22954b6}{kbc\_write}}(\mbox{\hyperlink{group__i8042_gad6ad3db9a4572a621128e1275f79e276}{KBC\_IN}}, \mbox{\hyperlink{group__i8042_ga11ac9dd8788aa45cd9d8d0646fcae0a7}{MOUSE\_WRITE\_COM}});}
+\DoxyCodeLine{91   \mbox{\hyperlink{group__keyboard_ga2349d0262afd985b46121007f22954b6}{kbc\_write}}(\mbox{\hyperlink{group__graph_ga1ccde68b2b6d4e45b50eef1403e10bb7}{KBC\_OUT\_BUF}}, \mbox{\hyperlink{group__i8042_gaa5f40b58f57851bff8404515540e9d13}{MOUSE\_DI\_DATA}});}
+\DoxyCodeLine{92   uint8\_t ret;}
+\DoxyCodeLine{93   \mbox{\hyperlink{group__util_ga79a031a8611f5b2d6afa4158e92b0fb4}{util\_sys\_inb}}(\mbox{\hyperlink{group__graph_ga1ccde68b2b6d4e45b50eef1403e10bb7}{KBC\_OUT\_BUF}}, \&ret);}
+\DoxyCodeLine{94   \textcolor{keywordflow}{if} (ret != \mbox{\hyperlink{group__i8042_ga064ec583ce5b039303686ce4c64b4f3e}{MOUSE\_ACK}})}
+\DoxyCodeLine{95     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{96   }
+\DoxyCodeLine{97   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{98 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__mouse_ga213d5f0c93d25fe21ae6ee3ba7b50a15_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__mouse_gabe20128c397b0e728b58316a8e1a6e14}\label{group__mouse_gabe20128c397b0e728b58316a8e1a6e14}} 
+\index{mouse@{mouse}!enable\_data\_reporting@{enable\_data\_reporting}}
+\index{enable\_data\_reporting@{enable\_data\_reporting}!mouse@{mouse}}
+\doxysubsubsection{\texorpdfstring{enable\_data\_reporting()}{enable\_data\_reporting()}}
+{\footnotesize\ttfamily int() enable\+\_\+data\+\_\+reporting (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Enables data reporting \begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 76 of file mouse.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{77 \{}
+\DoxyCodeLine{78   \mbox{\hyperlink{group__keyboard_ga2349d0262afd985b46121007f22954b6}{kbc\_write}}(\mbox{\hyperlink{group__i8042_gad6ad3db9a4572a621128e1275f79e276}{KBC\_IN}}, \mbox{\hyperlink{group__i8042_ga11ac9dd8788aa45cd9d8d0646fcae0a7}{MOUSE\_WRITE\_COM}});}
+\DoxyCodeLine{79   \mbox{\hyperlink{group__keyboard_ga2349d0262afd985b46121007f22954b6}{kbc\_write}}(\mbox{\hyperlink{group__graph_ga1ccde68b2b6d4e45b50eef1403e10bb7}{KBC\_OUT\_BUF}}, \mbox{\hyperlink{group__i8042_ga44e77bcb0e83157635fee4e7b8b8b23a}{MOUSE\_EN\_DATA}});}
+\DoxyCodeLine{80   uint8\_t ret;}
+\DoxyCodeLine{81   \mbox{\hyperlink{group__util_ga79a031a8611f5b2d6afa4158e92b0fb4}{util\_sys\_inb}}(\mbox{\hyperlink{group__graph_ga1ccde68b2b6d4e45b50eef1403e10bb7}{KBC\_OUT\_BUF}}, \&ret);}
+\DoxyCodeLine{82   \textcolor{keywordflow}{if} (ret != \mbox{\hyperlink{group__i8042_ga064ec583ce5b039303686ce4c64b4f3e}{MOUSE\_ACK}})}
+\DoxyCodeLine{83     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{84   }
+\DoxyCodeLine{85   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{86 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__mouse_gabe20128c397b0e728b58316a8e1a6e14_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__mouse_ga310254edf59d5de2a8df1b2888cc7431}\label{group__mouse_ga310254edf59d5de2a8df1b2888cc7431}} 
+\index{mouse@{mouse}!mouse\_interrupt\_handler@{mouse\_interrupt\_handler}}
+\index{mouse\_interrupt\_handler@{mouse\_interrupt\_handler}!mouse@{mouse}}
+\doxysubsubsection{\texorpdfstring{mouse\_interrupt\_handler()}{mouse\_interrupt\_handler()}}
+{\footnotesize\ttfamily int() mouse\+\_\+interrupt\+\_\+handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Handles the interrupts of the mouse and forms the mouse packets \begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 16 of file mouse.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18   \textcolor{keyword}{static} \textcolor{keywordtype}{int} packet\_counter = 0;}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20   packet\_counter \%= 3;}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22   uint8\_t stat, data;}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24   \mbox{\hyperlink{group__util_ga79a031a8611f5b2d6afa4158e92b0fb4}{util\_sys\_inb}}(\mbox{\hyperlink{group__graph_ga1ccde68b2b6d4e45b50eef1403e10bb7}{KBC\_OUT\_BUF}}, \&data);}
+\DoxyCodeLine{25   \mbox{\hyperlink{group__util_ga79a031a8611f5b2d6afa4158e92b0fb4}{util\_sys\_inb}}(\mbox{\hyperlink{group__graph_ga0615d1ead5f06ae8445d2a8be8364636}{KBC\_STATUS}}, \&stat);}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27   \textcolor{keywordflow}{if} ((stat \& (\mbox{\hyperlink{group__graph_gaea2ef6dda1aabebf291eeee29b66c04a}{KBC\_PAR\_ERR}} | \mbox{\hyperlink{group__graph_gae31c3653f5881b02cbfdd4ccbb7ccf50}{KBC\_TO\_ERR}})) != 0 || (packet\_counter == 0 \&\& !(data \& \mbox{\hyperlink{group__i8042_ga3a8ea58898cb58fc96013383d39f482c}{BIT}}(3))))\{\textcolor{keywordflow}{return} \textcolor{keyword}{false};\}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29   (\mbox{\hyperlink{group__proj_ga26e83eca70c2b9169fbbb0eac7e32e32}{pp}}.bytes)[packet\_counter] = data;}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31   \textcolor{keywordflow}{switch} (packet\_counter)}
+\DoxyCodeLine{32   \{}
+\DoxyCodeLine{33   \textcolor{keywordflow}{case} 0:}
+\DoxyCodeLine{34     \mbox{\hyperlink{group__proj_ga26e83eca70c2b9169fbbb0eac7e32e32}{pp}}.lb = data \& \mbox{\hyperlink{group__i8042_ga3a8ea58898cb58fc96013383d39f482c}{BIT}}(0);}
+\DoxyCodeLine{35     \mbox{\hyperlink{group__proj_ga26e83eca70c2b9169fbbb0eac7e32e32}{pp}}.rb = data \& \mbox{\hyperlink{group__i8042_ga3a8ea58898cb58fc96013383d39f482c}{BIT}}(1);}
+\DoxyCodeLine{36     \mbox{\hyperlink{group__proj_ga26e83eca70c2b9169fbbb0eac7e32e32}{pp}}.mb = data \& \mbox{\hyperlink{group__i8042_ga3a8ea58898cb58fc96013383d39f482c}{BIT}}(2);}
+\DoxyCodeLine{37     \mbox{\hyperlink{group__proj_ga26e83eca70c2b9169fbbb0eac7e32e32}{pp}}.x\_ov = data \& \mbox{\hyperlink{group__i8042_ga3a8ea58898cb58fc96013383d39f482c}{BIT}}(6);}
+\DoxyCodeLine{38     \mbox{\hyperlink{group__proj_ga26e83eca70c2b9169fbbb0eac7e32e32}{pp}}.y\_ov = data \& \mbox{\hyperlink{group__i8042_ga3a8ea58898cb58fc96013383d39f482c}{BIT}}(7);}
+\DoxyCodeLine{39     packet\_counter++;}
+\DoxyCodeLine{40     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{41   \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{42     \mbox{\hyperlink{group__proj_ga26e83eca70c2b9169fbbb0eac7e32e32}{pp}}.delta\_x = (\mbox{\hyperlink{group__proj_ga26e83eca70c2b9169fbbb0eac7e32e32}{pp}}.bytes)[1];}
+\DoxyCodeLine{43     \textcolor{keywordflow}{if} (((\mbox{\hyperlink{group__proj_ga26e83eca70c2b9169fbbb0eac7e32e32}{pp}}.bytes)[0] \& \mbox{\hyperlink{group__i8042_ga3a8ea58898cb58fc96013383d39f482c}{BIT}}(4)) != 0)}
+\DoxyCodeLine{44       \mbox{\hyperlink{group__proj_ga26e83eca70c2b9169fbbb0eac7e32e32}{pp}}.delta\_x += 65280;}
+\DoxyCodeLine{45     packet\_counter++;}
+\DoxyCodeLine{46     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{47   \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{48     \mbox{\hyperlink{group__proj_ga26e83eca70c2b9169fbbb0eac7e32e32}{pp}}.delta\_y = (\mbox{\hyperlink{group__proj_ga26e83eca70c2b9169fbbb0eac7e32e32}{pp}}.bytes)[2];}
+\DoxyCodeLine{49     \textcolor{keywordflow}{if} (((\mbox{\hyperlink{group__proj_ga26e83eca70c2b9169fbbb0eac7e32e32}{pp}}.bytes)[0] \& \mbox{\hyperlink{group__i8042_ga3a8ea58898cb58fc96013383d39f482c}{BIT}}(5)) != 0)}
+\DoxyCodeLine{50       \mbox{\hyperlink{group__proj_ga26e83eca70c2b9169fbbb0eac7e32e32}{pp}}.delta\_y += 65280;}
+\DoxyCodeLine{51     packet\_counter++;}
+\DoxyCodeLine{52     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{53   \}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55   \textcolor{keywordflow}{return} (packet\_counter == 3);}
+\DoxyCodeLine{56 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{group__mouse_ga310254edf59d5de2a8df1b2888cc7431_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__mouse_ga20285aed4b3ef45812cd967532dd09db}\label{group__mouse_ga20285aed4b3ef45812cd967532dd09db}} 
+\index{mouse@{mouse}!mouse\_subscribe\_int@{mouse\_subscribe\_int}}
+\index{mouse\_subscribe\_int@{mouse\_subscribe\_int}!mouse@{mouse}}
+\doxysubsubsection{\texorpdfstring{mouse\_subscribe\_int()}{mouse\_subscribe\_int()}}
+{\footnotesize\ttfamily int() mouse\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{bit\+\_\+no }\end{DoxyParamCaption})}
+
+Subscribes Mouse interrupts 
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+no} & position of the correspondent bit in interrupt \char`\"{}vector\char`\"{} of message \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 58 of file mouse.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{59 \{}
+\DoxyCodeLine{60   \mbox{\hyperlink{mouse_8c_a0b0da21bbdff62b7b28e9af7ec3d0d76}{hook\_id\_mouse}} = *bit\_no;}
+\DoxyCodeLine{61   }
+\DoxyCodeLine{62   \textcolor{keywordflow}{if} (sys\_irqsetpolicy(\mbox{\hyperlink{group__i8042_ga85964cb90343bb1a029b1d1b4229f910}{MOUSE\_IRQ}}, IRQ\_REENABLE | IRQ\_EXCLUSIVE, \&\mbox{\hyperlink{mouse_8c_a0b0da21bbdff62b7b28e9af7ec3d0d76}{hook\_id\_mouse}}) != OK)}
+\DoxyCodeLine{63     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{66 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{group__mouse_ga3ecf823d80520009ae5e0d76ae40a3c3}\label{group__mouse_ga3ecf823d80520009ae5e0d76ae40a3c3}} 
+\index{mouse@{mouse}!mouse\_unsubscribe\_int@{mouse\_unsubscribe\_int}}
+\index{mouse\_unsubscribe\_int@{mouse\_unsubscribe\_int}!mouse@{mouse}}
+\doxysubsubsection{\texorpdfstring{mouse\_unsubscribe\_int()}{mouse\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int() mouse\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Unsubscribes keyboard interrupts \begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 68 of file mouse.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{69 \{  }
+\DoxyCodeLine{70   \textcolor{keywordflow}{if} (sys\_irqrmpolicy(\&\mbox{\hyperlink{mouse_8c_a0b0da21bbdff62b7b28e9af7ec3d0d76}{hook\_id\_mouse}}) != OK)}
+\DoxyCodeLine{71     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{74 \}}
+
+\end{DoxyCode}

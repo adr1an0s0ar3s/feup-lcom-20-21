@@ -1,0 +1,162 @@
+\hypertarget{group__keyboard}{}\doxysection{keyboard}
+\label{group__keyboard}\index{keyboard@{keyboard}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{group__keyboard_ga02884ada1971dbade466081413210b18}{kbc\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t $\ast$bit\+\_\+no)
+\item 
+int() \mbox{\hyperlink{group__keyboard_ga1102381e6a9e876e05dd78c58ccb5673}{kbc\+\_\+unsubscribe\+\_\+int}} ()
+\item 
+int() \mbox{\hyperlink{group__keyboard_ga1ba896157528456bcc6c82d7856f5eb4}{keyboard\+\_\+ih}} ()
+\item 
+int() \mbox{\hyperlink{group__keyboard_ga2349d0262afd985b46121007f22954b6}{kbc\+\_\+write}} (int port, uint8\+\_\+t cmd)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles Keyboard 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__keyboard_ga02884ada1971dbade466081413210b18}\label{group__keyboard_ga02884ada1971dbade466081413210b18}} 
+\index{keyboard@{keyboard}!kbc\_subscribe\_int@{kbc\_subscribe\_int}}
+\index{kbc\_subscribe\_int@{kbc\_subscribe\_int}!keyboard@{keyboard}}
+\doxysubsubsection{\texorpdfstring{kbc\_subscribe\_int()}{kbc\_subscribe\_int()}}
+{\footnotesize\ttfamily int() kbc\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{bit\+\_\+no }\end{DoxyParamCaption})}
+
+Subscribes keyboard interrupts 
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+no} & position of the correspondent bit in interrupt \char`\"{}vector\char`\"{} of message \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 15 of file keyboard.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17   \mbox{\hyperlink{keyboard_8c_a302ad6946d3fafa84df3d343d44034a4}{hook\_id\_keyboard}} = *bit\_no;}
+\DoxyCodeLine{18   }
+\DoxyCodeLine{19   \textcolor{keywordflow}{if} (sys\_irqsetpolicy(\mbox{\hyperlink{group__graph_ga16c5827f043d82f87c726c2d4369c11d}{KBC\_IRQ}}, IRQ\_REENABLE | IRQ\_EXCLUSIVE, \&\mbox{\hyperlink{keyboard_8c_a302ad6946d3fafa84df3d343d44034a4}{hook\_id\_keyboard}}) != OK)}
+\DoxyCodeLine{20     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{23 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{group__keyboard_ga1102381e6a9e876e05dd78c58ccb5673}\label{group__keyboard_ga1102381e6a9e876e05dd78c58ccb5673}} 
+\index{keyboard@{keyboard}!kbc\_unsubscribe\_int@{kbc\_unsubscribe\_int}}
+\index{kbc\_unsubscribe\_int@{kbc\_unsubscribe\_int}!keyboard@{keyboard}}
+\doxysubsubsection{\texorpdfstring{kbc\_unsubscribe\_int()}{kbc\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int() kbc\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Unsubscribes keyboard interrupts \begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 25 of file keyboard.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{26 \{  }
+\DoxyCodeLine{27   \textcolor{keywordflow}{if} (sys\_irqrmpolicy(\&\mbox{\hyperlink{keyboard_8c_a302ad6946d3fafa84df3d343d44034a4}{hook\_id\_keyboard}}) != OK)}
+\DoxyCodeLine{28     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{31 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{group__keyboard_ga2349d0262afd985b46121007f22954b6}\label{group__keyboard_ga2349d0262afd985b46121007f22954b6}} 
+\index{keyboard@{keyboard}!kbc\_write@{kbc\_write}}
+\index{kbc\_write@{kbc\_write}!keyboard@{keyboard}}
+\doxysubsubsection{\texorpdfstring{kbc\_write()}{kbc\_write()}}
+{\footnotesize\ttfamily int() kbc\+\_\+write (\begin{DoxyParamCaption}\item[{int}]{port,  }\item[{uint8\+\_\+t}]{cmd }\end{DoxyParamCaption})}
+
+Writes to controller 
+\begin{DoxyParams}{Parameters}
+{\em port} & port to be written \\
+\hline
+{\em cmd} & command to be written \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 58 of file keyboard.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{59 \{}
+\DoxyCodeLine{60   uint8\_t stat;}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62   \textcolor{keywordflow}{while} (1) \{}
+\DoxyCodeLine{63     \mbox{\hyperlink{group__util_ga79a031a8611f5b2d6afa4158e92b0fb4}{util\_sys\_inb}}(\mbox{\hyperlink{group__graph_ga0615d1ead5f06ae8445d2a8be8364636}{KBC\_STATUS}}, \&stat);}
+\DoxyCodeLine{64     \textcolor{keywordflow}{if}((stat \& \mbox{\hyperlink{group__i8042_ga141ccbc1ab10dfcdd1d450414dba13d4}{KBC\_ST\_IBF}}) == 0) \{}
+\DoxyCodeLine{65       sys\_outb(port, cmd);}
+\DoxyCodeLine{66       \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{67     \}}
+\DoxyCodeLine{68     tickdelay(micros\_to\_ticks(\mbox{\hyperlink{group__graph_ga1a522aa19bcb695a9df30032a893bee3}{DELAY\_US}}));}
+\DoxyCodeLine{69   \}}
+\DoxyCodeLine{70 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{group__keyboard_ga2349d0262afd985b46121007f22954b6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__keyboard_ga1ba896157528456bcc6c82d7856f5eb4}\label{group__keyboard_ga1ba896157528456bcc6c82d7856f5eb4}} 
+\index{keyboard@{keyboard}!keyboard\_ih@{keyboard\_ih}}
+\index{keyboard\_ih@{keyboard\_ih}!keyboard@{keyboard}}
+\doxysubsubsection{\texorpdfstring{keyboard\_ih()}{keyboard\_ih()}}
+{\footnotesize\ttfamily int() keyboard\+\_\+ih (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Handles interrupts from keyboard \begin{DoxyReturn}{Returns}
+true on success, non-\/true otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 33 of file keyboard.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{34 \{}
+\DoxyCodeLine{35   \textcolor{keyword}{static} \textcolor{keywordtype}{int} counter = 0;}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37   uint8\_t stat;}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39   \mbox{\hyperlink{group__util_ga79a031a8611f5b2d6afa4158e92b0fb4}{util\_sys\_inb}}(\mbox{\hyperlink{group__graph_ga1ccde68b2b6d4e45b50eef1403e10bb7}{KBC\_OUT\_BUF}}, \&\mbox{\hyperlink{group__proj_ga9d4dd92074be485a308f5e59095676fa}{keys}}[counter]);}
+\DoxyCodeLine{40   \mbox{\hyperlink{group__util_ga79a031a8611f5b2d6afa4158e92b0fb4}{util\_sys\_inb}}(\mbox{\hyperlink{group__graph_ga0615d1ead5f06ae8445d2a8be8364636}{KBC\_STATUS}}, \&stat);}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42   \textcolor{keywordflow}{if} ((stat \& (\mbox{\hyperlink{group__graph_gaea2ef6dda1aabebf291eeee29b66c04a}{KBC\_PAR\_ERR}} | \mbox{\hyperlink{group__graph_gae31c3653f5881b02cbfdd4ccbb7ccf50}{KBC\_TO\_ERR}})) != 0) \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44   counter++;}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46   \textcolor{keywordflow}{if} (counter == 1 \&\& \mbox{\hyperlink{group__proj_ga9d4dd92074be485a308f5e59095676fa}{keys}}[counter-\/1] != 0xE0) \{}
+\DoxyCodeLine{47     counter = 0;}
+\DoxyCodeLine{48     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{49   \}}
+\DoxyCodeLine{50   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (counter == 2) \{}
+\DoxyCodeLine{51     counter = 0;}
+\DoxyCodeLine{52     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{53   \}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55   \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{56 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{group__keyboard_ga1ba896157528456bcc6c82d7856f5eb4_cgraph}
+\end{center}
+\end{figure}

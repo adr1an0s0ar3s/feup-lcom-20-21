@@ -1,0 +1,48 @@
+\hypertarget{keyboard_8c}{}\doxysection{keyboard.\+c File Reference}
+\label{keyboard_8c}\index{keyboard.c@{keyboard.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/liblm.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/proj.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}i8042.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}keyboard.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\newline
+Include dependency graph for keyboard.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{keyboard_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{group__keyboard_ga02884ada1971dbade466081413210b18}{kbc\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t $\ast$bit\+\_\+no)
+\item 
+int() \mbox{\hyperlink{group__keyboard_ga1102381e6a9e876e05dd78c58ccb5673}{kbc\+\_\+unsubscribe\+\_\+int}} ()
+\item 
+int() \mbox{\hyperlink{group__keyboard_ga1ba896157528456bcc6c82d7856f5eb4}{keyboard\+\_\+ih}} ()
+\item 
+int() \mbox{\hyperlink{group__keyboard_ga2349d0262afd985b46121007f22954b6}{kbc\+\_\+write}} (int port, uint8\+\_\+t cmd)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group__proj_ga9d4dd92074be485a308f5e59095676fa}{keys}} \mbox{[}2\mbox{]}
+\item 
+static int \mbox{\hyperlink{keyboard_8c_a302ad6946d3fafa84df3d343d44034a4}{hook\+\_\+id\+\_\+keyboard}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{keyboard_8c_a302ad6946d3fafa84df3d343d44034a4}\label{keyboard_8c_a302ad6946d3fafa84df3d343d44034a4}} 
+\index{keyboard.c@{keyboard.c}!hook\_id\_keyboard@{hook\_id\_keyboard}}
+\index{hook\_id\_keyboard@{hook\_id\_keyboard}!keyboard.c@{keyboard.c}}
+\doxysubsubsection{\texorpdfstring{hook\_id\_keyboard}{hook\_id\_keyboard}}
+{\footnotesize\ttfamily int hook\+\_\+id\+\_\+keyboard\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 13 of file keyboard.\+c.
+

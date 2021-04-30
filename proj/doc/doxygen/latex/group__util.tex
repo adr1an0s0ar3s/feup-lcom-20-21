@@ -1,0 +1,119 @@
+\hypertarget{group__util}{}\doxysection{util}
+\label{group__util}\index{util@{util}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{group__util_ga81621440b3d65680979425e39aa8c789}{util\+\_\+get\+\_\+\+L\+SB}} (uint16\+\_\+t val, uint8\+\_\+t $\ast$lsb)
+\item 
+int() \mbox{\hyperlink{group__util_ga6a880076cd2ec468834438b6e0c58836}{util\+\_\+get\+\_\+\+M\+SB}} (uint16\+\_\+t val, uint8\+\_\+t $\ast$msb)
+\item 
+int() \mbox{\hyperlink{group__util_ga79a031a8611f5b2d6afa4158e92b0fb4}{util\+\_\+sys\+\_\+inb}} (int port, uint8\+\_\+t $\ast$value)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Has some usefull functions 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__util_ga81621440b3d65680979425e39aa8c789}\label{group__util_ga81621440b3d65680979425e39aa8c789}} 
+\index{util@{util}!util\_get\_LSB@{util\_get\_LSB}}
+\index{util\_get\_LSB@{util\_get\_LSB}!util@{util}}
+\doxysubsubsection{\texorpdfstring{util\_get\_LSB()}{util\_get\_LSB()}}
+{\footnotesize\ttfamily int() util\+\_\+get\+\_\+\+L\+SB (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{val,  }\item[{uint8\+\_\+t $\ast$}]{lsb }\end{DoxyParamCaption})}
+
+Gets L\+SB of a 2 byte integer 
+\begin{DoxyParams}{Parameters}
+{\em val} & 2 byte integer \\
+\hline
+{\em lsb} & address of memory location to be updated \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 8 of file util.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{8                                               \{}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10   \textcolor{keywordflow}{if} (lsb != NULL)\{}
+\DoxyCodeLine{11     *lsb = (uint8\_t) val;}
+\DoxyCodeLine{12     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{13   \}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15   \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{16 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{group__util_ga6a880076cd2ec468834438b6e0c58836}\label{group__util_ga6a880076cd2ec468834438b6e0c58836}} 
+\index{util@{util}!util\_get\_MSB@{util\_get\_MSB}}
+\index{util\_get\_MSB@{util\_get\_MSB}!util@{util}}
+\doxysubsubsection{\texorpdfstring{util\_get\_MSB()}{util\_get\_MSB()}}
+{\footnotesize\ttfamily int() util\+\_\+get\+\_\+\+M\+SB (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{val,  }\item[{uint8\+\_\+t $\ast$}]{msb }\end{DoxyParamCaption})}
+
+Gets M\+SB of a 2 byte integer 
+\begin{DoxyParams}{Parameters}
+{\em val} & 2 byte integer \\
+\hline
+{\em msb} & address of memory locaton to be updated \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 18 of file util.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{18                                               \{}
+\DoxyCodeLine{19   }
+\DoxyCodeLine{20   \textcolor{keywordflow}{if} (msb != NULL)\{}
+\DoxyCodeLine{21     val >>= 8;}
+\DoxyCodeLine{22     *msb = (uint8\_t) val;}
+\DoxyCodeLine{23     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{24   \}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26   \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{27 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{group__util_ga79a031a8611f5b2d6afa4158e92b0fb4}\label{group__util_ga79a031a8611f5b2d6afa4158e92b0fb4}} 
+\index{util@{util}!util\_sys\_inb@{util\_sys\_inb}}
+\index{util\_sys\_inb@{util\_sys\_inb}!util@{util}}
+\doxysubsubsection{\texorpdfstring{util\_sys\_inb()}{util\_sys\_inb()}}
+{\footnotesize\ttfamily int() util\+\_\+sys\+\_\+inb (\begin{DoxyParamCaption}\item[{int}]{port,  }\item[{uint8\+\_\+t $\ast$}]{value }\end{DoxyParamCaption})}
+
+Reads value into uint8\+\_\+t variable 
+\begin{DoxyParams}{Parameters}
+{\em port} & to be read \\
+\hline
+{\em value} & value to be updated with value read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 29 of file util.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29                                              \{}
+\DoxyCodeLine{30   }
+\DoxyCodeLine{31   \textcolor{keywordflow}{if} (value != NULL)\{}
+\DoxyCodeLine{32     u32\_t temp;}
+\DoxyCodeLine{33     sys\_inb(port, \&temp);}
+\DoxyCodeLine{34     *value = (uint8\_t) temp;}
+\DoxyCodeLine{35     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{36   \}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38   \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{39 \}}
+
+\end{DoxyCode}

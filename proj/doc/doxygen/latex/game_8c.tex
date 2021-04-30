@@ -1,0 +1,331 @@
+\hypertarget{game_8c}{}\doxysection{game.\+c File Reference}
+\label{game_8c}\index{game.c@{game.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/liblm.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/proj.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}game\+\_\+xpm.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}game.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}graph.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+Include dependency graph for game.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{game_8c_a7237396536dfa0df44aa7bd40f5338f1}{columns}}~7
+\item 
+\#define \mbox{\hyperlink{game_8c_a709f915a8f591c9ec3208128ee246b89}{rows}}~6
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{group__game_gac1c6ce37e7c8a21f9289c973a8aadf64}{draw\+\_\+background}} ()
+\item 
+int() \mbox{\hyperlink{group__game_ga365fbe76a553e0f2afd696b409a29b9f}{draw\+\_\+board}} ()
+\item 
+int() \mbox{\hyperlink{group__game_ga4d8528bdbf9d58a10313c6c06bb52f2c}{draw\+\_\+chip}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int() \mbox{\hyperlink{group__game_ga2c1edec5e1344ab57fba2666dc4de6d5}{draw\+\_\+column}} ()
+\item 
+int() \mbox{\hyperlink{group__game_ga2abe4f1059ab30b4d4dbaf9194229c01}{draw\+\_\+player\+\_\+indicator}} ()
+\item 
+int() \mbox{\hyperlink{group__game_ga2c501b2192cdc0f471907b92cfd42b57}{draw\+\_\+player\+\_\+won\+\_\+indicator}} ()
+\item 
+int() \mbox{\hyperlink{group__game_ga49135e750d2b74842130058252e8054f}{initiate\+\_\+game}} ()
+\item 
+int() \mbox{\hyperlink{group__game_ga725e9dbfc31e2c930bb29461ab1b3923}{column\+\_\+select\+\_\+animation}} (bool left)
+\item 
+int() \mbox{\hyperlink{group__game_gad01d184b74d7bfeb3948afdfb7ff1b76}{random\+\_\+play\+\_\+column\+\_\+select\+\_\+animation}} ()
+\item 
+int() \mbox{\hyperlink{group__game_ga889765d2c8cd01573c8e50374a5ad5b7}{valid\+Play}} ()
+\item 
+int() \mbox{\hyperlink{group__game_ga5dea0f7830d4dacb4d5becfef8eac9da}{make\+Play}} ()
+\item 
+int() \mbox{\hyperlink{group__game_ga1f95737674e1a7bf4afaf38500d34288}{chip\+\_\+falling\+\_\+animation}} ()
+\item 
+int() \mbox{\hyperlink{group__game_ga0544ead7bd393f7716e37fd42e818cfa}{check\+Game\+Over}} ()
+\item 
+int() \mbox{\hyperlink{group__game_gadb94d7831ebe76074977d7bab82330df}{game\+\_\+over}} ()
+\item 
+void() \mbox{\hyperlink{group__game_ga60870b0942d4d0e6d5e9516931afe3a3}{next\+Play}} ()
+\item 
+void() \mbox{\hyperlink{group__game_ga38556949d71e8da559e7754be8db57e1}{random\+Play}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{game_8c_af8e0d5ead832d89941ef7b5b2f80f49b}{back\+\_\+info}}
+\item 
+static uint8\+\_\+t $\ast$ \mbox{\hyperlink{game_8c_aa279b6fdc9f003ba0dcf0862c8a4dfaa}{background}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{game_8c_a76c10ea2cd74639a9825684fb5fdb88f}{board\+\_\+info}}
+\item 
+static uint8\+\_\+t $\ast$ \mbox{\hyperlink{game_8c_af6ad5236ad21cb4a48bcaefcc6317e46}{board\+\_\+image}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{game_8c_ae6a6a3d5b089cbc663934f38a3ff7751}{board\+\_\+column\+\_\+info}}
+\item 
+static uint8\+\_\+t $\ast$ \mbox{\hyperlink{game_8c_aaf359299ae56f65d66404bb3dfbbfaf5}{board\+\_\+column}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{game_8c_a37cf9e4c4414301132a75579549229a6}{red\+\_\+info}}
+\item 
+static uint8\+\_\+t $\ast$ \mbox{\hyperlink{game_8c_a99a0c771597bc2d73c58764928c88e68}{red\+\_\+chip}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{game_8c_a92876afa892c3f2e90f315e063f8cce2}{yellow\+\_\+info}}
+\item 
+static uint8\+\_\+t $\ast$ \mbox{\hyperlink{game_8c_a80f7e54be3feaa677715077c678a6f92}{yellow\+\_\+chip}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{game_8c_a352a80f82793f1026d72aec8e660101e}{player\+\_\+indicator\+\_\+info}}
+\item 
+static uint8\+\_\+t $\ast$ \mbox{\hyperlink{game_8c_aff7b0194fd9df7fb65aa2aa8b6f2a35c}{player1\+\_\+indicator}}
+\item 
+static uint8\+\_\+t $\ast$ \mbox{\hyperlink{game_8c_ab262017894d1d10e9bb9013823039176}{player2\+\_\+indicator}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{game_8c_ac4ecc1793229e9aa439bb606ed3a49aa}{player\+\_\+won\+\_\+indicator\+\_\+info}}
+\item 
+static uint8\+\_\+t $\ast$ \mbox{\hyperlink{game_8c_a46edc7ea64dea67fa55556ec64d245f9}{player1\+\_\+won\+\_\+indicator}}
+\item 
+static uint8\+\_\+t $\ast$ \mbox{\hyperlink{game_8c_a78a68231f246bc6122e088b21ed06b41}{player2\+\_\+won\+\_\+indicator}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group__proj_gae41164029686cac80f7f6bd7aa23b153}{player}} = 1
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\+\_\+x}} = 0
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{game_8c_a545a040387e02aef5e2e61c4ca105953}{board\+\_\+y}} = 0
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{game_8c_aa0ea2c0df538a85c83d4dcf273159ca3}{random\+Play\+\_\+board\+\_\+x}} = 0
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{game_8c_a6bbff608be5849688a8cfae762f5fed2}{board}} \mbox{[}\mbox{\hyperlink{game_8c_a7237396536dfa0df44aa7bd40f5338f1}{columns}}\mbox{]}\mbox{[}\mbox{\hyperlink{game_8c_a709f915a8f591c9ec3208128ee246b89}{rows}}\mbox{]} = \{\{0\}\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{game_8c_a7237396536dfa0df44aa7bd40f5338f1}\label{game_8c_a7237396536dfa0df44aa7bd40f5338f1}} 
+\index{game.c@{game.c}!columns@{columns}}
+\index{columns@{columns}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{columns}{columns}}
+{\footnotesize\ttfamily \#define columns~7}
+
+
+
+Definition at line 53 of file game.\+c.
+
+\mbox{\Hypertarget{game_8c_a709f915a8f591c9ec3208128ee246b89}\label{game_8c_a709f915a8f591c9ec3208128ee246b89}} 
+\index{game.c@{game.c}!rows@{rows}}
+\index{rows@{rows}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{rows}{rows}}
+{\footnotesize\ttfamily \#define rows~6}
+
+
+
+Definition at line 54 of file game.\+c.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{game_8c_af8e0d5ead832d89941ef7b5b2f80f49b}\label{game_8c_af8e0d5ead832d89941ef7b5b2f80f49b}} 
+\index{game.c@{game.c}!back\_info@{back\_info}}
+\index{back\_info@{back\_info}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{back\_info}{back\_info}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t back\+\_\+info\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 14 of file game.\+c.
+
+\mbox{\Hypertarget{game_8c_aa279b6fdc9f003ba0dcf0862c8a4dfaa}\label{game_8c_aa279b6fdc9f003ba0dcf0862c8a4dfaa}} 
+\index{game.c@{game.c}!background@{background}}
+\index{background@{background}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{background}{background}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ background\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 15 of file game.\+c.
+
+\mbox{\Hypertarget{game_8c_a6bbff608be5849688a8cfae762f5fed2}\label{game_8c_a6bbff608be5849688a8cfae762f5fed2}} 
+\index{game.c@{game.c}!board@{board}}
+\index{board@{board}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{board}{board}}
+{\footnotesize\ttfamily uint8\+\_\+t board\mbox{[}\mbox{\hyperlink{game_8c_a7237396536dfa0df44aa7bd40f5338f1}{columns}}\mbox{]}\mbox{[}\mbox{\hyperlink{game_8c_a709f915a8f591c9ec3208128ee246b89}{rows}}\mbox{]} = \{\{0\}\}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 55 of file game.\+c.
+
+\mbox{\Hypertarget{game_8c_aaf359299ae56f65d66404bb3dfbbfaf5}\label{game_8c_aaf359299ae56f65d66404bb3dfbbfaf5}} 
+\index{game.c@{game.c}!board\_column@{board\_column}}
+\index{board\_column@{board\_column}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{board\_column}{board\_column}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ board\+\_\+column\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 23 of file game.\+c.
+
+\mbox{\Hypertarget{game_8c_ae6a6a3d5b089cbc663934f38a3ff7751}\label{game_8c_ae6a6a3d5b089cbc663934f38a3ff7751}} 
+\index{game.c@{game.c}!board\_column\_info@{board\_column\_info}}
+\index{board\_column\_info@{board\_column\_info}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{board\_column\_info}{board\_column\_info}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t board\+\_\+column\+\_\+info\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 22 of file game.\+c.
+
+\mbox{\Hypertarget{game_8c_af6ad5236ad21cb4a48bcaefcc6317e46}\label{game_8c_af6ad5236ad21cb4a48bcaefcc6317e46}} 
+\index{game.c@{game.c}!board\_image@{board\_image}}
+\index{board\_image@{board\_image}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{board\_image}{board\_image}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ board\+\_\+image\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 19 of file game.\+c.
+
+\mbox{\Hypertarget{game_8c_a76c10ea2cd74639a9825684fb5fdb88f}\label{game_8c_a76c10ea2cd74639a9825684fb5fdb88f}} 
+\index{game.c@{game.c}!board\_info@{board\_info}}
+\index{board\_info@{board\_info}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{board\_info}{board\_info}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t board\+\_\+info\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 18 of file game.\+c.
+
+\mbox{\Hypertarget{game_8c_ab59395a203002430d95171964319d9b9}\label{game_8c_ab59395a203002430d95171964319d9b9}} 
+\index{game.c@{game.c}!board\_x@{board\_x}}
+\index{board\_x@{board\_x}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{board\_x}{board\_x}}
+{\footnotesize\ttfamily uint8\+\_\+t board\+\_\+x = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 49 of file game.\+c.
+
+\mbox{\Hypertarget{game_8c_a545a040387e02aef5e2e61c4ca105953}\label{game_8c_a545a040387e02aef5e2e61c4ca105953}} 
+\index{game.c@{game.c}!board\_y@{board\_y}}
+\index{board\_y@{board\_y}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{board\_y}{board\_y}}
+{\footnotesize\ttfamily uint8\+\_\+t board\+\_\+y = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 50 of file game.\+c.
+
+\mbox{\Hypertarget{game_8c_aff7b0194fd9df7fb65aa2aa8b6f2a35c}\label{game_8c_aff7b0194fd9df7fb65aa2aa8b6f2a35c}} 
+\index{game.c@{game.c}!player1\_indicator@{player1\_indicator}}
+\index{player1\_indicator@{player1\_indicator}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{player1\_indicator}{player1\_indicator}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ player1\+\_\+indicator\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 35 of file game.\+c.
+
+\mbox{\Hypertarget{game_8c_a46edc7ea64dea67fa55556ec64d245f9}\label{game_8c_a46edc7ea64dea67fa55556ec64d245f9}} 
+\index{game.c@{game.c}!player1\_won\_indicator@{player1\_won\_indicator}}
+\index{player1\_won\_indicator@{player1\_won\_indicator}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{player1\_won\_indicator}{player1\_won\_indicator}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ player1\+\_\+won\+\_\+indicator\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 42 of file game.\+c.
+
+\mbox{\Hypertarget{game_8c_ab262017894d1d10e9bb9013823039176}\label{game_8c_ab262017894d1d10e9bb9013823039176}} 
+\index{game.c@{game.c}!player2\_indicator@{player2\_indicator}}
+\index{player2\_indicator@{player2\_indicator}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{player2\_indicator}{player2\_indicator}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ player2\+\_\+indicator\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 38 of file game.\+c.
+
+\mbox{\Hypertarget{game_8c_a78a68231f246bc6122e088b21ed06b41}\label{game_8c_a78a68231f246bc6122e088b21ed06b41}} 
+\index{game.c@{game.c}!player2\_won\_indicator@{player2\_won\_indicator}}
+\index{player2\_won\_indicator@{player2\_won\_indicator}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{player2\_won\_indicator}{player2\_won\_indicator}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ player2\+\_\+won\+\_\+indicator\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 45 of file game.\+c.
+
+\mbox{\Hypertarget{game_8c_a352a80f82793f1026d72aec8e660101e}\label{game_8c_a352a80f82793f1026d72aec8e660101e}} 
+\index{game.c@{game.c}!player\_indicator\_info@{player\_indicator\_info}}
+\index{player\_indicator\_info@{player\_indicator\_info}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{player\_indicator\_info}{player\_indicator\_info}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t player\+\_\+indicator\+\_\+info\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 34 of file game.\+c.
+
+\mbox{\Hypertarget{game_8c_ac4ecc1793229e9aa439bb606ed3a49aa}\label{game_8c_ac4ecc1793229e9aa439bb606ed3a49aa}} 
+\index{game.c@{game.c}!player\_won\_indicator\_info@{player\_won\_indicator\_info}}
+\index{player\_won\_indicator\_info@{player\_won\_indicator\_info}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{player\_won\_indicator\_info}{player\_won\_indicator\_info}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t player\+\_\+won\+\_\+indicator\+\_\+info\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 41 of file game.\+c.
+
+\mbox{\Hypertarget{game_8c_aa0ea2c0df538a85c83d4dcf273159ca3}\label{game_8c_aa0ea2c0df538a85c83d4dcf273159ca3}} 
+\index{game.c@{game.c}!randomPlay\_board\_x@{randomPlay\_board\_x}}
+\index{randomPlay\_board\_x@{randomPlay\_board\_x}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{randomPlay\_board\_x}{randomPlay\_board\_x}}
+{\footnotesize\ttfamily uint8\+\_\+t random\+Play\+\_\+board\+\_\+x = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 51 of file game.\+c.
+
+\mbox{\Hypertarget{game_8c_a99a0c771597bc2d73c58764928c88e68}\label{game_8c_a99a0c771597bc2d73c58764928c88e68}} 
+\index{game.c@{game.c}!red\_chip@{red\_chip}}
+\index{red\_chip@{red\_chip}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{red\_chip}{red\_chip}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ red\+\_\+chip\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 27 of file game.\+c.
+
+\mbox{\Hypertarget{game_8c_a37cf9e4c4414301132a75579549229a6}\label{game_8c_a37cf9e4c4414301132a75579549229a6}} 
+\index{game.c@{game.c}!red\_info@{red\_info}}
+\index{red\_info@{red\_info}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{red\_info}{red\_info}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t red\+\_\+info\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 26 of file game.\+c.
+
+\mbox{\Hypertarget{game_8c_a80f7e54be3feaa677715077c678a6f92}\label{game_8c_a80f7e54be3feaa677715077c678a6f92}} 
+\index{game.c@{game.c}!yellow\_chip@{yellow\_chip}}
+\index{yellow\_chip@{yellow\_chip}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{yellow\_chip}{yellow\_chip}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ yellow\+\_\+chip\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 31 of file game.\+c.
+
+\mbox{\Hypertarget{game_8c_a92876afa892c3f2e90f315e063f8cce2}\label{game_8c_a92876afa892c3f2e90f315e063f8cce2}} 
+\index{game.c@{game.c}!yellow\_info@{yellow\_info}}
+\index{yellow\_info@{yellow\_info}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{yellow\_info}{yellow\_info}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t yellow\+\_\+info\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 30 of file game.\+c.
+

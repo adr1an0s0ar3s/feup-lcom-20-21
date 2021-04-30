@@ -1,0 +1,85 @@
+\hypertarget{graph_8c}{}\doxysection{graph.\+c File Reference}
+\label{graph_8c}\index{graph.c@{graph.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/liblm.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/proj.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}graph.\+h\char`\"{}}\newline
+Include dependency graph for graph.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graph_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{group__graph_ga270cebf5612b0408b5103d5c98fdc7c6}{set\+\_\+vbe\+\_\+mode}} (uint16\+\_\+t mode)
+\item 
+void $\ast$() \mbox{\hyperlink{group__graph_gaa6c1ff5024cd4d15e476bce487584daa}{vg\+\_\+init}} (uint16\+\_\+t mode)
+\item 
+int() \mbox{\hyperlink{group__graph_ga25df193eebe4bece3620d39ab2300b78}{draw\+\_\+xpm}} (uint8\+\_\+t $\ast$map, xpm\+\_\+image\+\_\+t img, uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int() \mbox{\hyperlink{group__graph_gaeec463a816be71ccadfd9a781146e9f2}{draw\+\_\+part\+\_\+of\+\_\+xpm}} (uint8\+\_\+t $\ast$map, xpm\+\_\+image\+\_\+t img, uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t part\+\_\+x, uint16\+\_\+t part\+\_\+y, uint16\+\_\+t width, uint16\+\_\+t height)
+\item 
+int() \mbox{\hyperlink{group__graph_ga9586fab72d125423fd0ff56cbb3d35a3}{display\+\_\+frame}} ()
+\item 
+int() \mbox{\hyperlink{group__graph_gab6e109de42be21e5b87146264ba361a0}{get\+\_\+mode\+\_\+info}} (uint16\+\_\+t mode, vbe\+\_\+mode\+\_\+info\+\_\+t $\ast$\mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\+\_\+p}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static char $\ast$ \mbox{\hyperlink{graph_8c_a93a24e067b9083bed6fb5c0336fd7a01}{video\+\_\+mem}}
+\item 
+static char $\ast$ \mbox{\hyperlink{graph_8c_aff2566f4c366b48d73479bef43ee4d2e}{buffer}}
+\item 
+static vbe\+\_\+mode\+\_\+info\+\_\+t \mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\+\_\+p}}
+\item 
+static uint16\+\_\+t \mbox{\hyperlink{graph_8c_a3a50ee43d70b7a4522d74ef8ae4cf55c}{line}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{graph_8c_aff2566f4c366b48d73479bef43ee4d2e}\label{graph_8c_aff2566f4c366b48d73479bef43ee4d2e}} 
+\index{graph.c@{graph.c}!buffer@{buffer}}
+\index{buffer@{buffer}!graph.c@{graph.c}}
+\doxysubsubsection{\texorpdfstring{buffer}{buffer}}
+{\footnotesize\ttfamily char$\ast$ buffer\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 12 of file graph.\+c.
+
+\mbox{\Hypertarget{graph_8c_a3a50ee43d70b7a4522d74ef8ae4cf55c}\label{graph_8c_a3a50ee43d70b7a4522d74ef8ae4cf55c}} 
+\index{graph.c@{graph.c}!line@{line}}
+\index{line@{line}!graph.c@{graph.c}}
+\doxysubsubsection{\texorpdfstring{line}{line}}
+{\footnotesize\ttfamily uint16\+\_\+t line\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 15 of file graph.\+c.
+
+\mbox{\Hypertarget{graph_8c_a93a24e067b9083bed6fb5c0336fd7a01}\label{graph_8c_a93a24e067b9083bed6fb5c0336fd7a01}} 
+\index{graph.c@{graph.c}!video\_mem@{video\_mem}}
+\index{video\_mem@{video\_mem}!graph.c@{graph.c}}
+\doxysubsubsection{\texorpdfstring{video\_mem}{video\_mem}}
+{\footnotesize\ttfamily char$\ast$ video\+\_\+mem\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 11 of file graph.\+c.
+
+\mbox{\Hypertarget{graph_8c_a26081be7a771e5c611b33f15caaf831e}\label{graph_8c_a26081be7a771e5c611b33f15caaf831e}} 
+\index{graph.c@{graph.c}!vmi\_p@{vmi\_p}}
+\index{vmi\_p@{vmi\_p}!graph.c@{graph.c}}
+\doxysubsubsection{\texorpdfstring{vmi\_p}{vmi\_p}}
+{\footnotesize\ttfamily vbe\+\_\+mode\+\_\+info\+\_\+t vmi\+\_\+p\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 13 of file graph.\+c.
+

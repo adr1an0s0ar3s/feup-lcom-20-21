@@ -1,0 +1,731 @@
+\hypertarget{group__game}{}\doxysection{game}
+\label{group__game}\index{game@{game}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{group__game_ga49135e750d2b74842130058252e8054f}{initiate\+\_\+game}} ()
+\item 
+int() \mbox{\hyperlink{group__game_gac1c6ce37e7c8a21f9289c973a8aadf64}{draw\+\_\+background}} ()
+\item 
+int() \mbox{\hyperlink{group__game_ga365fbe76a553e0f2afd696b409a29b9f}{draw\+\_\+board}} ()
+\item 
+int() \mbox{\hyperlink{group__game_ga4d8528bdbf9d58a10313c6c06bb52f2c}{draw\+\_\+chip}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int() \mbox{\hyperlink{group__game_ga2c1edec5e1344ab57fba2666dc4de6d5}{draw\+\_\+column}} ()
+\item 
+int() \mbox{\hyperlink{group__game_ga2abe4f1059ab30b4d4dbaf9194229c01}{draw\+\_\+player\+\_\+indicator}} ()
+\item 
+int() \mbox{\hyperlink{group__game_ga2c501b2192cdc0f471907b92cfd42b57}{draw\+\_\+player\+\_\+won\+\_\+indicator}} ()
+\item 
+int() \mbox{\hyperlink{group__game_ga725e9dbfc31e2c930bb29461ab1b3923}{column\+\_\+select\+\_\+animation}} (bool left)
+\item 
+int() \mbox{\hyperlink{group__game_gad01d184b74d7bfeb3948afdfb7ff1b76}{random\+\_\+play\+\_\+column\+\_\+select\+\_\+animation}} ()
+\item 
+int() \mbox{\hyperlink{group__game_ga1f95737674e1a7bf4afaf38500d34288}{chip\+\_\+falling\+\_\+animation}} ()
+\item 
+int() \mbox{\hyperlink{group__game_ga889765d2c8cd01573c8e50374a5ad5b7}{valid\+Play}} ()
+\item 
+int() \mbox{\hyperlink{group__game_ga5dea0f7830d4dacb4d5becfef8eac9da}{make\+Play}} ()
+\item 
+int() \mbox{\hyperlink{group__game_ga0544ead7bd393f7716e37fd42e818cfa}{check\+Game\+Over}} ()
+\item 
+int() \mbox{\hyperlink{group__game_gadb94d7831ebe76074977d7bab82330df}{game\+\_\+over}} ()
+\item 
+void() \mbox{\hyperlink{group__game_ga60870b0942d4d0e6d5e9516931afe3a3}{next\+Play}} ()
+\item 
+void() \mbox{\hyperlink{group__game_ga38556949d71e8da559e7754be8db57e1}{random\+Play}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles Game Mechanics and Animations 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__game_ga0544ead7bd393f7716e37fd42e818cfa}\label{group__game_ga0544ead7bd393f7716e37fd42e818cfa}} 
+\index{game@{game}!checkGameOver@{checkGameOver}}
+\index{checkGameOver@{checkGameOver}!game@{game}}
+\doxysubsubsection{\texorpdfstring{checkGameOver()}{checkGameOver()}}
+{\footnotesize\ttfamily int() check\+Game\+Over (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Checks if game is over \begin{DoxyReturn}{Returns}
+true if game is over, non-\/true otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 266 of file game.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{267 \{}
+\DoxyCodeLine{268     \textcolor{keywordtype}{int} count = 0;}
+\DoxyCodeLine{269     \textcolor{keywordtype}{int} new\_x = 0;}
+\DoxyCodeLine{270     \textcolor{keywordtype}{int} new\_y = 0;}
+\DoxyCodeLine{271 }
+\DoxyCodeLine{272     \textcolor{comment}{// Check if it has no column available to play a chip (draw)}}
+\DoxyCodeLine{273     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} n = 0; n < \mbox{\hyperlink{game_8c_a7237396536dfa0df44aa7bd40f5338f1}{columns}}; n++)}
+\DoxyCodeLine{274         \textcolor{keywordflow}{if} (\mbox{\hyperlink{game_8c_a6bbff608be5849688a8cfae762f5fed2}{board}}[n][\mbox{\hyperlink{game_8c_a709f915a8f591c9ec3208128ee246b89}{rows}}-\/1] != 0)}
+\DoxyCodeLine{275             count++;}
+\DoxyCodeLine{276 }
+\DoxyCodeLine{277     \textcolor{keywordflow}{if} (count == \mbox{\hyperlink{game_8c_a7237396536dfa0df44aa7bd40f5338f1}{columns}}) \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{278 }
+\DoxyCodeLine{279     count = 0;}
+\DoxyCodeLine{280     }
+\DoxyCodeLine{281     \textcolor{comment}{// vertical ending -\/ only need to check column that was played}}
+\DoxyCodeLine{282     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} n = 0; n < \mbox{\hyperlink{game_8c_a709f915a8f591c9ec3208128ee246b89}{rows}}; n++)\{}
+\DoxyCodeLine{283         \textcolor{keywordflow}{if} (\mbox{\hyperlink{game_8c_a6bbff608be5849688a8cfae762f5fed2}{board}}[\mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}}][n] == \mbox{\hyperlink{group__proj_gae41164029686cac80f7f6bd7aa23b153}{player}})\{}
+\DoxyCodeLine{284             count++;}
+\DoxyCodeLine{285             \textcolor{keywordflow}{if} (count == 4)}
+\DoxyCodeLine{286                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{287         \}}
+\DoxyCodeLine{288         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{game_8c_a6bbff608be5849688a8cfae762f5fed2}{board}}[\mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}}][n] == 0)}
+\DoxyCodeLine{289             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{290         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{291             count = 0;}
+\DoxyCodeLine{292     \}}
+\DoxyCodeLine{293     }
+\DoxyCodeLine{294     count = 0;}
+\DoxyCodeLine{295 }
+\DoxyCodeLine{296     \textcolor{comment}{// horizontal ending}}
+\DoxyCodeLine{297     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{game_8c_a7237396536dfa0df44aa7bd40f5338f1}{columns}}; i++)\{}
+\DoxyCodeLine{298         \textcolor{keywordflow}{if} (\mbox{\hyperlink{game_8c_a6bbff608be5849688a8cfae762f5fed2}{board}}[i][\mbox{\hyperlink{game_8c_a545a040387e02aef5e2e61c4ca105953}{board\_y}}] == \mbox{\hyperlink{group__proj_gae41164029686cac80f7f6bd7aa23b153}{player}})\{}
+\DoxyCodeLine{299             count++;}
+\DoxyCodeLine{300             \textcolor{keywordflow}{if} (count == 4)}
+\DoxyCodeLine{301                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{302         \}}
+\DoxyCodeLine{303         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{304             count = 0;}
+\DoxyCodeLine{305     \}}
+\DoxyCodeLine{306 }
+\DoxyCodeLine{307     count = 0;}
+\DoxyCodeLine{308 }
+\DoxyCodeLine{309     \textcolor{comment}{// Beta 1/3 Verification}}
+\DoxyCodeLine{310 }
+\DoxyCodeLine{311     new\_x = \mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}}; new\_y = \mbox{\hyperlink{game_8c_a545a040387e02aef5e2e61c4ca105953}{board\_y}};}
+\DoxyCodeLine{312 }
+\DoxyCodeLine{313     \textcolor{keywordflow}{while} (new\_x != 0 \&\& new\_y != 0)}
+\DoxyCodeLine{314     \{}
+\DoxyCodeLine{315         new\_x-\/-\/;}
+\DoxyCodeLine{316         new\_y-\/-\/;}
+\DoxyCodeLine{317     \}}
+\DoxyCodeLine{318 }
+\DoxyCodeLine{319     \textcolor{keywordflow}{while} (new\_x != 6+1 \&\& new\_y != 5+1)}
+\DoxyCodeLine{320     \{}
+\DoxyCodeLine{321         \textcolor{keywordflow}{if} (\mbox{\hyperlink{game_8c_a6bbff608be5849688a8cfae762f5fed2}{board}}[new\_x][new\_y] == \mbox{\hyperlink{group__proj_gae41164029686cac80f7f6bd7aa23b153}{player}})\{}
+\DoxyCodeLine{322             count++;}
+\DoxyCodeLine{323             \textcolor{keywordflow}{if} (count == 4)}
+\DoxyCodeLine{324                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{325         \}}
+\DoxyCodeLine{326         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{327             count = 0;}
+\DoxyCodeLine{328 }
+\DoxyCodeLine{329         new\_x++;}
+\DoxyCodeLine{330         new\_y++;}
+\DoxyCodeLine{331     \}}
+\DoxyCodeLine{332     }
+\DoxyCodeLine{333     count = 0;}
+\DoxyCodeLine{334     }
+\DoxyCodeLine{335     \textcolor{comment}{//Beta 2/4 Verification}}
+\DoxyCodeLine{336 }
+\DoxyCodeLine{337     new\_x = \mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}}; new\_y = \mbox{\hyperlink{game_8c_a545a040387e02aef5e2e61c4ca105953}{board\_y}};}
+\DoxyCodeLine{338 }
+\DoxyCodeLine{339     \textcolor{keywordflow}{while} (new\_x != 0 \&\& new\_y != 5)}
+\DoxyCodeLine{340     \{}
+\DoxyCodeLine{341         new\_x-\/-\/;}
+\DoxyCodeLine{342         new\_y++;}
+\DoxyCodeLine{343     \}}
+\DoxyCodeLine{344 }
+\DoxyCodeLine{345     \textcolor{keywordflow}{while} (new\_x != 6+1 \&\& new\_y != 0-\/1)}
+\DoxyCodeLine{346     \{}
+\DoxyCodeLine{347         \textcolor{keywordflow}{if} (\mbox{\hyperlink{game_8c_a6bbff608be5849688a8cfae762f5fed2}{board}}[new\_x][new\_y] == \mbox{\hyperlink{group__proj_gae41164029686cac80f7f6bd7aa23b153}{player}})\{}
+\DoxyCodeLine{348             count++;}
+\DoxyCodeLine{349             \textcolor{comment}{//printf("{}x = \%d -\/ y = \%d -\/ count = \%d\(\backslash\)n"{}, new\_x, new\_y, count);}}
+\DoxyCodeLine{350             \textcolor{keywordflow}{if} (count == 4)}
+\DoxyCodeLine{351                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{352         \}}
+\DoxyCodeLine{353         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{354             count = 0;}
+\DoxyCodeLine{355 }
+\DoxyCodeLine{356         new\_x++;}
+\DoxyCodeLine{357         new\_y-\/-\/;}
+\DoxyCodeLine{358     \}}
+\DoxyCodeLine{359 }
+\DoxyCodeLine{360     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{361 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{group__game_ga1f95737674e1a7bf4afaf38500d34288}\label{group__game_ga1f95737674e1a7bf4afaf38500d34288}} 
+\index{game@{game}!chip\_falling\_animation@{chip\_falling\_animation}}
+\index{chip\_falling\_animation@{chip\_falling\_animation}!game@{game}}
+\doxysubsubsection{\texorpdfstring{chip\_falling\_animation()}{chip\_falling\_animation()}}
+{\footnotesize\ttfamily int() chip\+\_\+falling\+\_\+animation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Animates the chip\textquotesingle{}s fall \begin{DoxyReturn}{Returns}
+true on success, non-\/true otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 227 of file game.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{228 \{}
+\DoxyCodeLine{229     \textcolor{keyword}{static} \textcolor{keywordtype}{int} y;}
+\DoxyCodeLine{230     \textcolor{keyword}{static} uint64\_t time = 0; \textcolor{comment}{// 1/60 seconds}}
+\DoxyCodeLine{231 }
+\DoxyCodeLine{232     \textcolor{keywordflow}{if} (time == 0) \mbox{\hyperlink{group__game_ga5dea0f7830d4dacb4d5becfef8eac9da}{makePlay}}();}
+\DoxyCodeLine{233 }
+\DoxyCodeLine{234     y = 14 + (0.1)*(time*time); \textcolor{comment}{// y(t) = y0 + v0*t + a/2*t\string^2}}
+\DoxyCodeLine{235 }
+\DoxyCodeLine{236     \textcolor{keywordflow}{if} (y > 89+8+84*(5-\/\mbox{\hyperlink{game_8c_a545a040387e02aef5e2e61c4ca105953}{board\_y}})+1)}
+\DoxyCodeLine{237         y = 89+8+84*(5-\/\mbox{\hyperlink{game_8c_a545a040387e02aef5e2e61c4ca105953}{board\_y}})+1;}
+\DoxyCodeLine{238 }
+\DoxyCodeLine{239     \textcolor{keywordflow}{if} (time >= 2)}
+\DoxyCodeLine{240         \mbox{\hyperlink{group__graph_gaeec463a816be71ccadfd9a781146e9f2}{draw\_part\_of\_xpm}}(\mbox{\hyperlink{game_8c_aa279b6fdc9f003ba0dcf0862c8a4dfaa}{background}}, \mbox{\hyperlink{game_8c_af8e0d5ead832d89941ef7b5b2f80f49b}{back\_info}}, 0, 0, 110+8+84*\mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}}, 14+(0.1)*(time-\/2)*(time-\/2), 63, 63);}
+\DoxyCodeLine{241     }
+\DoxyCodeLine{242     \mbox{\hyperlink{group__game_ga4d8528bdbf9d58a10313c6c06bb52f2c}{draw\_chip}}(110+8+84*\mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}}, y);}
+\DoxyCodeLine{243     \mbox{\hyperlink{group__game_ga2c1edec5e1344ab57fba2666dc4de6d5}{draw\_column}}();}
+\DoxyCodeLine{244     \mbox{\hyperlink{group__graph_ga9586fab72d125423fd0ff56cbb3d35a3}{display\_frame}}();}
+\DoxyCodeLine{245 }
+\DoxyCodeLine{246     \textcolor{keywordflow}{if} (y == 89+8+84*(5-\/\mbox{\hyperlink{game_8c_a545a040387e02aef5e2e61c4ca105953}{board\_y}})+1)}
+\DoxyCodeLine{247     \{}
+\DoxyCodeLine{248         \textcolor{comment}{// In the end synchronize Video Mem with Buffer}}
+\DoxyCodeLine{249         \mbox{\hyperlink{group__graph_gaeec463a816be71ccadfd9a781146e9f2}{draw\_part\_of\_xpm}}(\mbox{\hyperlink{game_8c_aa279b6fdc9f003ba0dcf0862c8a4dfaa}{background}}, \mbox{\hyperlink{game_8c_af8e0d5ead832d89941ef7b5b2f80f49b}{back\_info}}, 0, 0, 110+8+84*\mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}}, 14+(0.1)*(time-\/2)*(time-\/2), 63, 63);}
+\DoxyCodeLine{250         \mbox{\hyperlink{group__game_ga4d8528bdbf9d58a10313c6c06bb52f2c}{draw\_chip}}(110+8+84*\mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}}, y);}
+\DoxyCodeLine{251         \mbox{\hyperlink{group__game_ga2c1edec5e1344ab57fba2666dc4de6d5}{draw\_column}}();}
+\DoxyCodeLine{252         \mbox{\hyperlink{group__graph_ga9586fab72d125423fd0ff56cbb3d35a3}{display\_frame}}();}
+\DoxyCodeLine{253 }
+\DoxyCodeLine{254         \textcolor{comment}{// Reset initial parameters}}
+\DoxyCodeLine{255         time = 0;}
+\DoxyCodeLine{256         }
+\DoxyCodeLine{257         printf(\textcolor{stringliteral}{"{}\%d -\/ \%d -\/ \%d\(\backslash\)n"{}}, \mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}}, \mbox{\hyperlink{game_8c_a545a040387e02aef5e2e61c4ca105953}{board\_y}}, \mbox{\hyperlink{group__proj_gae41164029686cac80f7f6bd7aa23b153}{player}});}
+\DoxyCodeLine{258 }
+\DoxyCodeLine{259         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{260     \}}
+\DoxyCodeLine{261 }
+\DoxyCodeLine{262     time++;}
+\DoxyCodeLine{263     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{264 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__game_ga1f95737674e1a7bf4afaf38500d34288_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__game_ga725e9dbfc31e2c930bb29461ab1b3923}\label{group__game_ga725e9dbfc31e2c930bb29461ab1b3923}} 
+\index{game@{game}!column\_select\_animation@{column\_select\_animation}}
+\index{column\_select\_animation@{column\_select\_animation}!game@{game}}
+\doxysubsubsection{\texorpdfstring{column\_select\_animation()}{column\_select\_animation()}}
+{\footnotesize\ttfamily int() column\+\_\+select\+\_\+animation (\begin{DoxyParamCaption}\item[{bool}]{left }\end{DoxyParamCaption})}
+
+Animates the column selection 
+\begin{DoxyParams}{Parameters}
+{\em left} & boolean indicating if it will move left or right \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success, non-\/true otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 136 of file game.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{137 \{}
+\DoxyCodeLine{138     \textcolor{keyword}{static} \textcolor{keywordtype}{int} x = 0;}
+\DoxyCodeLine{139     \textcolor{keyword}{static} uint64\_t time = 0;}
+\DoxyCodeLine{140     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142     \textcolor{comment}{// Se já estiver no canto esq ou dir não faz a animação nem modifica nada}}
+\DoxyCodeLine{143     \textcolor{keywordflow}{if} (time == 0 \&\& ((left \&\& \mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}} == 0) || (!left \&\& \mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}} == 6)))}
+\DoxyCodeLine{144         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146     \textcolor{keywordflow}{if} (time == 0 \&\& left) \mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}}-\/-\/;}
+\DoxyCodeLine{147     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (time == 0 \&\& !left) \mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}}++;}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{149     \textcolor{keywordflow}{if} (left) x = ceil(110+8+(\mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}}+1)*84 -\/ 0.5*time*time);}
+\DoxyCodeLine{150     \textcolor{keywordflow}{else} x = 110+8+(\mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}}-\/1)*84 + 0.5*time*time;  }
+\DoxyCodeLine{151 }
+\DoxyCodeLine{152     \textcolor{keywordflow}{if} (!left \&\& x > 110+8+84*\mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}})}
+\DoxyCodeLine{153     \{}
+\DoxyCodeLine{154         x = 110+8+84*\mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}};}
+\DoxyCodeLine{155         done = \textcolor{keyword}{true};}
+\DoxyCodeLine{156     \}}
+\DoxyCodeLine{157     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (left \&\& x < 110+8+84*\mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}})}
+\DoxyCodeLine{158     \{}
+\DoxyCodeLine{159         x = 110+8+84*\mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}};}
+\DoxyCodeLine{160         done = \textcolor{keyword}{true};}
+\DoxyCodeLine{161     \}}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{163     \textcolor{keywordflow}{if} (time >= 2 \&\& left)}
+\DoxyCodeLine{164         \mbox{\hyperlink{group__graph_gaeec463a816be71ccadfd9a781146e9f2}{draw\_part\_of\_xpm}}(\mbox{\hyperlink{game_8c_aa279b6fdc9f003ba0dcf0862c8a4dfaa}{background}}, \mbox{\hyperlink{game_8c_af8e0d5ead832d89941ef7b5b2f80f49b}{back\_info}}, 0, 0, ceil(110+8+(\mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}}+1)*84 -\/ 0.5*(time-\/2)*(time-\/2)), 14, 63, 63);}
+\DoxyCodeLine{165     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (time >= 2 \&\& !left)}
+\DoxyCodeLine{166         \mbox{\hyperlink{group__graph_gaeec463a816be71ccadfd9a781146e9f2}{draw\_part\_of\_xpm}}(\mbox{\hyperlink{game_8c_aa279b6fdc9f003ba0dcf0862c8a4dfaa}{background}}, \mbox{\hyperlink{game_8c_af8e0d5ead832d89941ef7b5b2f80f49b}{back\_info}}, 0, 0, 110+8+(\mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}}-\/1)*84 + 0.5*(time-\/2)*(time-\/2), 14, 63, 63);}
+\DoxyCodeLine{167     }
+\DoxyCodeLine{168     \mbox{\hyperlink{group__game_ga4d8528bdbf9d58a10313c6c06bb52f2c}{draw\_chip}}(x, 14);}
+\DoxyCodeLine{169     \mbox{\hyperlink{group__graph_ga9586fab72d125423fd0ff56cbb3d35a3}{display\_frame}}();}
+\DoxyCodeLine{170     }
+\DoxyCodeLine{171     \textcolor{comment}{//time++;}}
+\DoxyCodeLine{172 }
+\DoxyCodeLine{173     \textcolor{keywordflow}{if} (done)}
+\DoxyCodeLine{174     \{}
+\DoxyCodeLine{175         \textcolor{keywordflow}{if} (left) \mbox{\hyperlink{group__graph_gaeec463a816be71ccadfd9a781146e9f2}{draw\_part\_of\_xpm}}(\mbox{\hyperlink{game_8c_aa279b6fdc9f003ba0dcf0862c8a4dfaa}{background}}, \mbox{\hyperlink{game_8c_af8e0d5ead832d89941ef7b5b2f80f49b}{back\_info}}, 0, 0, ceil(110+8+(\mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}}+1)*84 -\/ 0.5*(time-\/2)*(time-\/2)), 14, 63, 63);}
+\DoxyCodeLine{176         \textcolor{keywordflow}{else} \mbox{\hyperlink{group__graph_gaeec463a816be71ccadfd9a781146e9f2}{draw\_part\_of\_xpm}}(\mbox{\hyperlink{game_8c_aa279b6fdc9f003ba0dcf0862c8a4dfaa}{background}}, \mbox{\hyperlink{game_8c_af8e0d5ead832d89941ef7b5b2f80f49b}{back\_info}}, 0, 0, 110+8+(\mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}}-\/1)*84 + 0.5*(time-\/2)*(time-\/2), 14, 63, 63);}
+\DoxyCodeLine{177         }
+\DoxyCodeLine{178         \mbox{\hyperlink{group__game_ga4d8528bdbf9d58a10313c6c06bb52f2c}{draw\_chip}}(x, 14);}
+\DoxyCodeLine{179         \mbox{\hyperlink{group__graph_ga9586fab72d125423fd0ff56cbb3d35a3}{display\_frame}}();}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{181         \textcolor{comment}{// Reset Parameters}}
+\DoxyCodeLine{182         time = 0;}
+\DoxyCodeLine{183         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{184     \}}
+\DoxyCodeLine{185 }
+\DoxyCodeLine{186     time++;}
+\DoxyCodeLine{187     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{188 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__game_ga725e9dbfc31e2c930bb29461ab1b3923_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__game_gac1c6ce37e7c8a21f9289c973a8aadf64}\label{group__game_gac1c6ce37e7c8a21f9289c973a8aadf64}} 
+\index{game@{game}!draw\_background@{draw\_background}}
+\index{draw\_background@{draw\_background}!game@{game}}
+\doxysubsubsection{\texorpdfstring{draw\_background()}{draw\_background()}}
+{\footnotesize\ttfamily int() draw\+\_\+background (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Draws background \begin{DoxyReturn}{Returns}
+0 
+\end{DoxyReturn}
+
+
+Definition at line 58 of file game.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{58 \{\textcolor{keywordflow}{return} \mbox{\hyperlink{group__graph_ga25df193eebe4bece3620d39ab2300b78}{draw\_xpm}}(\mbox{\hyperlink{game_8c_aa279b6fdc9f003ba0dcf0862c8a4dfaa}{background}}, \mbox{\hyperlink{game_8c_af8e0d5ead832d89941ef7b5b2f80f49b}{back\_info}}, 0, 0);\}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=269pt]{group__game_gac1c6ce37e7c8a21f9289c973a8aadf64_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__game_ga365fbe76a553e0f2afd696b409a29b9f}\label{group__game_ga365fbe76a553e0f2afd696b409a29b9f}} 
+\index{game@{game}!draw\_board@{draw\_board}}
+\index{draw\_board@{draw\_board}!game@{game}}
+\doxysubsubsection{\texorpdfstring{draw\_board()}{draw\_board()}}
+{\footnotesize\ttfamily int() draw\+\_\+board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Draws the gameboard \begin{DoxyReturn}{Returns}
+0 
+\end{DoxyReturn}
+
+
+Definition at line 60 of file game.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{60 \{\textcolor{keywordflow}{return} \mbox{\hyperlink{group__graph_ga25df193eebe4bece3620d39ab2300b78}{draw\_xpm}}(\mbox{\hyperlink{game_8c_af6ad5236ad21cb4a48bcaefcc6317e46}{board\_image}}, \mbox{\hyperlink{game_8c_a76c10ea2cd74639a9825684fb5fdb88f}{board\_info}}, 110, 89);\}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{group__game_ga365fbe76a553e0f2afd696b409a29b9f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__game_ga4d8528bdbf9d58a10313c6c06bb52f2c}\label{group__game_ga4d8528bdbf9d58a10313c6c06bb52f2c}} 
+\index{game@{game}!draw\_chip@{draw\_chip}}
+\index{draw\_chip@{draw\_chip}!game@{game}}
+\doxysubsubsection{\texorpdfstring{draw\_chip()}{draw\_chip()}}
+{\footnotesize\ttfamily int() draw\+\_\+chip (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+Draws chip in given positions 
+\begin{DoxyParams}{Parameters}
+{\em x} & position on the x axys \\
+\hline
+{\em y} & position on the y axys \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 62 of file game.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{63 \{}
+\DoxyCodeLine{64     \textcolor{keywordflow}{if} (x > 800 || y > 600)}
+\DoxyCodeLine{65         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67     \textcolor{keywordflow}{switch} (\mbox{\hyperlink{group__proj_gae41164029686cac80f7f6bd7aa23b153}{player}})}
+\DoxyCodeLine{68     \{}
+\DoxyCodeLine{69     \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{70         \mbox{\hyperlink{group__graph_ga25df193eebe4bece3620d39ab2300b78}{draw\_xpm}}(\mbox{\hyperlink{game_8c_a99a0c771597bc2d73c58764928c88e68}{red\_chip}}, \mbox{\hyperlink{game_8c_a37cf9e4c4414301132a75579549229a6}{red\_info}}, x, y);}
+\DoxyCodeLine{71         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{72     \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{73         \mbox{\hyperlink{group__graph_ga25df193eebe4bece3620d39ab2300b78}{draw\_xpm}}(\mbox{\hyperlink{game_8c_a80f7e54be3feaa677715077c678a6f92}{yellow\_chip}}, \mbox{\hyperlink{game_8c_a92876afa892c3f2e90f315e063f8cce2}{yellow\_info}}, x, y);}
+\DoxyCodeLine{74         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{75     \}}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{78 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{group__game_ga4d8528bdbf9d58a10313c6c06bb52f2c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__game_ga2c1edec5e1344ab57fba2666dc4de6d5}\label{group__game_ga2c1edec5e1344ab57fba2666dc4de6d5}} 
+\index{game@{game}!draw\_column@{draw\_column}}
+\index{draw\_column@{draw\_column}!game@{game}}
+\doxysubsubsection{\texorpdfstring{draw\_column()}{draw\_column()}}
+{\footnotesize\ttfamily int() draw\+\_\+column (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Draws a column \begin{DoxyReturn}{Returns}
+0 
+\end{DoxyReturn}
+
+
+Definition at line 80 of file game.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{80 \{\textcolor{keywordflow}{return} \mbox{\hyperlink{group__graph_ga25df193eebe4bece3620d39ab2300b78}{draw\_xpm}}(\mbox{\hyperlink{game_8c_aaf359299ae56f65d66404bb3dfbbfaf5}{board\_column}}, \mbox{\hyperlink{game_8c_ae6a6a3d5b089cbc663934f38a3ff7751}{board\_column\_info}}, 110+8+84*\mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}}, 89);\}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=251pt]{group__game_ga2c1edec5e1344ab57fba2666dc4de6d5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__game_ga2abe4f1059ab30b4d4dbaf9194229c01}\label{group__game_ga2abe4f1059ab30b4d4dbaf9194229c01}} 
+\index{game@{game}!draw\_player\_indicator@{draw\_player\_indicator}}
+\index{draw\_player\_indicator@{draw\_player\_indicator}!game@{game}}
+\doxysubsubsection{\texorpdfstring{draw\_player\_indicator()}{draw\_player\_indicator()}}
+{\footnotesize\ttfamily int() draw\+\_\+player\+\_\+indicator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Draws an indicator telling which player is playing \begin{DoxyReturn}{Returns}
+0 
+\end{DoxyReturn}
+
+
+Definition at line 82 of file game.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{83 \{}
+\DoxyCodeLine{84     \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__proj_gae41164029686cac80f7f6bd7aa23b153}{player}} == 1) \textcolor{keywordflow}{return} \mbox{\hyperlink{group__graph_ga25df193eebe4bece3620d39ab2300b78}{draw\_xpm}}(\mbox{\hyperlink{game_8c_aff7b0194fd9df7fb65aa2aa8b6f2a35c}{player1\_indicator}}, \mbox{\hyperlink{game_8c_a352a80f82793f1026d72aec8e660101e}{player\_indicator\_info}}, 16, 464);}
+\DoxyCodeLine{85     \textcolor{keywordflow}{else} \textcolor{keywordflow}{return} \mbox{\hyperlink{group__graph_ga25df193eebe4bece3620d39ab2300b78}{draw\_xpm}}(\mbox{\hyperlink{game_8c_ab262017894d1d10e9bb9013823039176}{player2\_indicator}}, \mbox{\hyperlink{game_8c_a352a80f82793f1026d72aec8e660101e}{player\_indicator\_info}}, 16, 464);}
+\DoxyCodeLine{86 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=287pt]{group__game_ga2abe4f1059ab30b4d4dbaf9194229c01_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__game_ga2c501b2192cdc0f471907b92cfd42b57}\label{group__game_ga2c501b2192cdc0f471907b92cfd42b57}} 
+\index{game@{game}!draw\_player\_won\_indicator@{draw\_player\_won\_indicator}}
+\index{draw\_player\_won\_indicator@{draw\_player\_won\_indicator}!game@{game}}
+\doxysubsubsection{\texorpdfstring{draw\_player\_won\_indicator()}{draw\_player\_won\_indicator()}}
+{\footnotesize\ttfamily int() draw\+\_\+player\+\_\+won\+\_\+indicator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Draws an indicator telling which player won \begin{DoxyReturn}{Returns}
+0 
+\end{DoxyReturn}
+
+
+Definition at line 88 of file game.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{89 \{}
+\DoxyCodeLine{90     \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__proj_gae41164029686cac80f7f6bd7aa23b153}{player}} == 1) \textcolor{keywordflow}{return} \mbox{\hyperlink{group__graph_ga25df193eebe4bece3620d39ab2300b78}{draw\_xpm}}(\mbox{\hyperlink{game_8c_a46edc7ea64dea67fa55556ec64d245f9}{player1\_won\_indicator}}, \mbox{\hyperlink{game_8c_ac4ecc1793229e9aa439bb606ed3a49aa}{player\_won\_indicator\_info}}, 161, 219);}
+\DoxyCodeLine{91     \textcolor{keywordflow}{else} \textcolor{keywordflow}{return} \mbox{\hyperlink{group__graph_ga25df193eebe4bece3620d39ab2300b78}{draw\_xpm}}(\mbox{\hyperlink{game_8c_a78a68231f246bc6122e088b21ed06b41}{player2\_won\_indicator}}, \mbox{\hyperlink{game_8c_ac4ecc1793229e9aa439bb606ed3a49aa}{player\_won\_indicator\_info}}, 161, 219);}
+\DoxyCodeLine{92 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{group__game_ga2c501b2192cdc0f471907b92cfd42b57_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__game_gadb94d7831ebe76074977d7bab82330df}\label{group__game_gadb94d7831ebe76074977d7bab82330df}} 
+\index{game@{game}!game\_over@{game\_over}}
+\index{game\_over@{game\_over}!game@{game}}
+\doxysubsubsection{\texorpdfstring{game\_over()}{game\_over()}}
+{\footnotesize\ttfamily int() game\+\_\+over (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Displays the winning player indicator \begin{DoxyReturn}{Returns}
+true if success, non-\/true otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 363 of file game.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{364 \{}
+\DoxyCodeLine{365     \textcolor{keyword}{static} uint64\_t time = 0;}
+\DoxyCodeLine{366 }
+\DoxyCodeLine{367     \textcolor{keywordflow}{if} (time == 0)}
+\DoxyCodeLine{368     \{}
+\DoxyCodeLine{369         \mbox{\hyperlink{group__game_ga2c501b2192cdc0f471907b92cfd42b57}{draw\_player\_won\_indicator}}();}
+\DoxyCodeLine{370         \mbox{\hyperlink{group__graph_ga9586fab72d125423fd0ff56cbb3d35a3}{display\_frame}}();}
+\DoxyCodeLine{371     \}}
+\DoxyCodeLine{372 }
+\DoxyCodeLine{373     time++;}
+\DoxyCodeLine{374 }
+\DoxyCodeLine{375     \textcolor{keywordflow}{if} (time == 60*5)}
+\DoxyCodeLine{376     \{}
+\DoxyCodeLine{377         time = 0;}
+\DoxyCodeLine{378         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{379     \}}
+\DoxyCodeLine{380 }
+\DoxyCodeLine{381     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{382 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__game_gadb94d7831ebe76074977d7bab82330df_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__game_ga49135e750d2b74842130058252e8054f}\label{group__game_ga49135e750d2b74842130058252e8054f}} 
+\index{game@{game}!initiate\_game@{initiate\_game}}
+\index{initiate\_game@{initiate\_game}!game@{game}}
+\doxysubsubsection{\texorpdfstring{initiate\_game()}{initiate\_game()}}
+{\footnotesize\ttfamily int() initiate\+\_\+game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Initiates the game, loading and clearing the necessary things \begin{DoxyReturn}{Returns}
+0 
+\end{DoxyReturn}
+
+
+Definition at line 94 of file game.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{95 \{}
+\DoxyCodeLine{96     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} loaded = \textcolor{keyword}{false};}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98     \textcolor{keywordflow}{if} (!loaded)}
+\DoxyCodeLine{99     \{}
+\DoxyCodeLine{100         \textcolor{comment}{// Loading XPMS}}
+\DoxyCodeLine{101         \mbox{\hyperlink{game_8c_aa279b6fdc9f003ba0dcf0862c8a4dfaa}{background}} = xpm\_load(\mbox{\hyperlink{game__xpm_8h_a3a4b4c4cec9709ffdb4631d324a71aa8}{background\_xpm}}, XPM\_8\_8\_8, \&\mbox{\hyperlink{game_8c_af8e0d5ead832d89941ef7b5b2f80f49b}{back\_info}});}
+\DoxyCodeLine{102         \mbox{\hyperlink{game_8c_af6ad5236ad21cb4a48bcaefcc6317e46}{board\_image}} = xpm\_load(\mbox{\hyperlink{game__xpm_8h_a7a8d370d74854024dd35fc7dcd7e3a23}{board\_xpm}}, XPM\_8\_8\_8, \&\mbox{\hyperlink{game_8c_a76c10ea2cd74639a9825684fb5fdb88f}{board\_info}});}
+\DoxyCodeLine{103         \mbox{\hyperlink{game_8c_aaf359299ae56f65d66404bb3dfbbfaf5}{board\_column}} = xpm\_load(\mbox{\hyperlink{game__xpm_8h_aa7a332a8418b4f6fbbc5a66a314edb9c}{board\_column\_xpm}}, XPM\_8\_8\_8, \&\mbox{\hyperlink{game_8c_ae6a6a3d5b089cbc663934f38a3ff7751}{board\_column\_info}});}
+\DoxyCodeLine{104         \mbox{\hyperlink{game_8c_a99a0c771597bc2d73c58764928c88e68}{red\_chip}} = xpm\_load(\mbox{\hyperlink{game__xpm_8h_a07e7a0697fc8dd22fb98026e2a1e30d1}{red\_chip\_xpm}}, XPM\_8\_8\_8, \&\mbox{\hyperlink{game_8c_a37cf9e4c4414301132a75579549229a6}{red\_info}});}
+\DoxyCodeLine{105         \mbox{\hyperlink{game_8c_a80f7e54be3feaa677715077c678a6f92}{yellow\_chip}} = xpm\_load(\mbox{\hyperlink{game__xpm_8h_abf89fa4579e6dafa54d47c6b37714f9c}{yellow\_chip\_xpm}}, XPM\_8\_8\_8, \&\mbox{\hyperlink{game_8c_a92876afa892c3f2e90f315e063f8cce2}{yellow\_info}});}
+\DoxyCodeLine{106         \mbox{\hyperlink{game_8c_aff7b0194fd9df7fb65aa2aa8b6f2a35c}{player1\_indicator}} = xpm\_load(\mbox{\hyperlink{game__xpm_8h_a9769dc48dad5f262ab51ff1720e37062}{player1\_indicator\_xpm}}, XPM\_8\_8\_8, \&\mbox{\hyperlink{game_8c_a352a80f82793f1026d72aec8e660101e}{player\_indicator\_info}});}
+\DoxyCodeLine{107         \mbox{\hyperlink{game_8c_ab262017894d1d10e9bb9013823039176}{player2\_indicator}} = xpm\_load(\mbox{\hyperlink{game__xpm_8h_a63d67181a0539597b0caaa88b5d00629}{player2\_indicator\_xpm}}, XPM\_8\_8\_8, \&\mbox{\hyperlink{game_8c_a352a80f82793f1026d72aec8e660101e}{player\_indicator\_info}});}
+\DoxyCodeLine{108         \mbox{\hyperlink{game_8c_a46edc7ea64dea67fa55556ec64d245f9}{player1\_won\_indicator}} = xpm\_load(\mbox{\hyperlink{game__xpm_8h_a3237bd74d7265484677e229529672e18}{player1\_won\_indicator\_xpm}}, XPM\_8\_8\_8, \&\mbox{\hyperlink{game_8c_ac4ecc1793229e9aa439bb606ed3a49aa}{player\_won\_indicator\_info}});}
+\DoxyCodeLine{109         \mbox{\hyperlink{game_8c_a78a68231f246bc6122e088b21ed06b41}{player2\_won\_indicator}} = xpm\_load(\mbox{\hyperlink{game__xpm_8h_abe8324f55a2a66502b72bdfb4232bcef}{player2\_won\_indicator\_xpm}}, XPM\_8\_8\_8, \&\mbox{\hyperlink{game_8c_ac4ecc1793229e9aa439bb606ed3a49aa}{player\_won\_indicator\_info}});}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111         loaded = \textcolor{keyword}{true};}
+\DoxyCodeLine{112     \}}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114     \textcolor{comment}{// Erasing Contents of Board}}
+\DoxyCodeLine{115     memset(\mbox{\hyperlink{game_8c_a6bbff608be5849688a8cfae762f5fed2}{board}}, 0, \mbox{\hyperlink{game_8c_a7237396536dfa0df44aa7bd40f5338f1}{columns}}*\mbox{\hyperlink{game_8c_a709f915a8f591c9ec3208128ee246b89}{rows}});}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117     \textcolor{comment}{// Reseting board\_x, board\_y and player}}
+\DoxyCodeLine{118     \mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}} = 0; \mbox{\hyperlink{game_8c_a545a040387e02aef5e2e61c4ca105953}{board\_y}} = 0; \mbox{\hyperlink{group__proj_gae41164029686cac80f7f6bd7aa23b153}{player}} = 1;}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120     \textcolor{comment}{// Initializing Board and Backgound in Buffer and Video Mem (synchronizing)}}
+\DoxyCodeLine{121     \mbox{\hyperlink{group__game_gac1c6ce37e7c8a21f9289c973a8aadf64}{draw\_background}}();}
+\DoxyCodeLine{122     \mbox{\hyperlink{group__game_ga365fbe76a553e0f2afd696b409a29b9f}{draw\_board}}();}
+\DoxyCodeLine{123     \mbox{\hyperlink{group__game_ga4d8528bdbf9d58a10313c6c06bb52f2c}{draw\_chip}}(110+8, 14);}
+\DoxyCodeLine{124     \mbox{\hyperlink{group__game_ga2abe4f1059ab30b4d4dbaf9194229c01}{draw\_player\_indicator}}();}
+\DoxyCodeLine{125     \mbox{\hyperlink{group__graph_ga9586fab72d125423fd0ff56cbb3d35a3}{display\_frame}}();}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127     \mbox{\hyperlink{group__game_gac1c6ce37e7c8a21f9289c973a8aadf64}{draw\_background}}();}
+\DoxyCodeLine{128     \mbox{\hyperlink{group__game_ga365fbe76a553e0f2afd696b409a29b9f}{draw\_board}}();}
+\DoxyCodeLine{129     \mbox{\hyperlink{group__game_ga4d8528bdbf9d58a10313c6c06bb52f2c}{draw\_chip}}(110+8, 14);}
+\DoxyCodeLine{130     \mbox{\hyperlink{group__game_ga2abe4f1059ab30b4d4dbaf9194229c01}{draw\_player\_indicator}}();}
+\DoxyCodeLine{131     \mbox{\hyperlink{group__graph_ga9586fab72d125423fd0ff56cbb3d35a3}{display\_frame}}();}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{134 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__game_ga49135e750d2b74842130058252e8054f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__game_ga5dea0f7830d4dacb4d5becfef8eac9da}\label{group__game_ga5dea0f7830d4dacb4d5becfef8eac9da}} 
+\index{game@{game}!makePlay@{makePlay}}
+\index{makePlay@{makePlay}!game@{game}}
+\doxysubsubsection{\texorpdfstring{makePlay()}{makePlay()}}
+{\footnotesize\ttfamily int() make\+Play (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Makes play \begin{DoxyReturn}{Returns}
+true 
+\end{DoxyReturn}
+
+
+Definition at line 214 of file game.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{215 \{}
+\DoxyCodeLine{216     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{game_8c_a709f915a8f591c9ec3208128ee246b89}{rows}}; i++) \{}
+\DoxyCodeLine{217         \textcolor{keywordflow}{if} (\mbox{\hyperlink{game_8c_a6bbff608be5849688a8cfae762f5fed2}{board}}[\mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}}][i] == 0) \{}
+\DoxyCodeLine{218             \mbox{\hyperlink{game_8c_a6bbff608be5849688a8cfae762f5fed2}{board}}[\mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}}][i] = \mbox{\hyperlink{group__proj_gae41164029686cac80f7f6bd7aa23b153}{player}};}
+\DoxyCodeLine{219             \mbox{\hyperlink{game_8c_a545a040387e02aef5e2e61c4ca105953}{board\_y}} = i;}
+\DoxyCodeLine{220             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{221         \}}
+\DoxyCodeLine{222     \}}
+\DoxyCodeLine{223     }
+\DoxyCodeLine{224     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{225 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{group__game_ga60870b0942d4d0e6d5e9516931afe3a3}\label{group__game_ga60870b0942d4d0e6d5e9516931afe3a3}} 
+\index{game@{game}!nextPlay@{nextPlay}}
+\index{nextPlay@{nextPlay}!game@{game}}
+\doxysubsubsection{\texorpdfstring{nextPlay()}{nextPlay()}}
+{\footnotesize\ttfamily void() next\+Play (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Changes player and makes the necessary adjustments 
+
+Definition at line 384 of file game.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{385 \{}
+\DoxyCodeLine{386     \textcolor{comment}{// Change Player}}
+\DoxyCodeLine{387     \mbox{\hyperlink{group__proj_gae41164029686cac80f7f6bd7aa23b153}{player}}++;}
+\DoxyCodeLine{388     \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__proj_gae41164029686cac80f7f6bd7aa23b153}{player}} > 2)}
+\DoxyCodeLine{389         \mbox{\hyperlink{group__proj_gae41164029686cac80f7f6bd7aa23b153}{player}} = 1;}
+\DoxyCodeLine{390 }
+\DoxyCodeLine{391     \mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}} = 0;}
+\DoxyCodeLine{392 }
+\DoxyCodeLine{393     \mbox{\hyperlink{group__game_ga4d8528bdbf9d58a10313c6c06bb52f2c}{draw\_chip}}(110+8, 14);}
+\DoxyCodeLine{394     \mbox{\hyperlink{group__game_ga2abe4f1059ab30b4d4dbaf9194229c01}{draw\_player\_indicator}}();}
+\DoxyCodeLine{395     \mbox{\hyperlink{group__graph_ga9586fab72d125423fd0ff56cbb3d35a3}{display\_frame}}();}
+\DoxyCodeLine{396 }
+\DoxyCodeLine{397     \mbox{\hyperlink{group__game_ga4d8528bdbf9d58a10313c6c06bb52f2c}{draw\_chip}}(110+8, 14);}
+\DoxyCodeLine{398     \mbox{\hyperlink{group__game_ga2abe4f1059ab30b4d4dbaf9194229c01}{draw\_player\_indicator}}();}
+\DoxyCodeLine{399     \mbox{\hyperlink{group__graph_ga9586fab72d125423fd0ff56cbb3d35a3}{display\_frame}}();}
+\DoxyCodeLine{400 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__game_ga60870b0942d4d0e6d5e9516931afe3a3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__game_gad01d184b74d7bfeb3948afdfb7ff1b76}\label{group__game_gad01d184b74d7bfeb3948afdfb7ff1b76}} 
+\index{game@{game}!random\_play\_column\_select\_animation@{random\_play\_column\_select\_animation}}
+\index{random\_play\_column\_select\_animation@{random\_play\_column\_select\_animation}!game@{game}}
+\doxysubsubsection{\texorpdfstring{random\_play\_column\_select\_animation()}{random\_play\_column\_select\_animation()}}
+{\footnotesize\ttfamily int() random\+\_\+play\+\_\+column\+\_\+select\+\_\+animation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Animates the column selection of a random play \begin{DoxyReturn}{Returns}
+true on success, non-\/true otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 190 of file game.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{191 \{}
+\DoxyCodeLine{192     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} first\_time = \textcolor{keyword}{true};}
+\DoxyCodeLine{193     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} left = \textcolor{keyword}{true};}
+\DoxyCodeLine{194 }
+\DoxyCodeLine{195     \textcolor{keywordflow}{if} (first\_time)}
+\DoxyCodeLine{196     \{}
+\DoxyCodeLine{197         \textcolor{keywordflow}{if} (\mbox{\hyperlink{game_8c_aa0ea2c0df538a85c83d4dcf273159ca3}{randomPlay\_board\_x}} < \mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}})}
+\DoxyCodeLine{198             left = \textcolor{keyword}{true};}
+\DoxyCodeLine{199         \textcolor{keywordflow}{else} left = \textcolor{keyword}{false};}
+\DoxyCodeLine{200     \}}
+\DoxyCodeLine{201 }
+\DoxyCodeLine{202     \textcolor{keywordflow}{if} ((first\_time \&\& \mbox{\hyperlink{game_8c_aa0ea2c0df538a85c83d4dcf273159ca3}{randomPlay\_board\_x}} == \mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}}) || (\mbox{\hyperlink{group__game_ga725e9dbfc31e2c930bb29461ab1b3923}{column\_select\_animation}}(left) \&\& \mbox{\hyperlink{game_8c_aa0ea2c0df538a85c83d4dcf273159ca3}{randomPlay\_board\_x}} == \mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}}))}
+\DoxyCodeLine{203     \{}
+\DoxyCodeLine{204         first\_time = \textcolor{keyword}{true};}
+\DoxyCodeLine{205         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{206     \}}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{208     \textcolor{keywordflow}{if} (first\_time) first\_time = \textcolor{keyword}{false};}
+\DoxyCodeLine{209     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{210 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__game_gad01d184b74d7bfeb3948afdfb7ff1b76_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__game_ga38556949d71e8da559e7754be8db57e1}\label{group__game_ga38556949d71e8da559e7754be8db57e1}} 
+\index{game@{game}!randomPlay@{randomPlay}}
+\index{randomPlay@{randomPlay}!game@{game}}
+\doxysubsubsection{\texorpdfstring{randomPlay()}{randomPlay()}}
+{\footnotesize\ttfamily void() random\+Play (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Makes a random play 
+
+Definition at line 402 of file game.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{403 \{}
+\DoxyCodeLine{404     \textcolor{keywordflow}{while} (1)\{}
+\DoxyCodeLine{405         \mbox{\hyperlink{game_8c_aa0ea2c0df538a85c83d4dcf273159ca3}{randomPlay\_board\_x}} = rand() \% 7;}
+\DoxyCodeLine{406         printf(\textcolor{stringliteral}{"{}\%d\(\backslash\)n"{}}, \mbox{\hyperlink{game_8c_aa0ea2c0df538a85c83d4dcf273159ca3}{randomPlay\_board\_x}});}
+\DoxyCodeLine{407         \textcolor{keywordflow}{if} (\mbox{\hyperlink{game_8c_a6bbff608be5849688a8cfae762f5fed2}{board}}[\mbox{\hyperlink{game_8c_aa0ea2c0df538a85c83d4dcf273159ca3}{randomPlay\_board\_x}}][\mbox{\hyperlink{game_8c_a709f915a8f591c9ec3208128ee246b89}{rows}}-\/1] == 0)}
+\DoxyCodeLine{408             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{409     \}}
+\DoxyCodeLine{410 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{group__game_ga889765d2c8cd01573c8e50374a5ad5b7}\label{group__game_ga889765d2c8cd01573c8e50374a5ad5b7}} 
+\index{game@{game}!validPlay@{validPlay}}
+\index{validPlay@{validPlay}!game@{game}}
+\doxysubsubsection{\texorpdfstring{validPlay()}{validPlay()}}
+{\footnotesize\ttfamily int() valid\+Play (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Checks if play is valid \begin{DoxyReturn}{Returns}
+true if valid, non-\/true otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 212 of file game.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{212 \{\textcolor{keywordflow}{return} \mbox{\hyperlink{game_8c_a6bbff608be5849688a8cfae762f5fed2}{board}}[\mbox{\hyperlink{game_8c_ab59395a203002430d95171964319d9b9}{board\_x}}][\mbox{\hyperlink{game_8c_a709f915a8f591c9ec3208128ee246b89}{rows}}-\/1] == 0;\}}
+
+\end{DoxyCode}

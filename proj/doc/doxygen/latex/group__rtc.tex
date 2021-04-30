@@ -1,0 +1,338 @@
+\hypertarget{group__rtc}{}\doxysection{rtc}
+\label{group__rtc}\index{rtc@{rtc}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__rtc_ga3a8ea58898cb58fc96013383d39f482c}{B\+IT}}(n)~(1 $<$$<$ (n))
+\item 
+\#define \mbox{\hyperlink{group__rtc_ga710b98232df2c563009e6f8a6cd18220}{R\+T\+C\+\_\+\+A\+D\+D\+R\+\_\+\+R\+EG}}~0x70
+\item 
+\#define \mbox{\hyperlink{group__rtc_ga2f258a00c59c3f347c8d2d4a75471ce0}{R\+T\+C\+\_\+\+D\+A\+T\+A\+\_\+\+R\+EG}}~0x71
+\item 
+\#define \mbox{\hyperlink{group__rtc_ga4e22feb6ffbc1cda32fadff5c740dc51}{R\+T\+C\+\_\+\+I\+RQ}}~8
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{group__rtc_ga6bbe679f115cec90d36d50eb2aac1b89}{rtc\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t $\ast$bit\+\_\+no)
+\item 
+int() \mbox{\hyperlink{group__rtc_ga9d4850bb2a488644672d43287f160622}{rtc\+\_\+unsubscribe\+\_\+int}} ()
+\item 
+void() \mbox{\hyperlink{group__rtc_ga337eaa2104e733696940db41dde4263a}{activate\+\_\+alarm}} ()
+\item 
+void() \mbox{\hyperlink{group__rtc_gabb02b25ab9dbe9de9272beaf5ae75b03}{deactivate\+\_\+alarm}} ()
+\item 
+void() \mbox{\hyperlink{group__rtc_ga3cda919fc58bfbb8b4d08c54954d8fec}{handle\+\_\+alarm\+\_\+int}} ()
+\item 
+void() \mbox{\hyperlink{group__rtc_ga8a2424069440aea20ffca2393fb01fa0}{read\+Date}} ()
+\item 
+void() \mbox{\hyperlink{group__rtc_ga0f881019601c1c941d997867d66e3a57}{set\+Alarm}} ()
+\item 
+uint8\+\_\+t() \mbox{\hyperlink{group__rtc_ga2453c0f93199c79c8f79760266f8ddfa}{bcd\+\_\+to\+\_\+bin}} (uint8\+\_\+t n)
+\item 
+uint8\+\_\+t() \mbox{\hyperlink{group__rtc_gabab2c09f518c2cbc90775a239287c6a8}{bin\+\_\+to\+\_\+bcd}} (uint8\+\_\+t n)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles R\+TC and has some constants for programming the R\+TC 
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group__rtc_ga3a8ea58898cb58fc96013383d39f482c}\label{group__rtc_ga3a8ea58898cb58fc96013383d39f482c}} 
+\index{rtc@{rtc}!BIT@{BIT}}
+\index{BIT@{BIT}!rtc@{rtc}}
+\doxysubsubsection{\texorpdfstring{BIT}{BIT}}
+{\footnotesize\ttfamily \#define B\+IT(\begin{DoxyParamCaption}\item[{}]{n }\end{DoxyParamCaption})~(1 $<$$<$ (n))}
+
+
+
+Definition at line 10 of file rtc.\+h.
+
+\mbox{\Hypertarget{group__rtc_ga710b98232df2c563009e6f8a6cd18220}\label{group__rtc_ga710b98232df2c563009e6f8a6cd18220}} 
+\index{rtc@{rtc}!RTC\_ADDR\_REG@{RTC\_ADDR\_REG}}
+\index{RTC\_ADDR\_REG@{RTC\_ADDR\_REG}!rtc@{rtc}}
+\doxysubsubsection{\texorpdfstring{RTC\_ADDR\_REG}{RTC\_ADDR\_REG}}
+{\footnotesize\ttfamily \#define R\+T\+C\+\_\+\+A\+D\+D\+R\+\_\+\+R\+EG~0x70}
+
+
+
+Definition at line 12 of file rtc.\+h.
+
+\mbox{\Hypertarget{group__rtc_ga2f258a00c59c3f347c8d2d4a75471ce0}\label{group__rtc_ga2f258a00c59c3f347c8d2d4a75471ce0}} 
+\index{rtc@{rtc}!RTC\_DATA\_REG@{RTC\_DATA\_REG}}
+\index{RTC\_DATA\_REG@{RTC\_DATA\_REG}!rtc@{rtc}}
+\doxysubsubsection{\texorpdfstring{RTC\_DATA\_REG}{RTC\_DATA\_REG}}
+{\footnotesize\ttfamily \#define R\+T\+C\+\_\+\+D\+A\+T\+A\+\_\+\+R\+EG~0x71}
+
+
+
+Definition at line 13 of file rtc.\+h.
+
+\mbox{\Hypertarget{group__rtc_ga4e22feb6ffbc1cda32fadff5c740dc51}\label{group__rtc_ga4e22feb6ffbc1cda32fadff5c740dc51}} 
+\index{rtc@{rtc}!RTC\_IRQ@{RTC\_IRQ}}
+\index{RTC\_IRQ@{RTC\_IRQ}!rtc@{rtc}}
+\doxysubsubsection{\texorpdfstring{RTC\_IRQ}{RTC\_IRQ}}
+{\footnotesize\ttfamily \#define R\+T\+C\+\_\+\+I\+RQ~8}
+
+
+
+Definition at line 14 of file rtc.\+h.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__rtc_ga337eaa2104e733696940db41dde4263a}\label{group__rtc_ga337eaa2104e733696940db41dde4263a}} 
+\index{rtc@{rtc}!activate\_alarm@{activate\_alarm}}
+\index{activate\_alarm@{activate\_alarm}!rtc@{rtc}}
+\doxysubsubsection{\texorpdfstring{activate\_alarm()}{activate\_alarm()}}
+{\footnotesize\ttfamily void() activate\+\_\+alarm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Activates alarm interrupts 
+
+Definition at line 31 of file rtc.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{32 \{}
+\DoxyCodeLine{33     uint8\_t reg;}
+\DoxyCodeLine{34     sys\_outb(\mbox{\hyperlink{group__rtc_ga710b98232df2c563009e6f8a6cd18220}{RTC\_ADDR\_REG}}, 11);}
+\DoxyCodeLine{35     \mbox{\hyperlink{group__util_ga79a031a8611f5b2d6afa4158e92b0fb4}{util\_sys\_inb}}(\mbox{\hyperlink{group__rtc_ga2f258a00c59c3f347c8d2d4a75471ce0}{RTC\_DATA\_REG}}, \&reg);}
+\DoxyCodeLine{36     reg = reg | \mbox{\hyperlink{group__i8042_ga3a8ea58898cb58fc96013383d39f482c}{BIT}}(5);}
+\DoxyCodeLine{37     sys\_outb(\mbox{\hyperlink{group__rtc_ga710b98232df2c563009e6f8a6cd18220}{RTC\_ADDR\_REG}}, 11);}
+\DoxyCodeLine{38     sys\_outb(\mbox{\hyperlink{group__rtc_ga2f258a00c59c3f347c8d2d4a75471ce0}{RTC\_DATA\_REG}}, reg);}
+\DoxyCodeLine{39 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{group__rtc_ga337eaa2104e733696940db41dde4263a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__rtc_ga2453c0f93199c79c8f79760266f8ddfa}\label{group__rtc_ga2453c0f93199c79c8f79760266f8ddfa}} 
+\index{rtc@{rtc}!bcd\_to\_bin@{bcd\_to\_bin}}
+\index{bcd\_to\_bin@{bcd\_to\_bin}!rtc@{rtc}}
+\doxysubsubsection{\texorpdfstring{bcd\_to\_bin()}{bcd\_to\_bin()}}
+{\footnotesize\ttfamily uint8\+\_\+t() bcd\+\_\+to\+\_\+bin (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+Transforms B\+CD number into binary 
+\begin{DoxyParams}{Parameters}
+{\em n} & B\+CD number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Binary number 
+\end{DoxyReturn}
+
+
+Definition at line 56 of file rtc.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{56                                \{}
+\DoxyCodeLine{57     uint8\_t Result = 0;}
+\DoxyCodeLine{58     uint8\_t Multiplier = 1;}
+\DoxyCodeLine{59     uint8\_t Digit = 0;}
+\DoxyCodeLine{60     \textcolor{keywordflow}{while} ( n > 0 )}
+\DoxyCodeLine{61     \{}
+\DoxyCodeLine{62         Digit= n \& 0x0F;}
+\DoxyCodeLine{63         n >>= 4;}
+\DoxyCodeLine{64         Result += Multiplier * Digit;}
+\DoxyCodeLine{65         Multiplier *= 10;}
+\DoxyCodeLine{66     \}}
+\DoxyCodeLine{67     \textcolor{keywordflow}{return} Result;}
+\DoxyCodeLine{68 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{group__rtc_gabab2c09f518c2cbc90775a239287c6a8}\label{group__rtc_gabab2c09f518c2cbc90775a239287c6a8}} 
+\index{rtc@{rtc}!bin\_to\_bcd@{bin\_to\_bcd}}
+\index{bin\_to\_bcd@{bin\_to\_bcd}!rtc@{rtc}}
+\doxysubsubsection{\texorpdfstring{bin\_to\_bcd()}{bin\_to\_bcd()}}
+{\footnotesize\ttfamily uint8\+\_\+t() bin\+\_\+to\+\_\+bcd (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+Transforms binary number into B\+CD 
+\begin{DoxyParams}{Parameters}
+{\em n} & Binary number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+B\+CD number 
+\end{DoxyReturn}
+
+
+Definition at line 70 of file rtc.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{70                                \{}
+\DoxyCodeLine{71     uint8\_t bcd = 0;}
+\DoxyCodeLine{72     \textcolor{keywordtype}{int} shift = 0;}
+\DoxyCodeLine{73     \textcolor{keywordflow}{while} (n>0)\{}
+\DoxyCodeLine{74         bcd |= (n \% 10) << (shift++ << 2);}
+\DoxyCodeLine{75         n /= 10;}
+\DoxyCodeLine{76     \}}
+\DoxyCodeLine{77     \textcolor{keywordflow}{return} bcd;}
+\DoxyCodeLine{78 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{group__rtc_gabb02b25ab9dbe9de9272beaf5ae75b03}\label{group__rtc_gabb02b25ab9dbe9de9272beaf5ae75b03}} 
+\index{rtc@{rtc}!deactivate\_alarm@{deactivate\_alarm}}
+\index{deactivate\_alarm@{deactivate\_alarm}!rtc@{rtc}}
+\doxysubsubsection{\texorpdfstring{deactivate\_alarm()}{deactivate\_alarm()}}
+{\footnotesize\ttfamily void() deactivate\+\_\+alarm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Deactivates alarm interrupts 
+
+Definition at line 41 of file rtc.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{41                          \{}
+\DoxyCodeLine{42     uint8\_t reg;}
+\DoxyCodeLine{43     sys\_outb(\mbox{\hyperlink{group__rtc_ga710b98232df2c563009e6f8a6cd18220}{RTC\_ADDR\_REG}}, 11);}
+\DoxyCodeLine{44     \mbox{\hyperlink{group__util_ga79a031a8611f5b2d6afa4158e92b0fb4}{util\_sys\_inb}}(\mbox{\hyperlink{group__rtc_ga2f258a00c59c3f347c8d2d4a75471ce0}{RTC\_DATA\_REG}}, \&reg);}
+\DoxyCodeLine{45     reg = reg \& 0xDF;}
+\DoxyCodeLine{46     sys\_outb(\mbox{\hyperlink{group__rtc_ga710b98232df2c563009e6f8a6cd18220}{RTC\_ADDR\_REG}}, 11);}
+\DoxyCodeLine{47     sys\_outb(\mbox{\hyperlink{group__rtc_ga2f258a00c59c3f347c8d2d4a75471ce0}{RTC\_DATA\_REG}}, reg);}
+\DoxyCodeLine{48 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{group__rtc_gabb02b25ab9dbe9de9272beaf5ae75b03_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__rtc_ga3cda919fc58bfbb8b4d08c54954d8fec}\label{group__rtc_ga3cda919fc58bfbb8b4d08c54954d8fec}} 
+\index{rtc@{rtc}!handle\_alarm\_int@{handle\_alarm\_int}}
+\index{handle\_alarm\_int@{handle\_alarm\_int}!rtc@{rtc}}
+\doxysubsubsection{\texorpdfstring{handle\_alarm\_int()}{handle\_alarm\_int()}}
+{\footnotesize\ttfamily void() handle\+\_\+alarm\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Handles alarm interrupts from the R\+TC 
+
+Definition at line 50 of file rtc.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{50                          \{}
+\DoxyCodeLine{51     uint8\_t cause;}
+\DoxyCodeLine{52     sys\_outb(\mbox{\hyperlink{group__rtc_ga710b98232df2c563009e6f8a6cd18220}{RTC\_ADDR\_REG}}, 12);}
+\DoxyCodeLine{53     \mbox{\hyperlink{group__util_ga79a031a8611f5b2d6afa4158e92b0fb4}{util\_sys\_inb}}(\mbox{\hyperlink{group__rtc_ga2f258a00c59c3f347c8d2d4a75471ce0}{RTC\_DATA\_REG}}, \&cause);}
+\DoxyCodeLine{54 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{group__rtc_ga3cda919fc58bfbb8b4d08c54954d8fec_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__rtc_ga8a2424069440aea20ffca2393fb01fa0}\label{group__rtc_ga8a2424069440aea20ffca2393fb01fa0}} 
+\index{rtc@{rtc}!readDate@{readDate}}
+\index{readDate@{readDate}!rtc@{rtc}}
+\doxysubsubsection{\texorpdfstring{readDate()}{readDate()}}
+{\footnotesize\ttfamily void() read\+Date (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Reads date and time of day \mbox{\Hypertarget{group__rtc_ga6bbe679f115cec90d36d50eb2aac1b89}\label{group__rtc_ga6bbe679f115cec90d36d50eb2aac1b89}} 
+\index{rtc@{rtc}!rtc\_subscribe\_int@{rtc\_subscribe\_int}}
+\index{rtc\_subscribe\_int@{rtc\_subscribe\_int}!rtc@{rtc}}
+\doxysubsubsection{\texorpdfstring{rtc\_subscribe\_int()}{rtc\_subscribe\_int()}}
+{\footnotesize\ttfamily int() rtc\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{bit\+\_\+no }\end{DoxyParamCaption})}
+
+Subscribes R\+TC interrupts 
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+no} & position of the correspondent bit in interrupt \char`\"{}vector\char`\"{} of message \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on succsess, non-\/zero otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 13 of file rtc.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{15     \mbox{\hyperlink{rtc_8c_a9fc22e6d8203dddf397ca66d65055d1d}{hook\_id\_rtc}} = *bit\_no;}
+\DoxyCodeLine{16     }
+\DoxyCodeLine{17     \textcolor{keywordflow}{if} (sys\_irqsetpolicy(\mbox{\hyperlink{group__rtc_ga4e22feb6ffbc1cda32fadff5c740dc51}{RTC\_IRQ}}, IRQ\_REENABLE, \&\mbox{\hyperlink{rtc_8c_a9fc22e6d8203dddf397ca66d65055d1d}{hook\_id\_rtc}}) != OK)}
+\DoxyCodeLine{18         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{21 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{group__rtc_ga9d4850bb2a488644672d43287f160622}\label{group__rtc_ga9d4850bb2a488644672d43287f160622}} 
+\index{rtc@{rtc}!rtc\_unsubscribe\_int@{rtc\_unsubscribe\_int}}
+\index{rtc\_unsubscribe\_int@{rtc\_unsubscribe\_int}!rtc@{rtc}}
+\doxysubsubsection{\texorpdfstring{rtc\_unsubscribe\_int()}{rtc\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int() rtc\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Unsubscribes R\+TC interrupts \begin{DoxyReturn}{Returns}
+0 on sucsess, non-\/zero otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 23 of file rtc.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{24 \{  }
+\DoxyCodeLine{25     \textcolor{keywordflow}{if} (sys\_irqrmpolicy(\&\mbox{\hyperlink{rtc_8c_a9fc22e6d8203dddf397ca66d65055d1d}{hook\_id\_rtc}}) != OK)}
+\DoxyCodeLine{26         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{27     }
+\DoxyCodeLine{28     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{29 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{group__rtc_ga0f881019601c1c941d997867d66e3a57}\label{group__rtc_ga0f881019601c1c941d997867d66e3a57}} 
+\index{rtc@{rtc}!setAlarm@{setAlarm}}
+\index{setAlarm@{setAlarm}!rtc@{rtc}}
+\doxysubsubsection{\texorpdfstring{setAlarm()}{setAlarm()}}
+{\footnotesize\ttfamily void() set\+Alarm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Sets an alarm 60 seconds from current time 
+
+Definition at line 107 of file rtc.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{107                  \{}
+\DoxyCodeLine{108     uint8\_t day,month,year,hours,minutes,seconds;}
+\DoxyCodeLine{109     uint8\_t res; \textcolor{comment}{//= 0 ??}}
+\DoxyCodeLine{110     \mbox{\hyperlink{rtc_8c_ae1e7cc89b139d45e37b9c50e2949f05c}{readDate}}(\&day, \&month, \&year, \&hours, \&minutes, \&seconds);}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112     seconds += 60;}
+\DoxyCodeLine{113     \textcolor{keywordflow}{if} (seconds >= 60) \{minutes++; seconds -\/= 60;\}}
+\DoxyCodeLine{114     \textcolor{keywordflow}{if} (minutes >= 60) \{hours++; minutes -\/= 60;\}}
+\DoxyCodeLine{115     \textcolor{keywordflow}{if} (hours >= 24) \{hours = 0;\}}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117     sys\_outb(\mbox{\hyperlink{group__rtc_ga710b98232df2c563009e6f8a6cd18220}{RTC\_ADDR\_REG}}, 11);}
+\DoxyCodeLine{118     \mbox{\hyperlink{group__util_ga79a031a8611f5b2d6afa4158e92b0fb4}{util\_sys\_inb}}(\mbox{\hyperlink{group__rtc_ga2f258a00c59c3f347c8d2d4a75471ce0}{RTC\_DATA\_REG}}, \&res);}
+\DoxyCodeLine{119     \textcolor{keywordflow}{if} (!(res \& 0x04))\{}
+\DoxyCodeLine{120         hours = \mbox{\hyperlink{group__rtc_gabab2c09f518c2cbc90775a239287c6a8}{bin\_to\_bcd}}(hours);}
+\DoxyCodeLine{121         minutes = \mbox{\hyperlink{group__rtc_gabab2c09f518c2cbc90775a239287c6a8}{bin\_to\_bcd}}(minutes);}
+\DoxyCodeLine{122         seconds = \mbox{\hyperlink{group__rtc_gabab2c09f518c2cbc90775a239287c6a8}{bin\_to\_bcd}}(seconds);}
+\DoxyCodeLine{123     \}}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125     sys\_outb(\mbox{\hyperlink{group__rtc_ga710b98232df2c563009e6f8a6cd18220}{RTC\_ADDR\_REG}}, 1);}
+\DoxyCodeLine{126     sys\_outb(\mbox{\hyperlink{group__rtc_ga2f258a00c59c3f347c8d2d4a75471ce0}{RTC\_DATA\_REG}}, seconds);}
+\DoxyCodeLine{127     sys\_outb(\mbox{\hyperlink{group__rtc_ga710b98232df2c563009e6f8a6cd18220}{RTC\_ADDR\_REG}}, 3);}
+\DoxyCodeLine{128     sys\_outb(\mbox{\hyperlink{group__rtc_ga2f258a00c59c3f347c8d2d4a75471ce0}{RTC\_DATA\_REG}}, minutes);}
+\DoxyCodeLine{129     sys\_outb(\mbox{\hyperlink{group__rtc_ga710b98232df2c563009e6f8a6cd18220}{RTC\_ADDR\_REG}}, 5);}
+\DoxyCodeLine{130     sys\_outb(\mbox{\hyperlink{group__rtc_ga2f258a00c59c3f347c8d2d4a75471ce0}{RTC\_DATA\_REG}}, hours);}
+\DoxyCodeLine{131 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{group__rtc_ga0f881019601c1c941d997867d66e3a57_cgraph}
+\end{center}
+\end{figure}

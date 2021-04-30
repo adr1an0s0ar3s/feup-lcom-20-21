@@ -1,0 +1,506 @@
+\hypertarget{group__proj}{}\doxysection{proj}
+\label{group__proj}\index{proj@{proj}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{group__proj_ga0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\item 
+static int \mbox{\hyperlink{group__proj_gae630693cc739fd548aba5b3bf320bfed}{print\+\_\+usage}} ()
+\item 
+int() \mbox{\hyperlink{group__proj_gaca8f5874a416ee4d950245f6aceb7f85}{connect\+\_\+four}} ()
+\item 
+int() \mbox{\hyperlink{group__proj_ga2a16f651eccbd248e1ad3b3b924b143b}{proj\+\_\+main\+\_\+loop}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group__proj_ga9d4dd92074be485a308f5e59095676fa}{keys}} \mbox{[}2\mbox{]}
+\item 
+struct packet \mbox{\hyperlink{group__proj_ga26e83eca70c2b9169fbbb0eac7e32e32}{pp}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group__proj_gae41164029686cac80f7f6bd7aa23b153}{player}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main Loop 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__proj_gaca8f5874a416ee4d950245f6aceb7f85}\label{group__proj_gaca8f5874a416ee4d950245f6aceb7f85}} 
+\index{proj@{proj}!connect\_four@{connect\_four}}
+\index{connect\_four@{connect\_four}!proj@{proj}}
+\doxysubsubsection{\texorpdfstring{connect\_four()}{connect\_four()}}
+{\footnotesize\ttfamily int() connect\+\_\+four (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 58 of file proj.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{59 \{}
+\DoxyCodeLine{60   \textcolor{comment}{// Initializing Graphics Mode}}
+\DoxyCodeLine{61   \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__graph_gaa6c1ff5024cd4d15e476bce487584daa}{vg\_init}}(0x115) == NULL) \{}
+\DoxyCodeLine{62     printf(\textcolor{stringliteral}{"{}vg\_init(): Error\(\backslash\)n"{}});}
+\DoxyCodeLine{63     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{64   \}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66   \textcolor{comment}{// Subscriving Timer Interrupts and Configuring Timer}}
+\DoxyCodeLine{67   \mbox{\hyperlink{timer_8c_af2c04fa8e97ffa748fd3f612886a92a7}{timer\_set\_frequency}}(60, 0);}
+\DoxyCodeLine{68   uint8\_t hook\_id\_timer = 0, irq\_set\_timer = \mbox{\hyperlink{group__i8042_ga3a8ea58898cb58fc96013383d39f482c}{BIT}}(hook\_id\_timer);}
+\DoxyCodeLine{69   \textcolor{keywordflow}{if} (\mbox{\hyperlink{timer_8c_ac57a7e1140a7e00ad95ac5488d2a671b}{timer\_subscribe\_int}}(\&hook\_id\_timer) != OK) \{}
+\DoxyCodeLine{70     printf(\textcolor{stringliteral}{"{}timer\_subscribe\_int(): Error\(\backslash\)n"{}});}
+\DoxyCodeLine{71     \textcolor{keywordflow}{return} 2;}
+\DoxyCodeLine{72   \}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74   \textcolor{comment}{// Subscriving Keyboard Interrupts}}
+\DoxyCodeLine{75   uint8\_t \mbox{\hyperlink{keyboard_8c_a302ad6946d3fafa84df3d343d44034a4}{hook\_id\_keyboard}} = 1, irq\_set\_keyboard = \mbox{\hyperlink{group__i8042_ga3a8ea58898cb58fc96013383d39f482c}{BIT}}(\mbox{\hyperlink{keyboard_8c_a302ad6946d3fafa84df3d343d44034a4}{hook\_id\_keyboard}});}
+\DoxyCodeLine{76   \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__keyboard_ga02884ada1971dbade466081413210b18}{kbc\_subscribe\_int}}(\&\mbox{\hyperlink{keyboard_8c_a302ad6946d3fafa84df3d343d44034a4}{hook\_id\_keyboard}}) != OK) \{}
+\DoxyCodeLine{77     printf(\textcolor{stringliteral}{"{}kbc\_subscribe\_int(): Error\(\backslash\)n"{}});}
+\DoxyCodeLine{78     \textcolor{keywordflow}{return} 3;}
+\DoxyCodeLine{79   \}}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81   \textcolor{comment}{// Subscriving Mouse Interrupts and Configuring Mouse}}
+\DoxyCodeLine{82   \mbox{\hyperlink{group__mouse_gabe20128c397b0e728b58316a8e1a6e14}{enable\_data\_reporting}}();}
+\DoxyCodeLine{83   uint8\_t \mbox{\hyperlink{mouse_8c_a0b0da21bbdff62b7b28e9af7ec3d0d76}{hook\_id\_mouse}} = 2, irq\_set\_mouse = \mbox{\hyperlink{group__i8042_ga3a8ea58898cb58fc96013383d39f482c}{BIT}}(\mbox{\hyperlink{mouse_8c_a0b0da21bbdff62b7b28e9af7ec3d0d76}{hook\_id\_mouse}});}
+\DoxyCodeLine{84   \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__mouse_ga20285aed4b3ef45812cd967532dd09db}{mouse\_subscribe\_int}}(\&\mbox{\hyperlink{mouse_8c_a0b0da21bbdff62b7b28e9af7ec3d0d76}{hook\_id\_mouse}}) != OK) \{}
+\DoxyCodeLine{85     printf(\textcolor{stringliteral}{"{}mouse\_subscribe\_int(): Error\(\backslash\)n"{}});}
+\DoxyCodeLine{86     \textcolor{keywordflow}{return} 4;}
+\DoxyCodeLine{87   \}}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89   \textcolor{comment}{// Subscriving RTC Interrupts}}
+\DoxyCodeLine{90   uint8\_t \mbox{\hyperlink{rtc_8c_a9fc22e6d8203dddf397ca66d65055d1d}{hook\_id\_rtc}} = 3, irq\_set\_rtc = \mbox{\hyperlink{group__i8042_ga3a8ea58898cb58fc96013383d39f482c}{BIT}}(\mbox{\hyperlink{rtc_8c_a9fc22e6d8203dddf397ca66d65055d1d}{hook\_id\_rtc}});}
+\DoxyCodeLine{91   \textcolor{comment}{//activate\_alarm();}}
+\DoxyCodeLine{92   \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__rtc_ga6bbe679f115cec90d36d50eb2aac1b89}{rtc\_subscribe\_int}}(\&\mbox{\hyperlink{rtc_8c_a9fc22e6d8203dddf397ca66d65055d1d}{hook\_id\_rtc}}) != OK) \{}
+\DoxyCodeLine{93     printf(\textcolor{stringliteral}{"{}rtc\_subscribe\_int(): Error\(\backslash\)n"{}});}
+\DoxyCodeLine{94     \textcolor{keywordflow}{return} 5;}
+\DoxyCodeLine{95   \}}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97   \textcolor{comment}{// Subscriving Serial Interrupts and Configuring Serial Port}}
+\DoxyCodeLine{98   \mbox{\hyperlink{group__serial_gae3276cfcdeae1e348c0464435bd37ac4}{serial\_config}}();}
+\DoxyCodeLine{99   uint8\_t \mbox{\hyperlink{serial_8c_a6c60f97448c0f94e0a4e4e4693c0cdb8}{hook\_id\_serial}} = 4, irq\_set\_serial = \mbox{\hyperlink{group__i8042_ga3a8ea58898cb58fc96013383d39f482c}{BIT}}(\mbox{\hyperlink{serial_8c_a6c60f97448c0f94e0a4e4e4693c0cdb8}{hook\_id\_serial}});}
+\DoxyCodeLine{100   \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__serial_ga37214d3484d1946556d8a410ab756923}{serial\_subscribe\_int}}(\&\mbox{\hyperlink{serial_8c_a6c60f97448c0f94e0a4e4e4693c0cdb8}{hook\_id\_serial}}) != OK) \{}
+\DoxyCodeLine{101     printf(\textcolor{stringliteral}{"{}serial\_subscribe\_int(): Error\(\backslash\)n"{}});}
+\DoxyCodeLine{102     \textcolor{keywordflow}{return} 6;}
+\DoxyCodeLine{103   \}}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105   \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Game Loop -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107   \textcolor{keywordtype}{int} ipc\_status, r;}
+\DoxyCodeLine{108   message msg;}
+\DoxyCodeLine{109   uint8\_t state = 0, game\_action = 0;}
+\DoxyCodeLine{110   \textcolor{keywordtype}{bool} mouseMoved = \textcolor{keyword}{false}, done = \textcolor{keyword}{false};}
+\DoxyCodeLine{111   \textcolor{keywordtype}{bool} host = \textcolor{keyword}{true}, established\_connection = \textcolor{keyword}{false}, request\_sent = \textcolor{keyword}{false};}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113   \mbox{\hyperlink{group__menu_gabb3e894076aad3bdb8611f780dca9963}{startMenu}}();}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115   \textcolor{keywordflow}{while} (!done)}
+\DoxyCodeLine{116   \{}
+\DoxyCodeLine{117     \textcolor{keywordflow}{if} ( (r = driver\_receive(ANY, \&msg, \&ipc\_status)) != 0 ) \{ }
+\DoxyCodeLine{118         printf(\textcolor{stringliteral}{"{}driver\_receive failed with: \%d"{}}, r);}
+\DoxyCodeLine{119         \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{120     \}}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122     \textcolor{keywordflow}{if} (is\_ipc\_notify(ipc\_status))}
+\DoxyCodeLine{123     \{}
+\DoxyCodeLine{124       \textcolor{keywordflow}{switch} (\_ENDPOINT\_P(msg.m\_source)) \{}
+\DoxyCodeLine{125         \textcolor{keywordflow}{case} HARDWARE:}
+\DoxyCodeLine{126           \textcolor{keywordflow}{if} (msg.m\_notify.interrupts \& irq\_set\_timer)}
+\DoxyCodeLine{127           \{}
+\DoxyCodeLine{128             \textcolor{keywordflow}{if} (state == 0 \&\& mouseMoved)}
+\DoxyCodeLine{129             \{}
+\DoxyCodeLine{130               \textcolor{keywordflow}{switch} (\mbox{\hyperlink{group__menu_ga6e01865e8858a2d5512cbc808026bf93}{showMenu}}(\mbox{\hyperlink{group__proj_ga26e83eca70c2b9169fbbb0eac7e32e32}{pp}}.delta\_x, \mbox{\hyperlink{group__proj_ga26e83eca70c2b9169fbbb0eac7e32e32}{pp}}.delta\_y, \mbox{\hyperlink{group__proj_ga26e83eca70c2b9169fbbb0eac7e32e32}{pp}}.lb))}
+\DoxyCodeLine{131               \{}
+\DoxyCodeLine{132               \textcolor{comment}{// Button 1 Pressed -\/ Initiate Local Game}}
+\DoxyCodeLine{133               \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{134                 \mbox{\hyperlink{group__game_ga49135e750d2b74842130058252e8054f}{initiate\_game}}();}
+\DoxyCodeLine{135                 \mbox{\hyperlink{group__rtc_ga337eaa2104e733696940db41dde4263a}{activate\_alarm}}();}
+\DoxyCodeLine{136                 \mbox{\hyperlink{group__rtc_ga0f881019601c1c941d997867d66e3a57}{setAlarm}}();}
+\DoxyCodeLine{137                 state = 2;}
+\DoxyCodeLine{138                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{139               \textcolor{comment}{// Button 2 Pressed -\/ Initiate Serial Port Game  }}
+\DoxyCodeLine{140               \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{141                 \textcolor{keywordflow}{if} (host) \mbox{\hyperlink{group__menu_gac47d02f17e5585804aea445e86dfb100}{showOnlineWaitingMenu}}();}
+\DoxyCodeLine{142                 state = 1;}
+\DoxyCodeLine{143                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{144               \textcolor{comment}{// Button 3 Pressed -\/ Show Instructions}}
+\DoxyCodeLine{145               \textcolor{keywordflow}{case} 3:}
+\DoxyCodeLine{146                 \mbox{\hyperlink{group__menu_ga8104ddd73f1d496b81ea8499439f8db2}{showInstructionsMenu}}();}
+\DoxyCodeLine{147                 state = 3;}
+\DoxyCodeLine{148                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{149               \textcolor{comment}{// Button 4 Pressed -\/ Exit  }}
+\DoxyCodeLine{150               \textcolor{keywordflow}{case} 4:}
+\DoxyCodeLine{151                 done = \textcolor{keyword}{true};}
+\DoxyCodeLine{152                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{153               \}}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155               mouseMoved = \textcolor{keyword}{false};}
+\DoxyCodeLine{156             \}}
+\DoxyCodeLine{157             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (state == 1)}
+\DoxyCodeLine{158             \{}
+\DoxyCodeLine{159               \textcolor{comment}{// Code 4 is for starting synchronizing PCS via UART, Code 5 is the Confirmation}}
+\DoxyCodeLine{160               \textcolor{keywordflow}{if} (!request\_sent)}
+\DoxyCodeLine{161               \{}
+\DoxyCodeLine{162                 \textcolor{keywordflow}{if} (host) \{}
+\DoxyCodeLine{163                   \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__serial_gaad3e91e4acd0f458e91a9d87325f2fba}{serial\_send}}(\mbox{\hyperlink{group__serial_gaf311d5ae610494901ccf167328a86e54}{SER\_REQUEST}}) == OK)}
+\DoxyCodeLine{164                     request\_sent = \textcolor{keyword}{true};}
+\DoxyCodeLine{165                 \}}
+\DoxyCodeLine{166                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!host)}
+\DoxyCodeLine{167                 \{}
+\DoxyCodeLine{168                   \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__serial_gaad3e91e4acd0f458e91a9d87325f2fba}{serial\_send}}(\mbox{\hyperlink{group__serial_ga58bf378b2edc66fb2bff5a579c31de68}{SER\_CONFIRM}}) == OK)}
+\DoxyCodeLine{169                     request\_sent = \textcolor{keyword}{true};}
+\DoxyCodeLine{170                 \}}
+\DoxyCodeLine{171               \}}
+\DoxyCodeLine{172 }
+\DoxyCodeLine{173               \textcolor{comment}{// If it's not the host, since the Confirmation has already been sent, start the game}}
+\DoxyCodeLine{174               \textcolor{keywordflow}{if} (!host) established\_connection = \textcolor{keyword}{true};}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{176               \textcolor{keywordflow}{if} (established\_connection) \{}
+\DoxyCodeLine{177                 \mbox{\hyperlink{group__game_ga49135e750d2b74842130058252e8054f}{initiate\_game}}();}
+\DoxyCodeLine{178                 state = 2;}
+\DoxyCodeLine{179               \}}
+\DoxyCodeLine{180             \}}
+\DoxyCodeLine{181             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (state == 2)}
+\DoxyCodeLine{182             \{}
+\DoxyCodeLine{183               \textcolor{keywordflow}{switch} (game\_action)}
+\DoxyCodeLine{184               \{}
+\DoxyCodeLine{185               \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{186                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__game_ga725e9dbfc31e2c930bb29461ab1b3923}{column\_select\_animation}}(\textcolor{keyword}{true})) game\_action = 0;}
+\DoxyCodeLine{187                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{188               \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{189                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__game_ga725e9dbfc31e2c930bb29461ab1b3923}{column\_select\_animation}}(\textcolor{keyword}{false})) game\_action = 0;}
+\DoxyCodeLine{190                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{191               \textcolor{keywordflow}{case} 3:}
+\DoxyCodeLine{192                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__game_ga1f95737674e1a7bf4afaf38500d34288}{chip\_falling\_animation}}())}
+\DoxyCodeLine{193                 \{}
+\DoxyCodeLine{194                   \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__game_ga0544ead7bd393f7716e37fd42e818cfa}{checkGameOver}}())}
+\DoxyCodeLine{195                     game\_action = 5;}
+\DoxyCodeLine{196                   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{197                   \{}
+\DoxyCodeLine{198                     \mbox{\hyperlink{group__game_ga60870b0942d4d0e6d5e9516931afe3a3}{nextPlay}}();}
+\DoxyCodeLine{199                     \textcolor{keywordflow}{if} (!established\_connection) \mbox{\hyperlink{group__rtc_ga0f881019601c1c941d997867d66e3a57}{setAlarm}}();}
+\DoxyCodeLine{200                     game\_action = 0;}
+\DoxyCodeLine{201                   \}}
+\DoxyCodeLine{202                 \}}
+\DoxyCodeLine{203                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{204               \textcolor{keywordflow}{case} 4:}
+\DoxyCodeLine{205                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__game_gad01d184b74d7bfeb3948afdfb7ff1b76}{random\_play\_column\_select\_animation}}()) game\_action = 3;}
+\DoxyCodeLine{206                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{207               \textcolor{keywordflow}{case} 5:}
+\DoxyCodeLine{208                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__game_gadb94d7831ebe76074977d7bab82330df}{game\_over}}())}
+\DoxyCodeLine{209                 \{}
+\DoxyCodeLine{210                   \textcolor{keywordflow}{if} (established\_connection) }
+\DoxyCodeLine{211                   \{}
+\DoxyCodeLine{212                     established\_connection = \textcolor{keyword}{false};}
+\DoxyCodeLine{213                     host = \textcolor{keyword}{true};}
+\DoxyCodeLine{214                     request\_sent = \textcolor{keyword}{false};}
+\DoxyCodeLine{215                   \}}
+\DoxyCodeLine{216                   \textcolor{keywordflow}{else} \mbox{\hyperlink{group__rtc_gabb02b25ab9dbe9de9272beaf5ae75b03}{deactivate\_alarm}}();}
+\DoxyCodeLine{217 }
+\DoxyCodeLine{218                   \mbox{\hyperlink{group__menu_gabb3e894076aad3bdb8611f780dca9963}{startMenu}}();}
+\DoxyCodeLine{219                   state = 0;}
+\DoxyCodeLine{220                   game\_action = 0;}
+\DoxyCodeLine{221                 \}}
+\DoxyCodeLine{222                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{223               \}}
+\DoxyCodeLine{224             \}}
+\DoxyCodeLine{225           \}}
+\DoxyCodeLine{226 }
+\DoxyCodeLine{227           \textcolor{keywordflow}{if} (msg.m\_notify.interrupts \& irq\_set\_keyboard)}
+\DoxyCodeLine{228           \{}
+\DoxyCodeLine{229             \textcolor{keywordflow}{if} (state == 0 \&\& \mbox{\hyperlink{group__keyboard_ga1ba896157528456bcc6c82d7856f5eb4}{keyboard\_ih}}() \&\& \mbox{\hyperlink{group__proj_ga9d4dd92074be485a308f5e59095676fa}{keys}}[0] == 1)}
+\DoxyCodeLine{230               done = \textcolor{keyword}{true};}
+\DoxyCodeLine{231             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (state == 1 \&\& \mbox{\hyperlink{group__keyboard_ga1ba896157528456bcc6c82d7856f5eb4}{keyboard\_ih}}() \&\& \mbox{\hyperlink{group__proj_ga9d4dd92074be485a308f5e59095676fa}{keys}}[0] == 1)}
+\DoxyCodeLine{232             \{}
+\DoxyCodeLine{233               \mbox{\hyperlink{group__serial_gaad3e91e4acd0f458e91a9d87325f2fba}{serial\_send}}(\mbox{\hyperlink{group__serial_ga5f2a53ffb730d999e344c1ff10c827e3}{SER\_CANCEL\_REQUEST}});}
+\DoxyCodeLine{234               request\_sent = \textcolor{keyword}{false};}
+\DoxyCodeLine{235               \mbox{\hyperlink{group__menu_gabb3e894076aad3bdb8611f780dca9963}{startMenu}}();}
+\DoxyCodeLine{236               state = 0;}
+\DoxyCodeLine{237             \}}
+\DoxyCodeLine{238             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (state == 2 \&\& \mbox{\hyperlink{group__keyboard_ga1ba896157528456bcc6c82d7856f5eb4}{keyboard\_ih}}())}
+\DoxyCodeLine{239             \{}
+\DoxyCodeLine{240               \textcolor{keywordflow}{if} (game\_action == 0)}
+\DoxyCodeLine{241               \{}
+\DoxyCodeLine{242                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__proj_gae41164029686cac80f7f6bd7aa23b153}{player}} == 1 \&\& (established\_connection ? host : \textcolor{keyword}{true}))}
+\DoxyCodeLine{243                 \{}
+\DoxyCodeLine{244                   \textcolor{comment}{// Enter}}
+\DoxyCodeLine{245                   \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__proj_ga9d4dd92074be485a308f5e59095676fa}{keys}}[0] == 0x1C \&\& \mbox{\hyperlink{group__game_ga889765d2c8cd01573c8e50374a5ad5b7}{validPlay}}())}
+\DoxyCodeLine{246                     game\_action = 3;}
+\DoxyCodeLine{247 }
+\DoxyCodeLine{248                   \textcolor{comment}{// Left Arrow}}
+\DoxyCodeLine{249                   \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__proj_ga9d4dd92074be485a308f5e59095676fa}{keys}}[0] == 0xE0 \&\& \mbox{\hyperlink{group__proj_ga9d4dd92074be485a308f5e59095676fa}{keys}}[1] == 0x4B)}
+\DoxyCodeLine{250                     game\_action = 1;}
+\DoxyCodeLine{251 }
+\DoxyCodeLine{252                   \textcolor{comment}{// Right Arrow}}
+\DoxyCodeLine{253                   \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__proj_ga9d4dd92074be485a308f5e59095676fa}{keys}}[0] == 0xE0 \&\& \mbox{\hyperlink{group__proj_ga9d4dd92074be485a308f5e59095676fa}{keys}}[1] == 0x4D)}
+\DoxyCodeLine{254                     game\_action = 2;}
+\DoxyCodeLine{255                 \}}
+\DoxyCodeLine{256 }
+\DoxyCodeLine{257                 \textcolor{comment}{// Space for player two to play if middle button is non-\/existant}}
+\DoxyCodeLine{258                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__proj_gae41164029686cac80f7f6bd7aa23b153}{player}} == 2 \&\& \mbox{\hyperlink{group__proj_ga9d4dd92074be485a308f5e59095676fa}{keys}}[0] == 0x39 \&\& \mbox{\hyperlink{group__game_ga889765d2c8cd01573c8e50374a5ad5b7}{validPlay}}() \&\& (established\_connection ? !host : \textcolor{keyword}{true}))}
+\DoxyCodeLine{259                   game\_action = 3;}
+\DoxyCodeLine{260 }
+\DoxyCodeLine{261                 \textcolor{keywordflow}{if} (!established\_connection \&\& game\_action != 0) \mbox{\hyperlink{group__rtc_ga0f881019601c1c941d997867d66e3a57}{setAlarm}}();}
+\DoxyCodeLine{262 }
+\DoxyCodeLine{263                 \textcolor{keywordflow}{if} (established\_connection \&\& game\_action != 0) \{printf(\textcolor{stringliteral}{"{}Game\_Action: \%d\(\backslash\)n"{}}, game\_action); \mbox{\hyperlink{group__serial_gaad3e91e4acd0f458e91a9d87325f2fba}{serial\_send}}(game\_action);\}}
+\DoxyCodeLine{264               \}}
+\DoxyCodeLine{265 }
+\DoxyCodeLine{266               \textcolor{comment}{// ESC Key}}
+\DoxyCodeLine{267               \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__proj_ga9d4dd92074be485a308f5e59095676fa}{keys}}[0] == 1)}
+\DoxyCodeLine{268               \{}
+\DoxyCodeLine{269                 \textcolor{keywordflow}{if} (established\_connection)}
+\DoxyCodeLine{270                 \{}
+\DoxyCodeLine{271                   \mbox{\hyperlink{group__serial_gaad3e91e4acd0f458e91a9d87325f2fba}{serial\_send}}(\mbox{\hyperlink{group__serial_gab149ab40f18fbaa6012dc7b6db4191bc}{SER\_EXIT}});}
+\DoxyCodeLine{272                   established\_connection = \textcolor{keyword}{false};}
+\DoxyCodeLine{273                   host = \textcolor{keyword}{true};}
+\DoxyCodeLine{274                   request\_sent = \textcolor{keyword}{false};}
+\DoxyCodeLine{275                 \}}
+\DoxyCodeLine{276                 \textcolor{keywordflow}{else} \mbox{\hyperlink{group__rtc_gabb02b25ab9dbe9de9272beaf5ae75b03}{deactivate\_alarm}}();}
+\DoxyCodeLine{277                 \mbox{\hyperlink{group__menu_gabb3e894076aad3bdb8611f780dca9963}{startMenu}}();}
+\DoxyCodeLine{278                 state = 0;}
+\DoxyCodeLine{279               \}}
+\DoxyCodeLine{280             \}}
+\DoxyCodeLine{281             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (state == 3 \&\& \mbox{\hyperlink{group__keyboard_ga1ba896157528456bcc6c82d7856f5eb4}{keyboard\_ih}}() \&\& \mbox{\hyperlink{group__proj_ga9d4dd92074be485a308f5e59095676fa}{keys}}[0] == 1)}
+\DoxyCodeLine{282             \{}
+\DoxyCodeLine{283               \mbox{\hyperlink{group__menu_gabb3e894076aad3bdb8611f780dca9963}{startMenu}}();}
+\DoxyCodeLine{284               state = 0;}
+\DoxyCodeLine{285             \}}
+\DoxyCodeLine{286           \}}
+\DoxyCodeLine{287 }
+\DoxyCodeLine{288           \textcolor{keywordflow}{if} (msg.m\_notify.interrupts \& irq\_set\_mouse)}
+\DoxyCodeLine{289           \{}
+\DoxyCodeLine{290             \textcolor{keywordflow}{if} (state == 0 \&\& \mbox{\hyperlink{group__mouse_ga310254edf59d5de2a8df1b2888cc7431}{mouse\_interrupt\_handler}}())}
+\DoxyCodeLine{291               mouseMoved = \textcolor{keyword}{true};}
+\DoxyCodeLine{292             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (state == 1)}
+\DoxyCodeLine{293               \mbox{\hyperlink{group__mouse_ga310254edf59d5de2a8df1b2888cc7431}{mouse\_interrupt\_handler}}();}
+\DoxyCodeLine{294             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (state == 2 \&\& \mbox{\hyperlink{group__mouse_ga310254edf59d5de2a8df1b2888cc7431}{mouse\_interrupt\_handler}}() \&\& \mbox{\hyperlink{group__proj_gae41164029686cac80f7f6bd7aa23b153}{player}} == 2 \&\& game\_action == 0 \&\& (established\_connection ? !host : \textcolor{keyword}{true}))}
+\DoxyCodeLine{295             \{}
+\DoxyCodeLine{296               \textcolor{comment}{// Left Button}}
+\DoxyCodeLine{297               \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__proj_ga26e83eca70c2b9169fbbb0eac7e32e32}{pp}}.lb)}
+\DoxyCodeLine{298                 game\_action = 1;}
+\DoxyCodeLine{299 }
+\DoxyCodeLine{300               \textcolor{comment}{// Right Button}}
+\DoxyCodeLine{301               \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__proj_ga26e83eca70c2b9169fbbb0eac7e32e32}{pp}}.rb)}
+\DoxyCodeLine{302                 game\_action = 2;}
+\DoxyCodeLine{303 }
+\DoxyCodeLine{304               \textcolor{comment}{// Middle Button}}
+\DoxyCodeLine{305               \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__proj_ga26e83eca70c2b9169fbbb0eac7e32e32}{pp}}.mb \&\& \mbox{\hyperlink{group__game_ga889765d2c8cd01573c8e50374a5ad5b7}{validPlay}}())}
+\DoxyCodeLine{306                 game\_action = 3;}
+\DoxyCodeLine{307 }
+\DoxyCodeLine{308               \textcolor{keywordflow}{if} (!established\_connection \&\& game\_action != 0) \mbox{\hyperlink{group__rtc_ga0f881019601c1c941d997867d66e3a57}{setAlarm}}();}
+\DoxyCodeLine{309 }
+\DoxyCodeLine{310               \textcolor{keywordflow}{if} (established\_connection \&\& game\_action != 0) \mbox{\hyperlink{group__serial_gaad3e91e4acd0f458e91a9d87325f2fba}{serial\_send}}(game\_action);  }
+\DoxyCodeLine{311             \}}
+\DoxyCodeLine{312             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (state == 3)}
+\DoxyCodeLine{313               \mbox{\hyperlink{group__mouse_ga310254edf59d5de2a8df1b2888cc7431}{mouse\_interrupt\_handler}}();}
+\DoxyCodeLine{314           \}}
+\DoxyCodeLine{315 }
+\DoxyCodeLine{316           \textcolor{keywordflow}{if} (msg.m\_notify.interrupts \& irq\_set\_rtc)}
+\DoxyCodeLine{317           \{}
+\DoxyCodeLine{318             \mbox{\hyperlink{group__rtc_ga3cda919fc58bfbb8b4d08c54954d8fec}{handle\_alarm\_int}}();}
+\DoxyCodeLine{319             \mbox{\hyperlink{group__game_ga38556949d71e8da559e7754be8db57e1}{randomPlay}}();}
+\DoxyCodeLine{320             game\_action = 4;}
+\DoxyCodeLine{321           \}}
+\DoxyCodeLine{322 }
+\DoxyCodeLine{323           \textcolor{keywordflow}{if} (msg.m\_notify.interrupts \& irq\_set\_serial)}
+\DoxyCodeLine{324           \{}
+\DoxyCodeLine{325             \textcolor{keywordtype}{int} data = \mbox{\hyperlink{group__serial_gae0fe040b0f68ce53058ee5d71e8c839a}{serial\_ih}}();}
+\DoxyCodeLine{326 }
+\DoxyCodeLine{327             \textcolor{keywordflow}{switch} (data)}
+\DoxyCodeLine{328             \{}
+\DoxyCodeLine{329             \textcolor{keywordflow}{case} \mbox{\hyperlink{group__serial_ga4432a8b7968dd02bd9737effc3a5d785}{SER\_ERR}}:}
+\DoxyCodeLine{330               \textcolor{keywordflow}{return} 11;}
+\DoxyCodeLine{331               \textcolor{keywordflow}{break};}
+\DoxyCodeLine{332             \textcolor{keywordflow}{case} \mbox{\hyperlink{group__serial_gaf311d5ae610494901ccf167328a86e54}{SER\_REQUEST}}:}
+\DoxyCodeLine{333               host = \textcolor{keyword}{false};}
+\DoxyCodeLine{334               \textcolor{keywordflow}{break};}
+\DoxyCodeLine{335             \textcolor{keywordflow}{case} \mbox{\hyperlink{group__serial_ga58bf378b2edc66fb2bff5a579c31de68}{SER\_CONFIRM}}:}
+\DoxyCodeLine{336               established\_connection = \textcolor{keyword}{true};}
+\DoxyCodeLine{337             \textcolor{keywordflow}{case} \mbox{\hyperlink{group__serial_ga7828169194de03d2e2cd9d1b15d3ea78}{SER\_THR\_EMPTY}}:}
+\DoxyCodeLine{338               \textcolor{keywordflow}{break};}
+\DoxyCodeLine{339             \textcolor{keywordflow}{case} \mbox{\hyperlink{group__serial_ga5f2a53ffb730d999e344c1ff10c827e3}{SER\_CANCEL\_REQUEST}}:}
+\DoxyCodeLine{340               host = \textcolor{keyword}{true};}
+\DoxyCodeLine{341               \textcolor{keywordflow}{break};}
+\DoxyCodeLine{342             \textcolor{keywordflow}{case} \mbox{\hyperlink{group__serial_gab149ab40f18fbaa6012dc7b6db4191bc}{SER\_EXIT}}:}
+\DoxyCodeLine{343               established\_connection = \textcolor{keyword}{false};}
+\DoxyCodeLine{344               host = \textcolor{keyword}{true};}
+\DoxyCodeLine{345               request\_sent = \textcolor{keyword}{false};}
+\DoxyCodeLine{346               \mbox{\hyperlink{group__menu_gabb3e894076aad3bdb8611f780dca9963}{startMenu}}();}
+\DoxyCodeLine{347               state = 0;}
+\DoxyCodeLine{348               \textcolor{keywordflow}{break};}
+\DoxyCodeLine{349             \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{350               game\_action = data;}
+\DoxyCodeLine{351               \textcolor{keywordflow}{break};}
+\DoxyCodeLine{352             \}}
+\DoxyCodeLine{353 }
+\DoxyCodeLine{354             printf(\textcolor{stringliteral}{"{}\%d\(\backslash\)n"{}}, data);}
+\DoxyCodeLine{355           \}}
+\DoxyCodeLine{356 }
+\DoxyCodeLine{357           \textcolor{keywordflow}{break};}
+\DoxyCodeLine{358       \} }
+\DoxyCodeLine{359     \}}
+\DoxyCodeLine{360   \}}
+\DoxyCodeLine{361 }
+\DoxyCodeLine{362   \textcolor{comment}{// Unsuscribing Timer Interrupts}}
+\DoxyCodeLine{363   \textcolor{keywordflow}{if} (\mbox{\hyperlink{timer_8c_afabd21de449be154dd65d5fdb2d8045d}{timer\_unsubscribe\_int}}() != OK) \{}
+\DoxyCodeLine{364     printf(\textcolor{stringliteral}{"{}timer\_unsubsribe\_int(): Error\(\backslash\)n"{}});}
+\DoxyCodeLine{365     \textcolor{keywordflow}{return} 7;}
+\DoxyCodeLine{366   \}}
+\DoxyCodeLine{367 }
+\DoxyCodeLine{368   \textcolor{comment}{// Unsuscribing Keyboard Interrupts}}
+\DoxyCodeLine{369   \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__keyboard_ga1102381e6a9e876e05dd78c58ccb5673}{kbc\_unsubscribe\_int}}() != OK) \{}
+\DoxyCodeLine{370     printf(\textcolor{stringliteral}{"{}kbc\_unsubsribe\_int(): Error\(\backslash\)n"{}});}
+\DoxyCodeLine{371     \textcolor{keywordflow}{return} 8;}
+\DoxyCodeLine{372   \}}
+\DoxyCodeLine{373 }
+\DoxyCodeLine{374   \textcolor{comment}{// Unsuscribing Mouse Interrupts}}
+\DoxyCodeLine{375   \mbox{\hyperlink{group__mouse_ga213d5f0c93d25fe21ae6ee3ba7b50a15}{disable\_data\_reporting}}();}
+\DoxyCodeLine{376   \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__mouse_ga3ecf823d80520009ae5e0d76ae40a3c3}{mouse\_unsubscribe\_int}}() != OK) \{}
+\DoxyCodeLine{377     printf(\textcolor{stringliteral}{"{}mouse\_unsubsribe\_int(): Error\(\backslash\)n"{}});}
+\DoxyCodeLine{378     \textcolor{keywordflow}{return} 9;}
+\DoxyCodeLine{379   \}}
+\DoxyCodeLine{380 }
+\DoxyCodeLine{381   \textcolor{comment}{//Unsubscribing RTC Interrupts}}
+\DoxyCodeLine{382   \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__rtc_ga9d4850bb2a488644672d43287f160622}{rtc\_unsubscribe\_int}}() != OK) \{}
+\DoxyCodeLine{383     printf(\textcolor{stringliteral}{"{}rtc\_unsubsribe\_int(): Error\(\backslash\)n"{}});}
+\DoxyCodeLine{384     \textcolor{keywordflow}{return} 10;}
+\DoxyCodeLine{385   \}}
+\DoxyCodeLine{386 }
+\DoxyCodeLine{387   \textcolor{comment}{// Unsuscribing Serial Interrupts}}
+\DoxyCodeLine{388   \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__serial_ga130f1f14b0ff5a864f85323b351c7658}{serial\_unsubscribe\_int}}() != OK) \{}
+\DoxyCodeLine{389     printf(\textcolor{stringliteral}{"{}serial\_unsubsribe\_int(): Error\(\backslash\)n"{}});}
+\DoxyCodeLine{390     \textcolor{keywordflow}{return} 11;}
+\DoxyCodeLine{391   \}}
+\DoxyCodeLine{392   }
+\DoxyCodeLine{393   \textcolor{comment}{// Disabling Video Mode}}
+\DoxyCodeLine{394   \textcolor{keywordflow}{if} (vg\_exit() != OK) \{}
+\DoxyCodeLine{395     printf(\textcolor{stringliteral}{"{}vg\_exit(): Error\(\backslash\)n"{}});}
+\DoxyCodeLine{396     \textcolor{keywordflow}{return} 12;}
+\DoxyCodeLine{397   \}}
+\DoxyCodeLine{398 }
+\DoxyCodeLine{399   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{400 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{group__proj_gaca8f5874a416ee4d950245f6aceb7f85_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__proj_ga0ddf1224851353fc92bfbff6f499fa97}\label{group__proj_ga0ddf1224851353fc92bfbff6f499fa97}} 
+\index{proj@{proj}!main@{main}}
+\index{main@{main}!proj@{proj}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 29 of file proj.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29                                  \{}
+\DoxyCodeLine{30   \textcolor{comment}{// sets the language of LCF messages (can be either EN-\/US or PT-\/PT)}}
+\DoxyCodeLine{31   lcf\_set\_language(\textcolor{stringliteral}{"{}EN-\/US"{}});}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33   \textcolor{comment}{// enables to log function invocations that are being "{}wrapped"{} by LCF}}
+\DoxyCodeLine{34   \textcolor{comment}{// [comment this out if you don't want/need it]}}
+\DoxyCodeLine{35   lcf\_trace\_calls(\textcolor{stringliteral}{"{}/home/lcom/labs/proj/trace.txt"{}});}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37   \textcolor{comment}{// enables to save the output of printf function calls on a file}}
+\DoxyCodeLine{38   \textcolor{comment}{// [comment this out if you don't want/need it]}}
+\DoxyCodeLine{39   lcf\_log\_output(\textcolor{stringliteral}{"{}/home/lcom/labs/proj/output.txt"{}});}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41   \textcolor{comment}{// handles control over to LCF}}
+\DoxyCodeLine{42   \textcolor{comment}{// [LCF handles command line arguments and invokes the right function]}}
+\DoxyCodeLine{43   \textcolor{keywordflow}{if} (lcf\_start(argc, argv))}
+\DoxyCodeLine{44     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46   \textcolor{comment}{// LCF clean up tasks}}
+\DoxyCodeLine{47   \textcolor{comment}{// [must be the last statement before return]}}
+\DoxyCodeLine{48   lcf\_cleanup();}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{51 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{group__proj_gae630693cc739fd548aba5b3bf320bfed}\label{group__proj_gae630693cc739fd548aba5b3bf320bfed}} 
+\index{proj@{proj}!print\_usage@{print\_usage}}
+\index{print\_usage@{print\_usage}!proj@{proj}}
+\doxysubsubsection{\texorpdfstring{print\_usage()}{print\_usage()}}
+{\footnotesize\ttfamily static int print\+\_\+usage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 53 of file proj.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{53                          \{}
+\DoxyCodeLine{54   printf(\textcolor{stringliteral}{"{}Usage: Absolutely Nothing\(\backslash\)n"{}});}
+\DoxyCodeLine{55   \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{56 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{group__proj_ga2a16f651eccbd248e1ad3b3b924b143b}\label{group__proj_ga2a16f651eccbd248e1ad3b3b924b143b}} 
+\index{proj@{proj}!proj\_main\_loop@{proj\_main\_loop}}
+\index{proj\_main\_loop@{proj\_main\_loop}!proj@{proj}}
+\doxysubsubsection{\texorpdfstring{proj\_main\_loop()}{proj\_main\_loop()}}
+{\footnotesize\ttfamily int() proj\+\_\+main\+\_\+loop (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 402 of file proj.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{403 \{}
+\DoxyCodeLine{404   \textcolor{keywordflow}{if} (argc != 0)}
+\DoxyCodeLine{405     \textcolor{keywordflow}{return} \mbox{\hyperlink{group__proj_gae630693cc739fd548aba5b3bf320bfed}{print\_usage}}();}
+\DoxyCodeLine{406 }
+\DoxyCodeLine{407   \textcolor{keywordflow}{return} \mbox{\hyperlink{group__proj_gaca8f5874a416ee4d950245f6aceb7f85}{connect\_four}}();}
+\DoxyCodeLine{408 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{group__proj_ga2a16f651eccbd248e1ad3b3b924b143b_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{group__proj_ga9d4dd92074be485a308f5e59095676fa}\label{group__proj_ga9d4dd92074be485a308f5e59095676fa}} 
+\index{proj@{proj}!keys@{keys}}
+\index{keys@{keys}!proj@{proj}}
+\doxysubsubsection{\texorpdfstring{keys}{keys}}
+{\footnotesize\ttfamily uint8\+\_\+t keys\mbox{[}2\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line 12 of file keyboard.\+c.
+
+\mbox{\Hypertarget{group__proj_gae41164029686cac80f7f6bd7aa23b153}\label{group__proj_gae41164029686cac80f7f6bd7aa23b153}} 
+\index{proj@{proj}!player@{player}}
+\index{player@{player}!proj@{proj}}
+\doxysubsubsection{\texorpdfstring{player}{player}}
+{\footnotesize\ttfamily uint8\+\_\+t player\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line 48 of file game.\+c.
+
+\mbox{\Hypertarget{group__proj_ga26e83eca70c2b9169fbbb0eac7e32e32}\label{group__proj_ga26e83eca70c2b9169fbbb0eac7e32e32}} 
+\index{proj@{proj}!pp@{pp}}
+\index{pp@{pp}!proj@{proj}}
+\doxysubsubsection{\texorpdfstring{pp}{pp}}
+{\footnotesize\ttfamily struct packet pp\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line 1 of file mouse.\+c.
+

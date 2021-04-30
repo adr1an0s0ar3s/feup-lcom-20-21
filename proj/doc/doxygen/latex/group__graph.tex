@@ -1,0 +1,385 @@
+\hypertarget{group__graph}{}\doxysection{graph}
+\label{group__graph}\index{graph@{graph}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__graph_ga1a522aa19bcb695a9df30032a893bee3}{D\+E\+L\+A\+Y\+\_\+\+US}}~20000
+\item 
+\#define \mbox{\hyperlink{group__graph_ga30bf84c312af248cb81bb224e09f9ba8}{T\+I\+M\+E\+R0\+\_\+\+I\+RQ}}~0
+\item 
+\#define \mbox{\hyperlink{group__graph_ga16c5827f043d82f87c726c2d4369c11d}{K\+B\+C\+\_\+\+I\+RQ}}~1
+\item 
+\#define \mbox{\hyperlink{group__graph_ga0615d1ead5f06ae8445d2a8be8364636}{K\+B\+C\+\_\+\+S\+T\+A\+T\+US}}~0x64
+\item 
+\#define \mbox{\hyperlink{group__graph_ga1ccde68b2b6d4e45b50eef1403e10bb7}{K\+B\+C\+\_\+\+O\+U\+T\+\_\+\+B\+UF}}~0x60
+\item 
+\#define \mbox{\hyperlink{group__graph_gaea2ef6dda1aabebf291eeee29b66c04a}{K\+B\+C\+\_\+\+P\+A\+R\+\_\+\+E\+RR}}~\mbox{\hyperlink{group__rtc_ga3a8ea58898cb58fc96013383d39f482c}{B\+IT}}(7)
+\item 
+\#define \mbox{\hyperlink{group__graph_gae31c3653f5881b02cbfdd4ccbb7ccf50}{K\+B\+C\+\_\+\+T\+O\+\_\+\+E\+RR}}~\mbox{\hyperlink{group__rtc_ga3a8ea58898cb58fc96013383d39f482c}{B\+IT}}(6)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{group__graph_ga270cebf5612b0408b5103d5c98fdc7c6}{set\+\_\+vbe\+\_\+mode}} (uint16\+\_\+t mode)
+\item 
+void $\ast$() \mbox{\hyperlink{group__graph_gaa6c1ff5024cd4d15e476bce487584daa}{vg\+\_\+init}} (uint16\+\_\+t mode)
+\item 
+int() \mbox{\hyperlink{group__graph_ga25df193eebe4bece3620d39ab2300b78}{draw\+\_\+xpm}} (uint8\+\_\+t $\ast$map, xpm\+\_\+image\+\_\+t img, uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int() \mbox{\hyperlink{group__graph_gaeec463a816be71ccadfd9a781146e9f2}{draw\+\_\+part\+\_\+of\+\_\+xpm}} (uint8\+\_\+t $\ast$map, xpm\+\_\+image\+\_\+t img, uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t part\+\_\+x, uint16\+\_\+t part\+\_\+y, uint16\+\_\+t width, uint16\+\_\+t height)
+\item 
+int() \mbox{\hyperlink{group__graph_gab6e109de42be21e5b87146264ba361a0}{get\+\_\+mode\+\_\+info}} (uint16\+\_\+t mode, vbe\+\_\+mode\+\_\+info\+\_\+t $\ast$\mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\+\_\+p}})
+\item 
+int() \mbox{\hyperlink{group__graph_ga9586fab72d125423fd0ff56cbb3d35a3}{display\+\_\+frame}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles Graphics Card and has some constants for programming the Graphics Card 
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group__graph_ga1a522aa19bcb695a9df30032a893bee3}\label{group__graph_ga1a522aa19bcb695a9df30032a893bee3}} 
+\index{graph@{graph}!DELAY\_US@{DELAY\_US}}
+\index{DELAY\_US@{DELAY\_US}!graph@{graph}}
+\doxysubsubsection{\texorpdfstring{DELAY\_US}{DELAY\_US}}
+{\footnotesize\ttfamily \#define D\+E\+L\+A\+Y\+\_\+\+US~20000}
+
+
+
+Definition at line 10 of file graph.\+h.
+
+\mbox{\Hypertarget{group__graph_ga16c5827f043d82f87c726c2d4369c11d}\label{group__graph_ga16c5827f043d82f87c726c2d4369c11d}} 
+\index{graph@{graph}!KBC\_IRQ@{KBC\_IRQ}}
+\index{KBC\_IRQ@{KBC\_IRQ}!graph@{graph}}
+\doxysubsubsection{\texorpdfstring{KBC\_IRQ}{KBC\_IRQ}}
+{\footnotesize\ttfamily \#define K\+B\+C\+\_\+\+I\+RQ~1}
+
+
+
+Definition at line 12 of file graph.\+h.
+
+\mbox{\Hypertarget{group__graph_ga1ccde68b2b6d4e45b50eef1403e10bb7}\label{group__graph_ga1ccde68b2b6d4e45b50eef1403e10bb7}} 
+\index{graph@{graph}!KBC\_OUT\_BUF@{KBC\_OUT\_BUF}}
+\index{KBC\_OUT\_BUF@{KBC\_OUT\_BUF}!graph@{graph}}
+\doxysubsubsection{\texorpdfstring{KBC\_OUT\_BUF}{KBC\_OUT\_BUF}}
+{\footnotesize\ttfamily \#define K\+B\+C\+\_\+\+O\+U\+T\+\_\+\+B\+UF~0x60}
+
+
+
+Definition at line 14 of file graph.\+h.
+
+\mbox{\Hypertarget{group__graph_gaea2ef6dda1aabebf291eeee29b66c04a}\label{group__graph_gaea2ef6dda1aabebf291eeee29b66c04a}} 
+\index{graph@{graph}!KBC\_PAR\_ERR@{KBC\_PAR\_ERR}}
+\index{KBC\_PAR\_ERR@{KBC\_PAR\_ERR}!graph@{graph}}
+\doxysubsubsection{\texorpdfstring{KBC\_PAR\_ERR}{KBC\_PAR\_ERR}}
+{\footnotesize\ttfamily \#define K\+B\+C\+\_\+\+P\+A\+R\+\_\+\+E\+RR~\mbox{\hyperlink{group__rtc_ga3a8ea58898cb58fc96013383d39f482c}{B\+IT}}(7)}
+
+
+
+Definition at line 15 of file graph.\+h.
+
+\mbox{\Hypertarget{group__graph_ga0615d1ead5f06ae8445d2a8be8364636}\label{group__graph_ga0615d1ead5f06ae8445d2a8be8364636}} 
+\index{graph@{graph}!KBC\_STATUS@{KBC\_STATUS}}
+\index{KBC\_STATUS@{KBC\_STATUS}!graph@{graph}}
+\doxysubsubsection{\texorpdfstring{KBC\_STATUS}{KBC\_STATUS}}
+{\footnotesize\ttfamily \#define K\+B\+C\+\_\+\+S\+T\+A\+T\+US~0x64}
+
+
+
+Definition at line 13 of file graph.\+h.
+
+\mbox{\Hypertarget{group__graph_gae31c3653f5881b02cbfdd4ccbb7ccf50}\label{group__graph_gae31c3653f5881b02cbfdd4ccbb7ccf50}} 
+\index{graph@{graph}!KBC\_TO\_ERR@{KBC\_TO\_ERR}}
+\index{KBC\_TO\_ERR@{KBC\_TO\_ERR}!graph@{graph}}
+\doxysubsubsection{\texorpdfstring{KBC\_TO\_ERR}{KBC\_TO\_ERR}}
+{\footnotesize\ttfamily \#define K\+B\+C\+\_\+\+T\+O\+\_\+\+E\+RR~\mbox{\hyperlink{group__rtc_ga3a8ea58898cb58fc96013383d39f482c}{B\+IT}}(6)}
+
+
+
+Definition at line 16 of file graph.\+h.
+
+\mbox{\Hypertarget{group__graph_ga30bf84c312af248cb81bb224e09f9ba8}\label{group__graph_ga30bf84c312af248cb81bb224e09f9ba8}} 
+\index{graph@{graph}!TIMER0\_IRQ@{TIMER0\_IRQ}}
+\index{TIMER0\_IRQ@{TIMER0\_IRQ}!graph@{graph}}
+\doxysubsubsection{\texorpdfstring{TIMER0\_IRQ}{TIMER0\_IRQ}}
+{\footnotesize\ttfamily \#define T\+I\+M\+E\+R0\+\_\+\+I\+RQ~0}
+
+
+
+Definition at line 11 of file graph.\+h.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__graph_ga9586fab72d125423fd0ff56cbb3d35a3}\label{group__graph_ga9586fab72d125423fd0ff56cbb3d35a3}} 
+\index{graph@{graph}!display\_frame@{display\_frame}}
+\index{display\_frame@{display\_frame}!graph@{graph}}
+\doxysubsubsection{\texorpdfstring{display\_frame()}{display\_frame()}}
+{\footnotesize\ttfamily int() display\+\_\+frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Displays a frame by changing video\+\_\+mem to buffer and vice-\/versa (page flipping) \begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 89 of file graph.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{90 \{}
+\DoxyCodeLine{91     reg86\_t r;}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93     memset(\&r, 0, \textcolor{keyword}{sizeof}(r));}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95     r.ax = 0x4F07;}
+\DoxyCodeLine{96     r.bh = 0x00;}
+\DoxyCodeLine{97     r.bl = 0x00;}
+\DoxyCodeLine{98     r.cx = 0;}
+\DoxyCodeLine{99     r.dx = \mbox{\hyperlink{graph_8c_a3a50ee43d70b7a4522d74ef8ae4cf55c}{line}};}
+\DoxyCodeLine{100     r.intno = 0x10;}
+\DoxyCodeLine{101     }
+\DoxyCodeLine{102     \textcolor{keywordflow}{if} (sys\_int86(\&r) != OK) \{}
+\DoxyCodeLine{103         printf(\textcolor{stringliteral}{"{}display\_frame(): sys\_int86() failed \(\backslash\)n"{}});}
+\DoxyCodeLine{104         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{105     \}}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107     \textcolor{keywordflow}{if} (\mbox{\hyperlink{graph_8c_a3a50ee43d70b7a4522d74ef8ae4cf55c}{line}} == 0) \mbox{\hyperlink{graph_8c_a3a50ee43d70b7a4522d74ef8ae4cf55c}{line}} = \mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.YResolution; \textcolor{keywordflow}{else} \mbox{\hyperlink{graph_8c_a3a50ee43d70b7a4522d74ef8ae4cf55c}{line}} = 0;}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109     \textcolor{keywordtype}{char} *temp = \mbox{\hyperlink{graph_8c_aff2566f4c366b48d73479bef43ee4d2e}{buffer}};}
+\DoxyCodeLine{110     \mbox{\hyperlink{graph_8c_aff2566f4c366b48d73479bef43ee4d2e}{buffer}} = \mbox{\hyperlink{graph_8c_a93a24e067b9083bed6fb5c0336fd7a01}{video\_mem}};}
+\DoxyCodeLine{111     \mbox{\hyperlink{graph_8c_a93a24e067b9083bed6fb5c0336fd7a01}{video\_mem}} = temp;}
+\DoxyCodeLine{112     }
+\DoxyCodeLine{113     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{114 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{group__graph_gaeec463a816be71ccadfd9a781146e9f2}\label{group__graph_gaeec463a816be71ccadfd9a781146e9f2}} 
+\index{graph@{graph}!draw\_part\_of\_xpm@{draw\_part\_of\_xpm}}
+\index{draw\_part\_of\_xpm@{draw\_part\_of\_xpm}!graph@{graph}}
+\doxysubsubsection{\texorpdfstring{draw\_part\_of\_xpm()}{draw\_part\_of\_xpm()}}
+{\footnotesize\ttfamily int() draw\+\_\+part\+\_\+of\+\_\+xpm (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{map,  }\item[{xpm\+\_\+image\+\_\+t}]{img,  }\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{part\+\_\+x,  }\item[{uint16\+\_\+t}]{part\+\_\+y,  }\item[{uint16\+\_\+t}]{width,  }\item[{uint16\+\_\+t}]{height }\end{DoxyParamCaption})}
+
+Draws part of given X\+PM, from specified coordinates onwards 
+\begin{DoxyParams}{Parameters}
+{\em map} & the array of hexadecimal colors to be drawn \\
+\hline
+{\em img} & Image specifications \\
+\hline
+{\em x} & horizontal coordinate of the initial point \\
+\hline
+{\em y} & vertical coordinate of the initial point \\
+\hline
+{\em part\+\_\+x} & horizontal coordinate to the part of the image that we want to draw \\
+\hline
+{\em part\+\_\+y} & vertical coordinate to the part of the image that we want to draw \\
+\hline
+{\em width} & the width of the part of the image that we want to draw \\
+\hline
+{\em height} & the height of the part of the image that we want to draw \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success 
+\end{DoxyReturn}
+
+
+Definition at line 75 of file graph.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{76 \{}
+\DoxyCodeLine{77     \textcolor{keywordflow}{for} (uint16\_t yd = y+part\_y; yd != y + part\_y + height \&\& yd < \mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.YResolution; yd++)}
+\DoxyCodeLine{78     \{}
+\DoxyCodeLine{79         \textcolor{keywordflow}{for} (uint16\_t xd = x+part\_x; xd != x + part\_x + width \&\& xd < \mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.XResolution; xd++)}
+\DoxyCodeLine{80         \{}
+\DoxyCodeLine{81             \textcolor{keywordflow}{if} (!(map[((xd-\/x)+(yd-\/y)*img.width)*(\textcolor{keywordtype}{int})ceil(\mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.BitsPerPixel/8)+2] == 0x00 \&\& map[((xd-\/x)+(yd-\/y)*img.width)*(\textcolor{keywordtype}{int})ceil(\mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.BitsPerPixel/8)+1] == 0xb1 \&\& map[((xd-\/x)+(yd-\/y)*img.width)*(\textcolor{keywordtype}{int})ceil(\mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.BitsPerPixel/8)] == 0x40))}
+\DoxyCodeLine{82                 memcpy(\mbox{\hyperlink{graph_8c_aff2566f4c366b48d73479bef43ee4d2e}{buffer}}+(xd+yd*\mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.XResolution)*(\textcolor{keywordtype}{int})ceil(\mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.BitsPerPixel/8), map+((xd-\/x)+(yd-\/y)*img.width)*(\textcolor{keywordtype}{int})ceil(\mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.BitsPerPixel/8), (\textcolor{keywordtype}{int})ceil(\mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.BitsPerPixel/8));}
+\DoxyCodeLine{83         \}}
+\DoxyCodeLine{84     \}}
+\DoxyCodeLine{85     }
+\DoxyCodeLine{86     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{87 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{group__graph_ga25df193eebe4bece3620d39ab2300b78}\label{group__graph_ga25df193eebe4bece3620d39ab2300b78}} 
+\index{graph@{graph}!draw\_xpm@{draw\_xpm}}
+\index{draw\_xpm@{draw\_xpm}!graph@{graph}}
+\doxysubsubsection{\texorpdfstring{draw\_xpm()}{draw\_xpm()}}
+{\footnotesize\ttfamily int() draw\+\_\+xpm (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{map,  }\item[{xpm\+\_\+image\+\_\+t}]{img,  }\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+Draws given X\+PM, starting at the specified coordinates 
+\begin{DoxyParams}{Parameters}
+{\em map} & the array of hexadecimal colors to be drawn \\
+\hline
+{\em img} & Image specifications \\
+\hline
+{\em x} & horizontal coordinate of the initial point \\
+\hline
+{\em y} & vertical coordinate of the initial point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success 
+\end{DoxyReturn}
+
+
+Definition at line 61 of file graph.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{62 \{}
+\DoxyCodeLine{63     \textcolor{keywordflow}{for} (uint16\_t yd = y; yd != y + img.height \&\& yd < \mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.YResolution; yd++)}
+\DoxyCodeLine{64     \{}
+\DoxyCodeLine{65         \textcolor{keywordflow}{for} (uint16\_t xd = x; xd != x + img.width \&\& xd < \mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.XResolution; xd++)}
+\DoxyCodeLine{66         \{}
+\DoxyCodeLine{67             \textcolor{keywordflow}{if} (!(map[((xd-\/x)+(yd-\/y)*img.width)*(\textcolor{keywordtype}{int})ceil(\mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.BitsPerPixel/8)+2] == 0x00 \&\& map[((xd-\/x)+(yd-\/y)*img.width)*(\textcolor{keywordtype}{int})ceil(\mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.BitsPerPixel/8)+1] == 0xb1 \&\& map[((xd-\/x)+(yd-\/y)*img.width)*(\textcolor{keywordtype}{int})ceil(\mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.BitsPerPixel/8)] == 0x40))}
+\DoxyCodeLine{68                 memcpy(\mbox{\hyperlink{graph_8c_aff2566f4c366b48d73479bef43ee4d2e}{buffer}}+(xd+yd*\mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.XResolution)*(\textcolor{keywordtype}{int})ceil(\mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.BitsPerPixel/8), map+((xd-\/x)+(yd-\/y)*img.width)*(\textcolor{keywordtype}{int})ceil(\mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.BitsPerPixel/8), (\textcolor{keywordtype}{int})ceil(\mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.BitsPerPixel/8));}
+\DoxyCodeLine{69         \}}
+\DoxyCodeLine{70     \}}
+\DoxyCodeLine{71         }
+\DoxyCodeLine{72     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{73 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{group__graph_gab6e109de42be21e5b87146264ba361a0}\label{group__graph_gab6e109de42be21e5b87146264ba361a0}} 
+\index{graph@{graph}!get\_mode\_info@{get\_mode\_info}}
+\index{get\_mode\_info@{get\_mode\_info}!graph@{graph}}
+\doxysubsubsection{\texorpdfstring{get\_mode\_info()}{get\_mode\_info()}}
+{\footnotesize\ttfamily int() get\+\_\+mode\+\_\+info (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode,  }\item[{vbe\+\_\+mode\+\_\+info\+\_\+t $\ast$}]{vmi\+\_\+p }\end{DoxyParamCaption})}
+
+Gets information of V\+BE mode 
+\begin{DoxyParams}{Parameters}
+{\em mode} & mode whose information should be returned \\
+\hline
+{\em vmi\+\_\+p} & address of vbe\+\_\+mode\+\_\+info\+\_\+t structure to be initialized \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 116 of file graph.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{117 \{}
+\DoxyCodeLine{118     reg86\_t r;}
+\DoxyCodeLine{119     mmap\_t map;}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121     memset(\&r, 0, \textcolor{keyword}{sizeof}(r));}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123     \textcolor{keywordflow}{if} (lm\_alloc(\textcolor{keyword}{sizeof}(vbe\_mode\_info\_t), \&map) == NULL)}
+\DoxyCodeLine{124         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126     r.ax = 0x4F01;}
+\DoxyCodeLine{127     r.es = PB2BASE(map.phys);}
+\DoxyCodeLine{128     r.di = PB2OFF(map.phys);}
+\DoxyCodeLine{129     r.cx = mode;}
+\DoxyCodeLine{130     r.intno = 0x10;}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{132     \textcolor{keywordflow}{if} (sys\_int86(\&r) != OK) \{}
+\DoxyCodeLine{133         printf(\textcolor{stringliteral}{"{}get\_mode\_info(): sys\_int86() failed \(\backslash\)n"{}});}
+\DoxyCodeLine{134         \textcolor{keywordflow}{return} 2;}
+\DoxyCodeLine{135     \}}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137     *\mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}} = * ((vbe\_mode\_info\_t *) map.virt);}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139     \textcolor{keywordflow}{if} (lm\_free(\&map) == \textcolor{keyword}{false})}
+\DoxyCodeLine{140         \textcolor{keywordflow}{return} 3;}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{143 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{group__graph_ga270cebf5612b0408b5103d5c98fdc7c6}\label{group__graph_ga270cebf5612b0408b5103d5c98fdc7c6}} 
+\index{graph@{graph}!set\_vbe\_mode@{set\_vbe\_mode}}
+\index{set\_vbe\_mode@{set\_vbe\_mode}!graph@{graph}}
+\doxysubsubsection{\texorpdfstring{set\_vbe\_mode()}{set\_vbe\_mode()}}
+{\footnotesize\ttfamily int() set\+\_\+vbe\+\_\+mode (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+Sets V\+BE to specified mode 
+\begin{DoxyParams}{Parameters}
+{\em mode} & mode to set the V\+BE to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 17 of file graph.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{18 \{}
+\DoxyCodeLine{19     reg86\_t r;}
+\DoxyCodeLine{20     memset(\&r, 0, \textcolor{keyword}{sizeof}(r));}
+\DoxyCodeLine{21     r.ax = 0x4F02;}
+\DoxyCodeLine{22     r.bx = 1<<14|mode;}
+\DoxyCodeLine{23     r.intno = 0x10;}
+\DoxyCodeLine{24     \textcolor{keywordflow}{if}( sys\_int86(\&r) != OK ) \{}
+\DoxyCodeLine{25         printf(\textcolor{stringliteral}{"{}set\_vbe\_mode: sys\_int86() failed \(\backslash\)n"{}});}
+\DoxyCodeLine{26         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{27     \}}
+\DoxyCodeLine{28     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{29 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{group__graph_gaa6c1ff5024cd4d15e476bce487584daa}\label{group__graph_gaa6c1ff5024cd4d15e476bce487584daa}} 
+\index{graph@{graph}!vg\_init@{vg\_init}}
+\index{vg\_init@{vg\_init}!graph@{graph}}
+\doxysubsubsection{\texorpdfstring{vg\_init()}{vg\_init()}}
+{\footnotesize\ttfamily void$\ast$() vg\+\_\+init (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+Allocates the video\+\_\+mem 
+\begin{DoxyParams}{Parameters}
+{\em mode} & mode to set \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+virtual address V\+R\+AM was mapped to. N\+U\+LL on failure 
+\end{DoxyReturn}
+
+
+Definition at line 31 of file graph.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{32 \{}
+\DoxyCodeLine{33     \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__graph_gab6e109de42be21e5b87146264ba361a0}{get\_mode\_info}}(mode,\&\mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}) != OK)}
+\DoxyCodeLine{34         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{35     }
+\DoxyCodeLine{36     \textcolor{keywordtype}{int} r;}
+\DoxyCodeLine{37     \textcolor{keyword}{struct }minix\_mem\_range mr;}
+\DoxyCodeLine{38     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} vram\_base = \mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.PhysBasePtr;}
+\DoxyCodeLine{39     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} vram\_size = \mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.XResolution*\mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.YResolution*ceil(\mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.BitsPerPixel/8)*2;}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41     \textcolor{comment}{/* Allow memory mapping */}}
+\DoxyCodeLine{42     mr.mr\_base = (phys\_bytes) vram\_base;}
+\DoxyCodeLine{43     mr.mr\_limit = mr.mr\_base + vram\_size;}
+\DoxyCodeLine{44     \textcolor{keywordflow}{if}(OK != (r = sys\_privctl(SELF, SYS\_PRIV\_ADD\_MEM, \&mr)))}
+\DoxyCodeLine{45         panic(\textcolor{stringliteral}{"{}sys\_privctl (ADD\_MEM) failed: \%d\(\backslash\)n"{}}, r);}
+\DoxyCodeLine{46     }
+\DoxyCodeLine{47     \textcolor{comment}{/* Map memory */}}
+\DoxyCodeLine{48     \mbox{\hyperlink{graph_8c_a93a24e067b9083bed6fb5c0336fd7a01}{video\_mem}} = vm\_map\_phys(SELF, (\textcolor{keywordtype}{void} *)mr.mr\_base, vram\_size);}
+\DoxyCodeLine{49     \textcolor{keywordflow}{if}(\mbox{\hyperlink{graph_8c_a93a24e067b9083bed6fb5c0336fd7a01}{video\_mem}} == MAP\_FAILED)}
+\DoxyCodeLine{50         panic(\textcolor{stringliteral}{"{}couldn’t map video memory"{}});}
+\DoxyCodeLine{51     }
+\DoxyCodeLine{52     \mbox{\hyperlink{graph_8c_aff2566f4c366b48d73479bef43ee4d2e}{buffer}} = \mbox{\hyperlink{graph_8c_a93a24e067b9083bed6fb5c0336fd7a01}{video\_mem}} + \mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.XResolution*\mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.YResolution*(int)ceil(\mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.BitsPerPixel/8);}
+\DoxyCodeLine{53     \mbox{\hyperlink{graph_8c_a3a50ee43d70b7a4522d74ef8ae4cf55c}{line}} = \mbox{\hyperlink{graph_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\_p}}.YResolution;}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55     \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__graph_ga270cebf5612b0408b5103d5c98fdc7c6}{set\_vbe\_mode}}(mode) != OK)}
+\DoxyCodeLine{56         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{57     }
+\DoxyCodeLine{58     \textcolor{keywordflow}{return} \mbox{\hyperlink{graph_8c_a93a24e067b9083bed6fb5c0336fd7a01}{video\_mem}};}
+\DoxyCodeLine{59 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{group__graph_gaa6c1ff5024cd4d15e476bce487584daa_cgraph}
+\end{center}
+\end{figure}

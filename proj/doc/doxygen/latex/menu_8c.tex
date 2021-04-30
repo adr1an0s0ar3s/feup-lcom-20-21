@@ -1,0 +1,166 @@
+\hypertarget{menu_8c}{}\doxysection{menu.\+c File Reference}
+\label{menu_8c}\index{menu.c@{menu.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/liblm.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/proj.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}menu\+\_\+xpm.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}menu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}graph.\+h\char`\"{}}\newline
+Include dependency graph for menu.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{group__menu_gabb3e894076aad3bdb8611f780dca9963}{start\+Menu}} ()
+\item 
+int() \mbox{\hyperlink{group__menu_ga6e01865e8858a2d5512cbc808026bf93}{show\+Menu}} (int16\+\_\+t d\+\_\+x, int16\+\_\+t d\+\_\+y, bool click)
+\item 
+int() \mbox{\hyperlink{group__menu_gac47d02f17e5585804aea445e86dfb100}{show\+Online\+Waiting\+Menu}} ()
+\item 
+int() \mbox{\hyperlink{group__menu_ga8104ddd73f1d496b81ea8499439f8db2}{show\+Instructions\+Menu}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{menu_8c_a03eb0d3ba543b3119fb6a3c45904adc8}{menu\+\_\+info}}
+\item 
+static uint8\+\_\+t $\ast$ \mbox{\hyperlink{menu_8c_ab2c4eeed8604296ff31c3fd5218218f9}{menu}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{menu_8c_aafa6837b803cd6a0fc7b6bc946e1d096}{button\+\_\+info}}
+\item 
+static uint8\+\_\+t $\ast$ \mbox{\hyperlink{menu_8c_a26ce34a238daeaa53ec2fe5fd06476db}{button1\+\_\+highlight}}
+\item 
+static uint8\+\_\+t $\ast$ \mbox{\hyperlink{menu_8c_ad0cf88428099e22351783a6676ada288}{button2\+\_\+highlight}}
+\item 
+static uint8\+\_\+t $\ast$ \mbox{\hyperlink{menu_8c_a51966f1697164f653c975cda309f0730}{button3\+\_\+highlight}}
+\item 
+static uint8\+\_\+t $\ast$ \mbox{\hyperlink{menu_8c_a379d2ccb12d6e53e63338f0a454d21ad}{button4\+\_\+highlight}}
+\item 
+static xpm\+\_\+image\+\_\+t \mbox{\hyperlink{menu_8c_aa4c68af5c34290ac3a4ca8e68a86939b}{cursor\+\_\+info}}
+\item 
+static uint8\+\_\+t $\ast$ \mbox{\hyperlink{menu_8c_addb5232cc0560d62b4a28c3876400cbd}{cursor}}
+\item 
+static uint8\+\_\+t $\ast$ \mbox{\hyperlink{menu_8c_a466c00321a18123b52242740d9aae4c1}{online\+\_\+waiting\+\_\+menu}}
+\item 
+static uint8\+\_\+t $\ast$ \mbox{\hyperlink{menu_8c_a5d91b03301bdb263c7ae3e526b557280}{instructions\+\_\+menu}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{menu_8c_a26ce34a238daeaa53ec2fe5fd06476db}\label{menu_8c_a26ce34a238daeaa53ec2fe5fd06476db}} 
+\index{menu.c@{menu.c}!button1\_highlight@{button1\_highlight}}
+\index{button1\_highlight@{button1\_highlight}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{button1\_highlight}{button1\_highlight}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ button1\+\_\+highlight\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 18 of file menu.\+c.
+
+\mbox{\Hypertarget{menu_8c_ad0cf88428099e22351783a6676ada288}\label{menu_8c_ad0cf88428099e22351783a6676ada288}} 
+\index{menu.c@{menu.c}!button2\_highlight@{button2\_highlight}}
+\index{button2\_highlight@{button2\_highlight}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{button2\_highlight}{button2\_highlight}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ button2\+\_\+highlight\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 21 of file menu.\+c.
+
+\mbox{\Hypertarget{menu_8c_a51966f1697164f653c975cda309f0730}\label{menu_8c_a51966f1697164f653c975cda309f0730}} 
+\index{menu.c@{menu.c}!button3\_highlight@{button3\_highlight}}
+\index{button3\_highlight@{button3\_highlight}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{button3\_highlight}{button3\_highlight}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ button3\+\_\+highlight\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 24 of file menu.\+c.
+
+\mbox{\Hypertarget{menu_8c_a379d2ccb12d6e53e63338f0a454d21ad}\label{menu_8c_a379d2ccb12d6e53e63338f0a454d21ad}} 
+\index{menu.c@{menu.c}!button4\_highlight@{button4\_highlight}}
+\index{button4\_highlight@{button4\_highlight}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{button4\_highlight}{button4\_highlight}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ button4\+\_\+highlight\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 27 of file menu.\+c.
+
+\mbox{\Hypertarget{menu_8c_aafa6837b803cd6a0fc7b6bc946e1d096}\label{menu_8c_aafa6837b803cd6a0fc7b6bc946e1d096}} 
+\index{menu.c@{menu.c}!button\_info@{button\_info}}
+\index{button\_info@{button\_info}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{button\_info}{button\_info}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t button\+\_\+info\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 17 of file menu.\+c.
+
+\mbox{\Hypertarget{menu_8c_addb5232cc0560d62b4a28c3876400cbd}\label{menu_8c_addb5232cc0560d62b4a28c3876400cbd}} 
+\index{menu.c@{menu.c}!cursor@{cursor}}
+\index{cursor@{cursor}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{cursor}{cursor}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ cursor\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 31 of file menu.\+c.
+
+\mbox{\Hypertarget{menu_8c_aa4c68af5c34290ac3a4ca8e68a86939b}\label{menu_8c_aa4c68af5c34290ac3a4ca8e68a86939b}} 
+\index{menu.c@{menu.c}!cursor\_info@{cursor\_info}}
+\index{cursor\_info@{cursor\_info}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{cursor\_info}{cursor\_info}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t cursor\+\_\+info\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 30 of file menu.\+c.
+
+\mbox{\Hypertarget{menu_8c_a5d91b03301bdb263c7ae3e526b557280}\label{menu_8c_a5d91b03301bdb263c7ae3e526b557280}} 
+\index{menu.c@{menu.c}!instructions\_menu@{instructions\_menu}}
+\index{instructions\_menu@{instructions\_menu}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{instructions\_menu}{instructions\_menu}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ instructions\+\_\+menu\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 37 of file menu.\+c.
+
+\mbox{\Hypertarget{menu_8c_ab2c4eeed8604296ff31c3fd5218218f9}\label{menu_8c_ab2c4eeed8604296ff31c3fd5218218f9}} 
+\index{menu.c@{menu.c}!menu@{menu}}
+\index{menu@{menu}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{menu}{menu}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ menu\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 14 of file menu.\+c.
+
+\mbox{\Hypertarget{menu_8c_a03eb0d3ba543b3119fb6a3c45904adc8}\label{menu_8c_a03eb0d3ba543b3119fb6a3c45904adc8}} 
+\index{menu.c@{menu.c}!menu\_info@{menu\_info}}
+\index{menu\_info@{menu\_info}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{menu\_info}{menu\_info}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t menu\+\_\+info\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 13 of file menu.\+c.
+
+\mbox{\Hypertarget{menu_8c_a466c00321a18123b52242740d9aae4c1}\label{menu_8c_a466c00321a18123b52242740d9aae4c1}} 
+\index{menu.c@{menu.c}!online\_waiting\_menu@{online\_waiting\_menu}}
+\index{online\_waiting\_menu@{online\_waiting\_menu}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{online\_waiting\_menu}{online\_waiting\_menu}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ online\+\_\+waiting\+\_\+menu\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 34 of file menu.\+c.
+

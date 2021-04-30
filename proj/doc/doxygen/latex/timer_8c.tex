@@ -1,0 +1,165 @@
+\hypertarget{timer_8c}{}\doxysection{timer.\+c File Reference}
+\label{timer_8c}\index{timer.c@{timer.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/liblm.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/proj.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}i8254.\+h\char`\"{}}\newline
+Include dependency graph for timer.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timer_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{timer_8c_af2c04fa8e97ffa748fd3f612886a92a7}{timer\+\_\+set\+\_\+frequency}} (uint8\+\_\+t timer, uint32\+\_\+t freq)
+\item 
+int() \mbox{\hyperlink{timer_8c_ac57a7e1140a7e00ad95ac5488d2a671b}{timer\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t $\ast$bit\+\_\+no)
+\item 
+int() \mbox{\hyperlink{timer_8c_afabd21de449be154dd65d5fdb2d8045d}{timer\+\_\+unsubscribe\+\_\+int}} ()
+\item 
+int() \mbox{\hyperlink{timer_8c_a703c60b40c8c49607d6ecb6fef82d27a}{timer\+\_\+get\+\_\+conf}} (uint8\+\_\+t timer, uint8\+\_\+t $\ast$st)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{timer_8c_a96f78a87d064e47d627d222f67a8d012}{hook\+\_\+id}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{timer_8c_a703c60b40c8c49607d6ecb6fef82d27a}\label{timer_8c_a703c60b40c8c49607d6ecb6fef82d27a}} 
+\index{timer.c@{timer.c}!timer\_get\_conf@{timer\_get\_conf}}
+\index{timer\_get\_conf@{timer\_get\_conf}!timer.c@{timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_get\_conf()}{timer\_get\_conf()}}
+{\footnotesize\ttfamily int() timer\+\_\+get\+\_\+conf (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{timer,  }\item[{uint8\+\_\+t $\ast$}]{st }\end{DoxyParamCaption})}
+
+
+
+Definition at line 57 of file timer.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{58 \{}
+\DoxyCodeLine{59   \textcolor{keywordflow}{if} (timer > 2 || st == NULL)}
+\DoxyCodeLine{60     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62   \textcolor{keywordflow}{if} (sys\_outb(\mbox{\hyperlink{group__i8254_ga282832448fb0281ef53d243c1cd48491}{TIMER\_CTRL}}, \mbox{\hyperlink{group__i8254_ga4c2eecbfb96744a9c2af71dba75ecb18}{TIMER\_RB\_CMD}} | \mbox{\hyperlink{group__i8254_ga6c248216df24b5e9d907d126d80bd195}{TIMER\_RB\_COUNT\_}} | \mbox{\hyperlink{group__i8254_gaf598b17740e07842a0545af512714711}{TIMER\_RB\_SEL}}(timer)) != OK)}
+\DoxyCodeLine{63     \textcolor{keywordflow}{return} 2;}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65   \textcolor{keywordflow}{return} \mbox{\hyperlink{group__util_ga79a031a8611f5b2d6afa4158e92b0fb4}{util\_sys\_inb}}(\mbox{\hyperlink{group__i8254_gacc9ff9df4a9674a1ce9ba08fc4a4679e}{TIMER\_0}} + timer, st);}
+\DoxyCodeLine{66 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{timer_8c_a703c60b40c8c49607d6ecb6fef82d27a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{timer_8c_af2c04fa8e97ffa748fd3f612886a92a7}\label{timer_8c_af2c04fa8e97ffa748fd3f612886a92a7}} 
+\index{timer.c@{timer.c}!timer\_set\_frequency@{timer\_set\_frequency}}
+\index{timer\_set\_frequency@{timer\_set\_frequency}!timer.c@{timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_set\_frequency()}{timer\_set\_frequency()}}
+{\footnotesize\ttfamily int() timer\+\_\+set\+\_\+frequency (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{timer,  }\item[{uint32\+\_\+t}]{freq }\end{DoxyParamCaption})}
+
+
+
+Definition at line 12 of file timer.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{13 \{}
+\DoxyCodeLine{14   \textcolor{keywordflow}{if} (timer > 2 || freq < 19 || freq >= \mbox{\hyperlink{group__i8254_gacf926951944b6cf370b7229ebd50dd8b}{TIMER\_FREQ}}/2)}
+\DoxyCodeLine{15     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{16   }
+\DoxyCodeLine{17   uint16\_t val = (uint16\_t) (\mbox{\hyperlink{group__i8254_gacf926951944b6cf370b7229ebd50dd8b}{TIMER\_FREQ}} / freq);}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19   uint8\_t st, lsb, msb;}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21   \mbox{\hyperlink{group__util_ga81621440b3d65680979425e39aa8c789}{util\_get\_LSB}}(val, \&lsb);}
+\DoxyCodeLine{22   \mbox{\hyperlink{group__util_ga6a880076cd2ec468834438b6e0c58836}{util\_get\_MSB}}(val, \&msb);}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24   \textcolor{keywordflow}{if} (\mbox{\hyperlink{timer_8c_a703c60b40c8c49607d6ecb6fef82d27a}{timer\_get\_conf}}(timer, \&st) != OK)}
+\DoxyCodeLine{25     \textcolor{keywordflow}{return} 2;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27   \textcolor{keywordflow}{if} (sys\_outb(\mbox{\hyperlink{group__i8254_ga282832448fb0281ef53d243c1cd48491}{TIMER\_CTRL}}, timer << 6 | \mbox{\hyperlink{group__i8254_ga8c0f1933323274c765e23837e4fbc8c7}{TIMER\_LSB\_MSB}} | (st \& \mbox{\hyperlink{group__i8254_ga027dbf9970ce473cce794ad04bb5bf9c}{TIMER\_LSB\_STATUS}})) != OK)}
+\DoxyCodeLine{28     \textcolor{keywordflow}{return} 3;}
+\DoxyCodeLine{29   }
+\DoxyCodeLine{30   \textcolor{keywordflow}{if} (sys\_outb(\mbox{\hyperlink{group__i8254_gacc9ff9df4a9674a1ce9ba08fc4a4679e}{TIMER\_0}} + timer, lsb) != OK)}
+\DoxyCodeLine{31     \textcolor{keywordflow}{return} 4;}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33   \textcolor{keywordflow}{if} (sys\_outb(\mbox{\hyperlink{group__i8254_gacc9ff9df4a9674a1ce9ba08fc4a4679e}{TIMER\_0}} + timer, msb) != OK)}
+\DoxyCodeLine{34     \textcolor{keywordflow}{return} 5;}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{37 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timer_8c_af2c04fa8e97ffa748fd3f612886a92a7_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{timer_8c_ac57a7e1140a7e00ad95ac5488d2a671b}\label{timer_8c_ac57a7e1140a7e00ad95ac5488d2a671b}} 
+\index{timer.c@{timer.c}!timer\_subscribe\_int@{timer\_subscribe\_int}}
+\index{timer\_subscribe\_int@{timer\_subscribe\_int}!timer.c@{timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_subscribe\_int()}{timer\_subscribe\_int()}}
+{\footnotesize\ttfamily int() timer\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{bit\+\_\+no }\end{DoxyParamCaption})}
+
+
+
+Definition at line 39 of file timer.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{40 \{}
+\DoxyCodeLine{41   \mbox{\hyperlink{timer_8c_a96f78a87d064e47d627d222f67a8d012}{hook\_id}} = *bit\_no;}
+\DoxyCodeLine{42   }
+\DoxyCodeLine{43   \textcolor{keywordflow}{if} (sys\_irqsetpolicy(\mbox{\hyperlink{group__graph_ga30bf84c312af248cb81bb224e09f9ba8}{TIMER0\_IRQ}}, IRQ\_REENABLE, \&\mbox{\hyperlink{timer_8c_a96f78a87d064e47d627d222f67a8d012}{hook\_id}}) != OK)}
+\DoxyCodeLine{44     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{47 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{timer_8c_afabd21de449be154dd65d5fdb2d8045d}\label{timer_8c_afabd21de449be154dd65d5fdb2d8045d}} 
+\index{timer.c@{timer.c}!timer\_unsubscribe\_int@{timer\_unsubscribe\_int}}
+\index{timer\_unsubscribe\_int@{timer\_unsubscribe\_int}!timer.c@{timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_unsubscribe\_int()}{timer\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int() timer\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 49 of file timer.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{50 \{  }
+\DoxyCodeLine{51   \textcolor{keywordflow}{if} (sys\_irqrmpolicy(\&\mbox{\hyperlink{timer_8c_a96f78a87d064e47d627d222f67a8d012}{hook\_id}}) != OK)}
+\DoxyCodeLine{52     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{55 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{timer_8c_a96f78a87d064e47d627d222f67a8d012}\label{timer_8c_a96f78a87d064e47d627d222f67a8d012}} 
+\index{timer.c@{timer.c}!hook\_id@{hook\_id}}
+\index{hook\_id@{hook\_id}!timer.c@{timer.c}}
+\doxysubsubsection{\texorpdfstring{hook\_id}{hook\_id}}
+{\footnotesize\ttfamily int hook\+\_\+id\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 10 of file timer.\+c.
+

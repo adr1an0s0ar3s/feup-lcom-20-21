@@ -1,0 +1,59 @@
+\hypertarget{serial_8c}{}\doxysection{serial.\+c File Reference}
+\label{serial_8c}\index{serial.c@{serial.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/liblm.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/proj.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}serial.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\newline
+Include dependency graph for serial.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{serial_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{group__serial_ga37214d3484d1946556d8a410ab756923}{serial\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t $\ast$bit\+\_\+no)
+\item 
+int() \mbox{\hyperlink{group__serial_ga130f1f14b0ff5a864f85323b351c7658}{serial\+\_\+unsubscribe\+\_\+int}} ()
+\item 
+int() \mbox{\hyperlink{group__serial_gae3276cfcdeae1e348c0464435bd37ac4}{serial\+\_\+config}} ()
+\item 
+int() \mbox{\hyperlink{group__serial_gaad3e91e4acd0f458e91a9d87325f2fba}{serial\+\_\+send}} (uint8\+\_\+t packet)
+\item 
+int() \mbox{\hyperlink{group__serial_gae0fe040b0f68ce53058ee5d71e8c839a}{serial\+\_\+ih}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{serial_8c_a6c60f97448c0f94e0a4e4e4693c0cdb8}{hook\+\_\+id\+\_\+serial}}
+\item 
+static bool \mbox{\hyperlink{serial_8c_ae0dbd948237cbd2c315a6f10fdc57f91}{thr\+\_\+empty}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{serial_8c_a6c60f97448c0f94e0a4e4e4693c0cdb8}\label{serial_8c_a6c60f97448c0f94e0a4e4e4693c0cdb8}} 
+\index{serial.c@{serial.c}!hook\_id\_serial@{hook\_id\_serial}}
+\index{hook\_id\_serial@{hook\_id\_serial}!serial.c@{serial.c}}
+\doxysubsubsection{\texorpdfstring{hook\_id\_serial}{hook\_id\_serial}}
+{\footnotesize\ttfamily int hook\+\_\+id\+\_\+serial\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 11 of file serial.\+c.
+
+\mbox{\Hypertarget{serial_8c_ae0dbd948237cbd2c315a6f10fdc57f91}\label{serial_8c_ae0dbd948237cbd2c315a6f10fdc57f91}} 
+\index{serial.c@{serial.c}!thr\_empty@{thr\_empty}}
+\index{thr\_empty@{thr\_empty}!serial.c@{serial.c}}
+\doxysubsubsection{\texorpdfstring{thr\_empty}{thr\_empty}}
+{\footnotesize\ttfamily bool thr\+\_\+empty\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 12 of file serial.\+c.
+

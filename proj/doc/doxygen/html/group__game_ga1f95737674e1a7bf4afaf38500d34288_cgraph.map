@@ -1,0 +1,9 @@
+<map id="chip_falling_animation" name="chip_falling_animation">
+<area shape="rect" id="node1" title=" " alt="" coords="5,107,155,133"/>
+<area shape="rect" id="node2" href="$group__graph.html#ga9586fab72d125423fd0ff56cbb3d35a3" title=" " alt="" coords="215,5,317,32"/>
+<area shape="rect" id="node3" href="$group__game.html#ga4d8528bdbf9d58a10313c6c06bb52f2c" title=" " alt="" coords="226,56,306,83"/>
+<area shape="rect" id="node5" href="$group__game.html#ga2c1edec5e1344ab57fba2666dc4de6d5" title=" " alt="" coords="217,107,315,133"/>
+<area shape="rect" id="node6" href="$group__graph.html#gaeec463a816be71ccadfd9a781146e9f2" title=" " alt="" coords="203,157,329,184"/>
+<area shape="rect" id="node7" href="$group__game.html#ga5dea0f7830d4dacb4d5becfef8eac9da" title=" " alt="" coords="226,208,306,235"/>
+<area shape="rect" id="node4" href="$group__graph.html#ga25df193eebe4bece3620d39ab2300b78" title=" " alt="" coords="377,81,459,108"/>
+</map>
